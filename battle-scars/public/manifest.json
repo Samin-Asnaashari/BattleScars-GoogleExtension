@@ -14,10 +14,5 @@
     "newtab": "index.html"
   },
   "permissions": [],
-  "content_scripts": [{
-    "css": [],
-    "js": [],
-    "matches": []
-  }],
   "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }
