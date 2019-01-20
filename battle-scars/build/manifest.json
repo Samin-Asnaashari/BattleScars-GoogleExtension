@@ -1,0 +1,17 @@
+{
+  "short_name": "Battle Scars",
+  "name": "Battle Scars Google Extension",
+  "author": "Samin137",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "My React Extension",
+  "icons": {
+    "16": "favicon.ico",
+    "48": "favicon.ico",
+    "128": "favicon.ico"
+  },
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+  "permissions": []
+}
