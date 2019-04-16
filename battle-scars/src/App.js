@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import SearchBox from "./components/searchBox";
+import MainNavBar from "./components/mainNavBar";
 import logo from "./logo.svg";
 
 class App extends Component {
@@ -9,8 +10,8 @@ class App extends Component {
     return (
       <React.Fragment>
         <main className="container-fluid">
-          <div class="row justify-content-md-center">
-            <div class="col col-lg-6">
+          <div className="row justify-content-md-center">
+            <div className="col col-lg-6">
               <SearchBox />
             </div>
           </div>

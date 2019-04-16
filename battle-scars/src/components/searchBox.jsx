@@ -3,10 +3,10 @@ import React, { Component } from "react";
 class SearchBox extends Component {
   render() {
     const style = {
-      "justify-content": "center",
-      "align-items": "center",
-      "text-align": "center",
-      "min-height": "100vh"
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      minHeight: "100vh"
     };
 
     return (
@@ -16,7 +16,6 @@ class SearchBox extends Component {
           className="form-control"
           placeholder="Search"
           aria-label="Search"
-          aria-describedby="basic-addon2"
         />
         <button
           className="btn btn-outline-secondary"
