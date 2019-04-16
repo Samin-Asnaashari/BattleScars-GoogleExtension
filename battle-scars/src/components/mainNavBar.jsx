@@ -3,26 +3,26 @@ import React, { Component } from "react";
 import { Grid, Icon, Menu, Sidebar, Segment } from "semantic-ui-react";
 import SearchBox from "./searchBox";
 
-const VerticalSidebar = ({ animation, direction, visible }) => (
+const VerticalSidebar = ({ visible, handleMenuSidebarStateClick }) => (
   <Sidebar
     as={Menu}
-    animation={animation}
-    direction={direction}
+    animation="uncover"
+    direction="right"
     icon="labeled"
     inverted
     vertical
     visible={visible}
     width="thin"
   >
-    <Menu.Item as="a">
+    <Menu.Item as="a" onClick={handleMenuSidebarStateClick}>
       <Icon name="home" />
       Home
     </Menu.Item>
-    <Menu.Item as="a">
+    <Menu.Item as="a" onClick={handleMenuSidebarStateClick}>
       <Icon name="gamepad" />
       Games
     </Menu.Item>
-    <Menu.Item as="a">
+    <Menu.Item as="a" onClick={handleMenuSidebarStateClick}>
       <Icon name="camera" />
       Channels
     </Menu.Item>
@@ -30,8 +30,6 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 );
 
 VerticalSidebar.propTypes = {
-  animation: PropTypes.string,
-  direction: PropTypes.string,
   visible: PropTypes.bool
 };
 
@@ -68,7 +66,6 @@ const VerticalMenu = ({ activeItem, handleMenuSidebarStateClick }) => (
 
 export default class MainNavBar extends Component {
   state = {
-    direction: "right",
     dimmed: false,
     visible: false,
     activeItem: "gamepad"
@@ -82,21 +79,24 @@ export default class MainNavBar extends Component {
     });
 
   render() {
-    const { dimmed, direction, visible, activeItem } = this.state;
+    const { dimmed, visible, activeItem } = this.state;
     return (
       <div>
         <Sidebar.Pushable>
           <VerticalSidebar
-            animation="animation"
-            direction={direction}
             visible={visible}
+            handleMenuSidebarStateClick={this.handleMenuSidebarStateClick}
           />
           <Sidebar.Pusher dimmed={dimmed && visible}>
             <main className="container-fluid">
-              <VerticalMenu
-                activeItem={activeItem}
+              <VerticalSidebar
+                visible="true"
                 handleMenuSidebarStateClick={this.handleMenuSidebarStateClick}
               />
+              {/* <VerticalMenu
+                activeItem={activeItem}
+                handleMenuSidebarStateClick={this.handleMenuSidebarStateClick}
+              /> */}
               <div className="row justify-content-md-center">
                 <div className="col col-lg-6">
                   <SearchBox />
