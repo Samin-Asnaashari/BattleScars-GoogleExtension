@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import logo from "./logo.svg";
 import SideBar from "./components/sideBar";
 import MainContent from "./components/mainContent";
@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <main className="container">
+        <main>
           {/* <Switch>
           <Route path="/extraExercise" component={ExtraExercise} />
           <Route path="/not-found" component={NotFound} />

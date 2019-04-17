@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./css/mainContent.scss";
+import SearchBox from "./searchBox";
 
 class MainContent extends Component {
   render() {
@@ -11,19 +12,9 @@ class MainContent extends Component {
             : "main-content"
         }
       >
-        <header>
-          <span />
-          <ul>
-            <li />
-            <li />
-            <li />
-          </ul>
-        </header>
-        <div className="container">
-          <div className="module--full" />
-          <div className="module-wrapper">
-            <div className="module--half" />
-            <div className="module--half" />
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-6">
+            <SearchBox />
           </div>
         </div>
       </section>

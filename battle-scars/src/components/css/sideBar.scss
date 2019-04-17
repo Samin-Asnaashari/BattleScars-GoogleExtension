@@ -1,10 +1,10 @@
-$pink: #ff65c3;
-$orange: #fcbd78;
-$faded-white: #fafafc;
-$dark-grey: #e5e5e7;
-$yellow: #efb05a;
+$pink: #212121;
+$orange: #ef5350;
+// $faded-white: #fafafc;
+// $dark-grey: #e5e5e7;
+$yellow: #fcbd78;
 
-$sidebar-width: 300px;
+$sidebar-width: 170px;
 
 .sidebar {
   width: $sidebar-width;
@@ -13,9 +13,9 @@ $sidebar-width: 300px;
   background-position: 0 100%;
   position: absolute;
   top: 0;
-  left: 0;
-  height: 100%;
-  transform: translateX(-230px);
+  right: 0;
+  height: 100vh;
+  transform: translateX(100px);
   transition: 300ms ease-in-out;
   z-index: 1;
   overflow: hidden;
@@ -61,7 +61,7 @@ $sidebar-width: 300px;
   top: 0;
   left: 0;
   width: 360px;
-  background: linear-gradient(#ff7dd5 80%, transparent);
+  background: linear-gradient($yellow 80%, transparent);
   height: 370px;
   border-radius: 100%;
   margin-left: -100px;
