@@ -8,8 +8,8 @@ class MainContent extends Component {
       <section
         className={
           this.props.expanded
-            ? "main-content main-content--expanded"
-            : "main-content"
+            ? "main-content main-content--expanded container-fluid"
+            : "main-content container-fluid"
         }
       >
         <div class="row justify-content-md-center">
