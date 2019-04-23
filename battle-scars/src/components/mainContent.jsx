@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, NavLink } from "react-router-dom";
-import "./css/mainContent.scss";
+import "./../styles/mainContent.scss";
 import SearchBox from "./searchBox";
 
 class MainContent extends Component {
@@ -13,8 +13,8 @@ class MainContent extends Component {
             : "main-content container-fluid"
         }
       >
-        <div class="row justify-content-md-center">
-          <div class="col col-lg-6">
+        <div className="row justify-content-md-center">
+          <div className="col col-lg-6">
             <SearchBox />
           </div>
         </div>

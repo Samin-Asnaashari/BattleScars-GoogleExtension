@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./../styles/searchBox.scss";
+import CustomSelect from "./common/customSelect";
 
 class SearchBox extends Component {
   render() {
@@ -9,36 +11,42 @@ class SearchBox extends Component {
       minHeight: "100vh"
     };
 
+    const searchEngineOptions = [
+      {
+        _id: "1",
+        name: "Google",
+        image: require("./../assets/search-engines/google.png")
+      },
+      {
+        _id: "2",
+        name: "Google",
+        image: require("./../assets/search-engines/bing.png")
+      },
+      {
+        _id: "3",
+        name: "Google",
+        image: require("./../assets/search-engines/wikipedia.png")
+      },
+      {
+        _id: "4",
+        name: "Google",
+        image: require("./../assets/search-engines/yahoo.png")
+      }
+    ];
+
     return (
       <div className="input-group mb-3" style={style}>
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-secondary dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i className="fa fa-google" />
-          </button>
-          <div className="dropdown-menu">
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-          </div>
-        </div>
-
+        {/* choose engine  */}
+        <CustomSelect options={searchEngineOptions} />
+        {/* search  */}
         <input
           type="text"
           className="form-control"
           placeholder="Search"
           aria-label="Search"
         />
-        <button
-          className="btn btn-outline-secondary"
-          type="button"
-          id="button-addon2"
-        >
+        {/* search btn  */}
+        <button className="btn btn-outline-secondary" type="button">
           <i className="fa fa-search" />
         </button>
       </div>

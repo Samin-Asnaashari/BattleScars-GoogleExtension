@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/sideBar.scss";
+import "./../styles/sideBar.scss";
 import _ from "lodash";
 
 class SideBar extends Component {
@@ -43,14 +43,14 @@ class SideBar extends Component {
             Profile
           </div> */}
 
-          {menuItems.map(item => (
-            <ul className="menu">
-              <li className="menu__item">
+          <ul className="menu">
+            {menuItems.map(item => (
+              <li className="menu__item" key={item._id}>
                 <i className={item.iconClass} />
                 {item.title}
               </li>
-            </ul>
-          ))}
+            ))}
+          </ul>
         </div>
         <span className="shape" />
         <span className="shape" />
