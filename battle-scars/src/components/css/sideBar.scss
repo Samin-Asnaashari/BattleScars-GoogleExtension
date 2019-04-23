@@ -1,8 +1,52 @@
-$pink: #ff8a80;
-$orange: #fcbd78;
-$yellow: #c51162;
+// $pink: #ff8a80;
+// $orange: #fcbd78;
+// $yellow: #c51162;
+$pink: rgba(0, 0, 0, 1);
+$orange: rgba(67, 67, 67, 1);
+$yellow: rgba(139, 147, 154, 1);
 
-$sidebar-width: 170px;
+.toggle {
+  font-size: 30px !important;
+  margin-left: 15px;
+  padding: 10px 0px 10px 0px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.avatar__item {
+  color: whitesmoke;
+}
+
+.menu {
+  width: 100%;
+  padding: 0;
+}
+
+.menu__item {
+  width: 100%;
+  color: whitesmoke;
+  list-style: none;
+}
+
+.menu__icon {
+  color: whitesmoke;
+  margin: 5px 20px 5px 15px;
+  font-size: 30px !important;
+  vertical-align: middle;
+}
+
+.menu__item:hover {
+  background-color: $yellow;
+  border: none !important;
+}
+
+$sidebar-width: 139px;
 
 .sidebar {
   width: $sidebar-width;
@@ -13,7 +57,7 @@ $sidebar-width: 170px;
   top: 0;
   right: 0;
   height: 100vh;
-  transform: translateX(100px);
+  transform: translateX(80px);
   transition: 300ms ease-in-out;
   z-index: 1;
   overflow: hidden;
@@ -44,7 +88,6 @@ $sidebar-width: 170px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 1.8rem;
   padding-bottom: 0;
   transition: 300ms ease;
   cursor: pointer;

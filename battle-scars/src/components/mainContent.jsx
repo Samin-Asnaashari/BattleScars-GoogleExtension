@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Link, NavLink } from "react-router-dom";
 import "./css/mainContent.scss";
 import SearchBox from "./searchBox";
 
