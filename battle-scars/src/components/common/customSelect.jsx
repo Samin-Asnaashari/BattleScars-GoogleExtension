@@ -17,12 +17,11 @@ class CustomSelect extends Component {
   render() {
     return (
       <Select
-        value={this.props.defaultSelection}
+        value={this.props.defaultSelection._id}
         onChange={this.props.selectionChanged}
         inputProps={{
-          id: "id",
-          name: "customSelect",
-          image: "image"
+          id: this.props.defaultSelection._id,
+          name: "customSelect"
         }}
       >
         {this.props.options.map(option => (
