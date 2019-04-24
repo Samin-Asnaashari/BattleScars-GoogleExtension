@@ -1,6 +1,7 @@
 .main-content {
   background: url(../assets/background-images/anders-jilden-89745-unsplash.jpg)
     no-repeat center center fixed;
+  background-size: cover;
   &--expanded {
     // filter: blur(2px);
   }

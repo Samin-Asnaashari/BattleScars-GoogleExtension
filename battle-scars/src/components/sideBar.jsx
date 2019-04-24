@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./../styles/sideBar.scss";
 import _ from "lodash";
+import "./../styles/sideBar.scss";
 
 class SideBar extends Component {
   iconClass = "menu__icon fa fa-2x fa";
@@ -18,6 +18,7 @@ class SideBar extends Component {
   render() {
     const { menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
+    const toggleClassName = "menu__icon fa fa-arrow-circle-o-";
 
     return (
       <div
@@ -26,24 +27,25 @@ class SideBar extends Component {
         }
       >
         <div className="menu btn-group-vertical">
-          <ul className="menu">
-            <li className="menu__item" onClick={this.props.toggleSidebar}>
-              <i
-                className={
-                  this.props.expanded
-                    ? "toggle fa fa-arrow-circle-o-left"
-                    : "toggle fa fa-arrow-circle-o-right"
-                }
-              />
-            </li>
-          </ul>
-
           {/* <div classNAme="avatar_item">
             <img src={avatar} className="avatar" />
             Profile
           </div> */}
 
           <ul className="menu">
+            <li
+              className="menu__item"
+              key="-1"
+              onClick={this.props.toggleSidebar}
+            >
+              <i
+                className={
+                  this.props.expanded
+                    ? toggleClassName + "left"
+                    : toggleClassName + "right"
+                }
+              />
+            </li>
             {menuItems.map(item => (
               <li className="menu__item" key={item._id}>
                 <i className={item.iconClass} />

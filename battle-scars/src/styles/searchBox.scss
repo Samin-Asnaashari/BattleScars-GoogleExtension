@@ -1,0 +1,26 @@
+$pink: rgba(0, 0, 0, 1);
+$orange: rgba(67, 67, 67, 1);
+$yellow: rgba(139, 147, 154, 1);
+
+.search-container {
+  padding: 3px 3px;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  background-color: $yellow !important;
+  border-radius: 10px !important;
+}
+
+.search__input {
+  margin-left: 8px;
+  flex: 1;
+}
+
+.search__btn {
+}
+
+.divider {
+  width: 2px;
+  height: 40px !important;
+  margin: 4px !important;
+}

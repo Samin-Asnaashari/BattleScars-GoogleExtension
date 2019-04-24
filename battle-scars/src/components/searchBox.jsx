@@ -1,16 +1,23 @@
 import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import InputBase from "@material-ui/core/InputBase";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from "@material-ui/icons/Search";
+import Grid from "@material-ui/core/Grid";
 import "./../styles/searchBox.scss";
 import CustomSelect from "./common/customSelect";
 
 class SearchBox extends Component {
-  render() {
-    const style = {
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      minHeight: "100vh"
-    };
+  state = {
+    selectedEngine: 1
+  };
 
+  handleSelectionChange = option => {
+    this.setState({ selectedEngine: option.target.value });
+  };
+
+  render() {
     const searchEngineOptions = [
       {
         _id: "1",
@@ -35,21 +42,23 @@ class SearchBox extends Component {
     ];
 
     return (
-      <div className="input-group mb-3" style={style}>
-        {/* choose engine  */}
-        <CustomSelect options={searchEngineOptions} />
-        {/* search  */}
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        {/* search btn  */}
-        <button className="btn btn-outline-secondary" type="button">
-          <i className="fa fa-search" />
-        </button>
-      </div>
+      <Grid item>
+        <Paper className="search-container" elevation={1}>
+          {/* choose search engine  */}
+          <CustomSelect
+            options={searchEngineOptions}
+            defaultSelection={this.state.selectedEngine}
+            selectionChanged={this.handleSelectionChange}
+          />
+          {/* search input */}
+          <InputBase className="search__input" placeholder="Search" />
+          <Divider className="divider" />
+          {/* search btn  */}
+          <IconButton className="search__btn" aria-label="Search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
+      </Grid>
     );
   }
 }

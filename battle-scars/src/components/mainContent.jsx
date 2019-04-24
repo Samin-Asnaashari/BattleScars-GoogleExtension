@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, NavLink } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 import "./../styles/mainContent.scss";
 import SearchBox from "./searchBox";
 
 class MainContent extends Component {
   render() {
     return (
-      <section
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
         className={
           this.props.expanded
-            ? "main-content main-content--expanded container-fluid"
-            : "main-content container-fluid"
+            ? "main-content main-content--expanded"
+            : "main-content"
         }
       >
-        <div className="row justify-content-md-center">
-          <div className="col col-lg-6">
-            <SearchBox />
-          </div>
-        </div>
-      </section>
+        <SearchBox />
+      </Grid>
     );
   }
 }

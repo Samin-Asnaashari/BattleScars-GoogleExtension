@@ -5,15 +5,13 @@ import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // import registerServiceWorker from './registerServiceWorker';
-import "bootstrap/dist/css/bootstrap.min.css";
-import $ from "jquery";
-import Popper from "popper.js";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import $ from "jquery";
+// import Popper from "popper.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "font-awesome/css/font-awesome.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import "semantic-ui-css/semantic.min.css";
-// import mdbreact
 
 ReactDOM.render(
   <BrowserRouter>
