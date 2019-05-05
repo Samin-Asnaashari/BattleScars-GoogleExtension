@@ -5,39 +5,41 @@ $pink: rgba(0, 0, 0, 1);
 $orange: rgba(67, 67, 67, 1);
 $yellow: rgba(139, 147, 154, 1);
 
-.avatar {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-right: 15px;
-  margin-left: 5px;
-}
+// .avatar__item {
+//   color: whitesmoke;
+// }
 
-.avatar__item {
-  color: whitesmoke;
-}
+// .avatar {
+//   border-radius: 50%;
+//   width: 50px;
+//   height: 50px;
+//   margin-right: 15px;
+//   margin-left: 5px;
+// }
 
 .menu {
   width: 100%;
   padding: 0;
+  margin: 0;
 }
 
 .menu__item {
   width: 100%;
   color: whitesmoke;
   list-style: none;
-}
-
-.menu__icon {
-  color: whitesmoke;
-  margin: 5px 20px 5px 15px;
-  font-size: 30px !important;
-  vertical-align: middle;
+  padding: 10px;
 }
 
 .menu__item:hover {
   background-color: $yellow;
   border: none !important;
+}
+
+.menu__icon {
+  color: gray;
+  margin: 5px 20px 5px 10px;
+  font-size: 30px !important;
+  vertical-align: middle;
 }
 
 $sidebar-width: 139px;
