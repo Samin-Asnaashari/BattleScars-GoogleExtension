@@ -27,11 +27,6 @@ class SideBar extends Component {
         }
       >
         <div className="menu btn-group-vertical">
-          {/* <div classNAme="avatar_item">
-            <img src={avatar} className="avatar" />
-            Profile
-          </div> */}
-
           <ul className="menu">
             <li
               className="menu__item"
