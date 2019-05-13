@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";

@@ -5,26 +5,29 @@ import "./../styles/mainContent.scss";
 import SearchBox from "./searchBox";
 import Quote from "./quote";
 import StickyNote from "./stickyNote";
+import Clock from "./clock";
 
 class MainContent extends Component {
   render() {
     return (
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-        className={
-          this.props.expanded
-            ? "main-content main-content--expanded"
-            : "main-content"
-        }
-      >
-        <SearchBox />
-        <StickyNote />
-
-        <Quote />
-      </Grid>
+      <React.Fragment>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          className={
+            this.props.expanded
+              ? "main-content main-content--expanded"
+              : "main-content"
+          }
+        >
+          <Clock />
+          <SearchBox />
+          <Quote />
+        </Grid>
+        {/* <StickyNote /> */}
+      </React.Fragment>
     );
   }
 }

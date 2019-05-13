@@ -3,6 +3,7 @@ import ReactStickies from "react-stickies"; //ES6
 // https://reactjsexample.com/sticky-notes-for-react-application/
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   wrapperStyle: {
@@ -55,24 +56,33 @@ class StickyNote extends Component {
     };
 
     return (
-      <ReactStickies
-        notes={this.state.notes}
-        onChange={this.onChange}
-        tape={false}
-        title={true}
-        footer={true}
-        isDraggable={true}
-        isResizable={false}
-        // colors: ?Array = [HexCodes]
-        // grid={grid}
-        // rowHeight=140
-        // breakpoints= {lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}
-        // cols= {lg: 12, md: 10, sm: 6, xs: 4, xxs: 2}
-        // layouts
-        // layout= {i: string, x: number, y: number, w: number, h: number}
-        wrapperStyle={{ position: "absolute", margin: "30px" }}
-        noteStyle={{ transform: "rotate(-10deg)" }}
-      />
+      <Grid item>
+        <ReactStickies
+          notes={this.state.notes}
+          onChange={this.onChange}
+          tape={false}
+          title={true}
+          footer={true}
+          isDraggable={true}
+          isResizable={false}
+          // colors: ?Array = [HexCodes]
+          // grid={grid}
+          // rowHeight=140
+          // breakpoints= {lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}
+          // cols= {lg: 12, md: 10, sm: 6, xs: 4, xxs: 2}
+          // layouts
+          // layout= {i: string, x: number, y: number, w: number, h: number}
+          wrapperStyle={{
+            position: "absolute",
+            width: "270px",
+            height: "230px"
+          }}
+          noteStyle={{
+            transform: "rotate(-5deg)",
+            margin: "30px"
+          }}
+        />
+      </Grid>
     );
   }
 }
