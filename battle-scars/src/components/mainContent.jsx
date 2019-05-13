@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import "./../styles/mainContent.scss";
 import SearchBox from "./searchBox";
 import Quote from "./quote";
+import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
   render() {
@@ -20,6 +21,8 @@ class MainContent extends Component {
         }
       >
         <SearchBox />
+        <StickyNote />
+
         <Quote />
       </Grid>
     );

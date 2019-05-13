@@ -14,7 +14,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
 import HomeIcon from "@material-ui/icons/Home";
 
 const drawerWidth = 170;
@@ -79,7 +78,7 @@ class SideDrawer extends Component {
   };
 
   render() {
-    const { classes, theme, children, className, ...other } = this.props;
+    const { classes, theme, children, ...other } = this.props;
     const { open, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
 
