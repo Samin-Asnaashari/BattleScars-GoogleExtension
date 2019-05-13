@@ -2,9 +2,6 @@ import React, { Component } from "react";
 
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import "./../styles/sideDrawer.scss";
 
 import Drawer from "@material-ui/core/Drawer";
@@ -114,7 +111,6 @@ class SideDrawer extends Component {
         </div>
         <Divider />
         <ListItem button key="profile" className={classes.toolbar}>
-          {/* <img src={avatar} className="avatar" /> */}
           <Avatar alt="profile" src={avatar} />
           <ListItemText primary="My Profile" />
         </ListItem>

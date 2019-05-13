@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import Grid from "@material-ui/core/Grid";
 import "./../styles/searchBox.scss";
 import CustomSelect from "./common/customSelect";
 
@@ -38,7 +38,11 @@ class SearchBox extends Component {
     input: ""
   };
 
+  /**
+   * Set selected serach engine
+   */
   handleSelectionChange = option => {
+    // option.target.value = _id of the selected engine option
     this.setState({ selectedEngine: this.findEngine(option.target.value)[0] });
   };
 
@@ -48,6 +52,9 @@ class SearchBox extends Component {
     });
   };
 
+  /**
+   * @param(input): search query
+   */
   handleInputChange = input => {
     this.setState({ input: input.target.value });
   };
