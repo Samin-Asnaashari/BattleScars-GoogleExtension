@@ -6,6 +6,7 @@ import SearchBox from "./searchBox";
 import Quote from "./quote";
 import StickyNote from "./stickyNote";
 import Clock from "./clock";
+import Weather from "./weather";
 
 class MainContent extends Component {
   render() {
@@ -23,6 +24,7 @@ class MainContent extends Component {
           }
         >
           <Clock />
+          <Weather />
           <SearchBox />
           <Quote />
         </Grid>
