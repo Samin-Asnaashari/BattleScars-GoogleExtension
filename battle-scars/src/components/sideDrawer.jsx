@@ -73,6 +73,8 @@ class SideDrawer extends Component {
     ]
   };
 
+  // World travel, Book, Movies, Music
+
   handleDrawer = () => {
     this.setState({ open: !this.state.open });
   };
