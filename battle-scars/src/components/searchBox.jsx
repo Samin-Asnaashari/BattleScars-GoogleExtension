@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import "./../styles/searchBox.scss";
 import Grid from "@material-ui/core/Grid";
+
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import "./../styles/searchBox.scss";
 import CustomSelect from "./common/customSelect";
 
 class SearchBox extends Component {

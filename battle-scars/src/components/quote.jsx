@@ -3,6 +3,7 @@ import axios from "axios";
 import "./../styles/quote.scss";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 
@@ -45,7 +46,7 @@ class Quote extends Component {
             author: response.data.contents.quotes[0].author
           }
         });
-        console.log(this.state, "here");
+        // console.log(this.state, "Quote");
       })
       .catch(error => {
         console.log(error);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -6,15 +7,16 @@ import "./../styles/sideDrawer.scss";
 
 import Drawer from "@material-ui/core/Drawer";
 import Avatar from "@material-ui/core/Avatar";
-import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import HomeIcon from "@material-ui/icons/Home";
+
+import Setting from "./setting";
 
 const drawerWidth = 170;
 
@@ -60,23 +62,52 @@ class SideDrawer extends Component {
     open: false,
     menuItems: [
       {
-        _id: 1,
-        title: "Home",
-        iconClass: this.iconClass + "-home",
-        icon: <HomeIcon />
+        _id: 0,
+        title: "My Smiles",
+        iconClass: this.iconClass + "-gratipay"
       },
-      { _id: 2, title: "My Smiles", iconClass: this.iconClass + "-gratipay" },
-      { _id: 3, title: "News", iconClass: this.iconClass + "-newspaper-o" },
-      { _id: 4, title: "Stocks", iconClass: this.iconClass + "-money" },
-      { _id: 5, title: "Feedback", iconClass: this.iconClass + "-comments-o" },
-      { _id: 6, title: "Settings", iconClass: this.iconClass + "-cog" }
+      {
+        _id: 1,
+        title: "News",
+        iconClass: this.iconClass + "-newspaper-o"
+      },
+      {
+        _id: 2,
+        title: "Stocks",
+        iconClass: this.iconClass + "-money"
+      },
+      {
+        _id: 3,
+        title: "Feedback",
+        iconClass: this.iconClass + "-comments-o"
+      },
+      {
+        _id: 4,
+        title: "Settings",
+        iconClass: this.iconClass + "-cog",
+        isDialogOpen: false,
+        component: function(parnet) {
+          return (
+            <Setting
+              isOpen={this.isDialogOpen}
+              onDialogClose={() => parnet.handleDilog(this)}
+            />
+          );
+        }
+      }
     ]
   };
 
-  // World travel, Book, Movies, Music
-
   handleDrawer = () => {
     this.setState({ open: !this.state.open });
+  };
+
+  handleDilog = menuItem => {
+    const menuItems = [...this.state.menuItems];
+    const index = menuItems.indexOf(menuItem);
+    menuItems[index] = { ...menuItem };
+    menuItems[index].isDialogOpen = !menuItems[index].isDialogOpen;
+    this.setState({ menuItems });
   };
 
   render() {
@@ -101,6 +132,7 @@ class SideDrawer extends Component {
         }}
         open={open}
       >
+        {/* Toggle drawer */}
         <div className={classes.toolbar}>
           <IconButton onClick={this.handleDrawer}>
             {theme.direction === "rtl" || open === true ? (
@@ -111,19 +143,26 @@ class SideDrawer extends Component {
           </IconButton>
         </div>
         <Divider />
+        {/* My Profile (My Details, Musics - Movies - Travels - Books)*/}
         <ListItem button key="profile" className={classes.toolbar}>
           <Avatar alt="profile" src={avatar} />
           <ListItemText primary="My Profile" />
         </ListItem>
         <Divider />
+        {/* Menu itmes */}
         <List>
           {menuItems.map(item => (
-            <ListItem button key={item.title}>
+            <ListItem
+              button
+              key={item.title}
+              onClick={() => this.handleDilog(item)}
+            >
               <ListItemIcon>
                 {/* {item.icon} */}
                 <i className={item.iconClass} />
               </ListItemIcon>
               <ListItemText primary={item.title} />
+              {item.component ? item.component(this) : ""}
             </ListItem>
           ))}
         </List>
@@ -132,5 +171,4 @@ class SideDrawer extends Component {
   }
 }
 
-// export default SideDrawer;
 export default withStyles(styles, { withTheme: true })(SideDrawer);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Link, NavLink } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import "./../styles/mainContent.scss";
+
 import SearchBox from "./searchBox";
 import Quote from "./quote";
 import StickyNote from "./stickyNote";

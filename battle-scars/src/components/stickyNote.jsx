@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactStickies from "react-stickies"; //ES6
 // https://reactjsexample.com/sticky-notes-for-react-application/
 import { withStyles } from "@material-ui/core/styles";
-import classNames from "classnames";
 import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
@@ -46,14 +45,14 @@ class StickyNote extends Component {
   };
 
   render() {
-    var grid = {
-      w: 1,
-      h: 1,
-      minW: 1,
-      maxW: 3,
-      minH: 1,
-      maxH: 3
-    };
+    // var grid = {
+    //   w: 1,
+    //   h: 1,
+    //   minW: 1,
+    //   maxW: 3,
+    //   minH: 1,
+    //   maxH: 3
+    // };
 
     return (
       <Grid item>
