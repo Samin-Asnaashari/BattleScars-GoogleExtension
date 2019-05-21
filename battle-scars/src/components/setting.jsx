@@ -19,6 +19,10 @@ class Setting extends Component {
     ]
   };
 
+  /**
+   * Save user changes
+   * data are: Drawer color gradient picker, background image, enable/disable bookmark, manage bookmark, quote category, add more weather, add more time
+   */
   handleSave = data => {
     console.log("Save Setting");
   };
@@ -27,7 +31,7 @@ class Setting extends Component {
     return (
       <CustomDialog
         title="Setting"
-        tabs={<CustomTabs tabs={this.state.tabs} title="Setting" />}
+        tabs={<CustomTabs tabs={this.state.tabs} />}
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
         onDialogSave={this.handleSave}

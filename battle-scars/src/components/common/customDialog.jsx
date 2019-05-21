@@ -1,12 +1,11 @@
 import React from "react";
 
-import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -33,14 +32,12 @@ const CustomDialog = props => {
       onClose={onDialogClose}
       TransitionComponent={Transition}
       aria-labelledby="custom-dialog"
-      fullWidth="true"
+      fullWidth={true}
       maxWidth="md"
       disableBackdropClick
     >
       <DialogTitle id="custom-dialog">
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
+        <div style={{ marginBottom: "15px" }}>{title}</div>
         {tabs ? tabs : null}
       </DialogTitle>
       <DialogContent>

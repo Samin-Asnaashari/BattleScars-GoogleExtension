@@ -15,7 +15,7 @@ class CustomTabs extends Component {
   };
 
   render() {
-    const { tabs, title } = this.props;
+    const { tabs } = this.props;
     const { value } = this.state;
 
     return (

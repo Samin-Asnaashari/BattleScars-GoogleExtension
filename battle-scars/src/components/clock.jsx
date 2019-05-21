@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
 import "./../styles/clock.scss";
+
+import Grid from "@material-ui/core/Grid";
 import moment from "moment/moment.js";
 
 class Clock extends Component {

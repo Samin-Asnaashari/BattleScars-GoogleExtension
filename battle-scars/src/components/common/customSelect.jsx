@@ -4,6 +4,10 @@ import "./../../styles/customSelect.scss";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
+/**
+ *
+ * Single Select Component
+ */
 const CustomSelect = ({ defaultSelection, options, selectionChanged }) => {
   return (
     <Select
@@ -16,7 +20,7 @@ const CustomSelect = ({ defaultSelection, options, selectionChanged }) => {
     >
       {options.map(option => (
         <MenuItem value={option._id} key={option._id}>
-          <img src={option.image} alt="option" className="option-item__image" />
+          <img src={option.image} alt="option" className="option-item__img" />
         </MenuItem>
       ))}
     </Select>

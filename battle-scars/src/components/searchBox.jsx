@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./../styles/searchBox.scss";
-import Grid from "@material-ui/core/Grid";
 
+import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
+import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+
 import CustomSelect from "./common/customSelect";
 
 class SearchBox extends Component {
@@ -46,6 +47,9 @@ class SearchBox extends Component {
     this.setState({ selectedEngine: this.findEngine(option.target.value)[0] });
   };
 
+  /**
+   * Find specific search engine item
+   */
   findEngine = value => {
     return this.searchEngineOptions.filter(engine => {
       return engine._id === value;
@@ -53,12 +57,16 @@ class SearchBox extends Component {
   };
 
   /**
+   * Handle search query
    * @param(input): search query
    */
   handleInputChange = input => {
     this.setState({ input: input.target.value });
   };
 
+  /**
+   * Handle search redirection
+   */
   handleSearch = () => {
     if (typeof window !== "undefined") {
       window.location.href =
@@ -92,7 +100,7 @@ class SearchBox extends Component {
             }}
           />
           <Divider className="divider" />
-          {/* search btn  */}
+          {/* search button  */}
           <IconButton
             className="search__btn"
             aria-label="Search"

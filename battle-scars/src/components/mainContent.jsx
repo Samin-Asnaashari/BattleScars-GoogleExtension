@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
 import "./../styles/mainContent.scss";
+import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
 import Quote from "./quote";
-import StickyNote from "./stickyNote";
 import Clock from "./clock";
 import Weather from "./weather";
+import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
   render() {

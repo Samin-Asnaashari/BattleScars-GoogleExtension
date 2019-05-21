@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./../styles/quote.scss";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 
@@ -36,6 +36,9 @@ class Quote extends Component {
     this.getQuote(this.state.selectedCategory.name);
   }
 
+  /**
+   * Get Quote
+   */
   getQuote = category => {
     axios
       .get(this.state.source + category)
@@ -61,7 +64,7 @@ class Quote extends Component {
           direction="row"
           justify="center"
           alignItems="center"
-          className="quote-text-container"
+          className="quote-container"
         >
           <IconButton
             aria-label="Refresh Quote"
@@ -69,12 +72,12 @@ class Quote extends Component {
           >
             <AutorenewIcon />
           </IconButton>
-          <i className="fa fa-quote-left quote-icon" />
-          <Typography variant="h6" className="quote-text">
+          <i className="fa fa-quote-left quote__icon" />
+          <Typography variant="h6" className="quote__text">
             {" "}
             {this.state.quote.text}{" "}
           </Typography>
-          <i className="fa fa-quote-right quote-icon" />
+          <i className="fa fa-quote-right quote__icon" />
         </Grid>
         <Grid
           container

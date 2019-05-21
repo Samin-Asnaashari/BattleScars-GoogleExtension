@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ReactStickies from "react-stickies"; //ES6
-// https://reactjsexample.com/sticky-notes-for-react-application/
+import ReactStickies from "react-stickies"; //ES6 https://reactjsexample.com/sticky-notes-for-react-application/
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 

@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import "./../styles/sideDrawer.scss";
 
 import Drawer from "@material-ui/core/Drawer";
 import Avatar from "@material-ui/core/Avatar";
@@ -98,10 +97,16 @@ class SideDrawer extends Component {
     ]
   };
 
+  /**
+   * Handle drawer close/open
+   */
   handleDrawer = () => {
     this.setState({ open: !this.state.open });
   };
 
+  /**
+   * Handle dialog close/open
+   */
   handleDilog = (menuItem, isOpen) => {
     const menuItems = [...this.state.menuItems];
     const index = menuItems.indexOf(menuItem);
@@ -110,7 +115,6 @@ class SideDrawer extends Component {
     // true: open, false: close
     menuItems[index].isDialogOpen = isOpen;
     this.setState({ menuItems });
-    console.log(isOpen, "here");
   };
 
   render() {
@@ -146,7 +150,7 @@ class SideDrawer extends Component {
           </IconButton>
         </div>
         <Divider />
-        {/* My Profile (My Details, Musics - Movies - Travels - Books)*/}
+        {/* My Profile (My Details, Musics - Movies - Travels - Books - Bookmarks)*/}
         <ListItem button key="profile" className={classes.toolbar}>
           <Avatar alt="profile" src={avatar} />
           <ListItemText primary="My Profile" />
