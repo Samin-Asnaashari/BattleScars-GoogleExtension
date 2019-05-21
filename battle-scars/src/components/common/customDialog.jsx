@@ -1,5 +1,6 @@
 import React from "react";
 
+import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
@@ -9,39 +10,49 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import CancelIcon from "@material-ui/icons/Cancel";
-// import DialogContentText from "@material-ui/core/DialogContentText";
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
 const CustomDialog = props => {
-  const { fullScreen } = props;
+  const {
+    title,
+    tabs,
+    isOpen,
+    onDialogClose,
+    onDialogSave,
+    children,
+    fullScreen
+  } = props;
+
   return (
     <Dialog
       fullScreen={fullScreen}
-      open={props.isOpen}
-      onClose={props.onDialogClose}
+      open={isOpen}
+      onClose={onDialogClose}
       TransitionComponent={Transition}
-      aria-labelledby="form-dialog-title"
+      aria-labelledby="custom-dialog"
+      fullWidth="true"
+      maxWidth="md"
+      disableBackdropClick
     >
-      <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+      <DialogTitle id="custom-dialog">
+        <Typography variant="h5" gutterBottom>
+          {title}
+        </Typography>
+        {tabs ? tabs : null}
+      </DialogTitle>
       <DialogContent>
         {/* Content */}
-        {props.children}
+        {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.onDialogClose} color="primary">
+        <Button onClick={onDialogClose} color="primary">
           <CancelIcon />
           Cancel
         </Button>
-        <Button
-          variant="contained"
-          onClick={props.onDialogSave}
-          color="primary"
-        >
+        <Button variant="contained" onClick={onDialogSave} color="primary">
           <SaveIcon />
           Save
         </Button>

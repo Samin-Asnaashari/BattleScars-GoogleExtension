@@ -90,7 +90,7 @@ class SideDrawer extends Component {
           return (
             <Setting
               isOpen={this.isDialogOpen}
-              onDialogClose={() => parnet.handleDilog(this)}
+              onDialogClose={() => parnet.handleDilog(this, false)}
             />
           );
         }
@@ -102,12 +102,15 @@ class SideDrawer extends Component {
     this.setState({ open: !this.state.open });
   };
 
-  handleDilog = menuItem => {
+  handleDilog = (menuItem, isOpen) => {
     const menuItems = [...this.state.menuItems];
     const index = menuItems.indexOf(menuItem);
     menuItems[index] = { ...menuItem };
-    menuItems[index].isDialogOpen = !menuItems[index].isDialogOpen;
+    // menuItems[index].isDialogOpen = !menuItems[index].isDialogOpen;
+    // true: open, false: close
+    menuItems[index].isDialogOpen = isOpen;
     this.setState({ menuItems });
+    console.log(isOpen, "here");
   };
 
   render() {
@@ -152,18 +155,15 @@ class SideDrawer extends Component {
         {/* Menu itmes */}
         <List>
           {menuItems.map(item => (
-            <ListItem
-              button
-              key={item.title}
-              onClick={() => this.handleDilog(item)}
-            >
-              <ListItemIcon>
-                {/* {item.icon} */}
-                <i className={item.iconClass} />
-              </ListItemIcon>
-              <ListItemText primary={item.title} />
-              {item.component ? item.component(this) : ""}
-            </ListItem>
+            <div key={item._id}>
+              <ListItem button onClick={() => this.handleDilog(item, true)}>
+                <ListItemIcon>
+                  <i className={item.iconClass} />
+                </ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItem>
+              {item.component ? item.component(this) : null}
+            </div>
           ))}
         </List>
       </Drawer>
