@@ -5,10 +5,18 @@ import Grid from "@material-ui/core/Grid";
 import SearchBox from "./searchBox";
 import Quote from "./quote";
 import Clock from "./clock";
-import Weather from "./weather";
+// import Weathers from "./weathers";
 import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
+  state = {
+    weathers: [
+      { _id: 0, country: "The Netherland", city: "Amsterdam" },
+      { _id: 1, country: "The Netherland", city: "Utrecht" },
+      { _id: 2, country: "The Netherland", city: "Eindhoven" }
+    ]
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -24,10 +32,14 @@ class MainContent extends Component {
           }
         >
           <Clock />
-          <Weather />
+          {/* Weathers */}
+          {/* <Weathers weathers={this.state.weathers} /> */}
+          {/* Search */}
           <SearchBox />
+          {/* Quote of the day */}
           <Quote />
         </Grid>
+        {/* My note */}
         {/* <StickyNote /> */}
       </React.Fragment>
     );

@@ -1,0 +1,17 @@
+.slide-container {
+  max-width: max-content;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  color: white;
+}
+
+.arrow {
+  margin: 0 20px 0 20px !important;
+  color: white !important;
+}
+
+.slide-item--show {
+}
+
+.slide-item--hide {
+  display: none;
+}

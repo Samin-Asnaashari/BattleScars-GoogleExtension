@@ -17,6 +17,8 @@ class App extends Component {
     super(props);
   }
 
+  // TODO set globar attributes
+
   render() {
     return (
       <React.Fragment>
