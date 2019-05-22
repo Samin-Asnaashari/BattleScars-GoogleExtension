@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import SearchBox from "./searchBox";
 import Quote from "./quote";
 import Clock from "./clock";
-// import Weathers from "./weathers";
+import Weathers from "./weathers";
 import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
@@ -33,7 +33,7 @@ class MainContent extends Component {
         >
           <Clock />
           {/* Weathers */}
-          {/* <Weathers weathers={this.state.weathers} /> */}
+          <Weathers locations={this.state.weathers} />
           {/* Search */}
           <SearchBox />
           {/* Quote of the day */}

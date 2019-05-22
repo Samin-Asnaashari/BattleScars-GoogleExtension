@@ -8,6 +8,7 @@ import Weather from "./weather";
 
 class Weathers extends Component {
   state = {
+    weatherLocations: this.props.locations,
     weathers: []
   };
 
@@ -22,13 +23,29 @@ class Weathers extends Component {
     this.setWeathers();
   }
 
+  componentDidMount = () => {
+    // this.setWeathers();
+  };
+
   setWeathers = () => {
-    // var weathers = this.props.weathers;
-    // for (let i = 0; i < weathers.length; i++) {
-    //   var weather = this.getWeather(weathers[i].country, weathers[i].city);
-    //   weather._id = 0;
-    //   weather.this.state.weathers.push();
-    // }
+    const weathers = [...this.state.weathers];
+    for (let i = 0; i < this.state.weatherLocations.length; i++) {
+      const w = {};
+      w._id = i;
+      w.response = this.getWeather(
+        this.state.weatherLocations[i].country,
+        this.state.weatherLocations[i].city
+      );
+      w.content = <Weather id={i} />;
+      if (i === 0) {
+        w.show = true;
+      } else {
+        w.show = false;
+      }
+      weathers.push(w);
+    }
+    console.log(weathers, "weathers to pass to slider");
+    this.state.weathers = weathers;
   };
 
   getWeather = async (country, city) => {
@@ -41,15 +58,8 @@ class Weathers extends Component {
       `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
     );
     const response = await api_call.json();
-    this.setState({
-      temperature: response.main.temp,
-      city: response.name,
-      country: response.sys.country,
-      humidity: response.main.humidity,
-      description: response.weather[0].description,
-      error: ""
-    });
-    console.log(response);
+    console.log(response, "response form weather api");
+    return response;
   };
 
   render() {
@@ -61,7 +71,7 @@ class Weathers extends Component {
         alignItems="flex-start"
         className="weather-container"
       >
-        <CustomSlider itmes={this.state.weathers} />
+        <CustomSlider items={this.state.weathers} />
       </Grid>
     );
   }
