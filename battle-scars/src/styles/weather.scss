@@ -1,5 +1,46 @@
 .weather-container {
+  min-width: max-content;
   position: fixed;
   top: 60px;
   left: 60px;
+  color: white;
+}
+
+.weather-header-container {
+  min-width: max-content;
+  color: white;
+}
+
+.weather-icon {
+  vertical-align: middle;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.location {
+  text-transform: capitalize;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.weather-description {
+  text-transform: capitalize;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.weather-temp {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.weather-details-container {
+  margin-left: 30px !important;
+  margin-top: 10px !important;
+}
+
+.weather-details {
+  font-size: 13px;
+  margin: 5px;
 }

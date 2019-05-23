@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./../styles/weather.scss";
+import axios from "axios";
 
 import Grid from "@material-ui/core/Grid";
 import CustomSlider from "./common/customSlider";
@@ -16,21 +17,35 @@ class Weathers extends Component {
     this.setWeathers();
   }
 
-  setWeathers = () => {
+  setWeathers = async () => {
+    // TODO batch
     const weathers = [...this.state.weathers];
     for (let i = 0; i < this.state.weatherLocations.length; i++) {
       let w = {};
       w._id = this.state.weatherLocations[i]._id;
-      w.response = this.getWeather(
-        this.state.weatherLocations[i].lat,
-        this.state.weatherLocations[i].lon
-      );
-      w.content = <Weather id={this.state.weatherLocations[i]._id} />;
       if (i === 0) {
         w.show = true;
       } else {
         w.show = false;
       }
+
+      const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
+      await axios
+        .get(
+          `http://api.openweathermap.org/data/2.5/weather?lat=${
+            this.state.weatherLocations[i].lat
+          }&lon=${
+            this.state.weatherLocations[i].lon
+          }&units=metric&appid=${Api_Key}`
+        )
+        .then(response => {
+          console.log(response, "response form weather api");
+          w.content = <Weather weather={response.data} id={i} />;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
       weathers.push(w);
     }
     this.setState({ weathers });

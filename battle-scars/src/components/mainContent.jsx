@@ -10,6 +10,41 @@ import Weathers from "./weathers";
 import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
+  state = {
+    weatherLocations: []
+  };
+
+  componentDidMount() {
+    this.getCurrentLocation();
+  }
+
+  // TODO set global attributes
+
+  getCurrentLocation = () => {
+    // http://ip-api.com/docs/api:json
+    if (navigator.geolocation) {
+      // http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position, "current location");
+        const weatherLocations = [...this.state.weatherLocations];
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        // weatherLocations.splice(0, 0, { _id: 0, lat: lat, lon: lon });
+        weatherLocations.push({ _id: 0, lat: lat, lon: lon });
+        // TODO get other weather locations from storage
+        weatherLocations.push({
+          _id: 1,
+          lat: -0.13,
+          lon: 51.51
+        });
+        this.setState({ weatherLocations });
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser!");
+      return false;
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -26,7 +61,11 @@ class MainContent extends Component {
         >
           <Clock />
           {/* Weathers */}
-          <Weathers weatherLocations={this.props.weatherLocations} />
+          {/* TODO loader content */}
+          {this.state.weatherLocations.length > 0 ? (
+            <Weathers weatherLocations={this.state.weatherLocations} />
+          ) : null}
+
           {/* Search */}
           <SearchBox />
           {/* Quote of the day */}
