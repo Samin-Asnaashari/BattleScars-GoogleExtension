@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./../styles/mainContent.scss";
+
 import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
@@ -9,14 +10,6 @@ import Weathers from "./weathers";
 import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
-  state = {
-    weathers: [
-      { _id: 0, country: "The Netherland", city: "Amsterdam" },
-      { _id: 1, country: "The Netherland", city: "Utrecht" },
-      { _id: 2, country: "The Netherland", city: "Eindhoven" }
-    ]
-  };
-
   render() {
     return (
       <React.Fragment>
@@ -33,7 +26,7 @@ class MainContent extends Component {
         >
           <Clock />
           {/* Weathers */}
-          <Weathers locations={this.state.weathers} />
+          <Weathers weatherLocations={this.props.weatherLocations} />
           {/* Search */}
           <SearchBox />
           {/* Quote of the day */}

@@ -59,7 +59,7 @@ class CustomSlider extends Component {
               className={item.show ? "slide-item--show" : "slide-item--hide"}
               key={item._id}
             >
-              {item.show ? item.content : <h1>No Weather</h1>}
+              {item.show ? item.content : <h6>No content!</h6>}
             </Fade>
             // Dots
           ))}

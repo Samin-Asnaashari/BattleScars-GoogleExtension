@@ -13,16 +13,6 @@ class Weather extends Component {
     error: undefined
   };
 
-  // getWeather = async e => {
-  //   const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
-  //   // const city = e.target.elements.city.value;
-  //   // const country = e.target.elements.country.value;
-  //   const city = "Amsterdam";
-  //   const country = "The Netherland";
-  //   const api_call = await fetch(
-  //     `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
-  //   );
-  //   const response = await api_call.json();
   //   this.setState({
   //     temperature: response.main.temp,
   //     city: response.name,
@@ -31,11 +21,9 @@ class Weather extends Component {
   //     description: response.weather[0].description,
   //     error: ""
   //   });
-  //   console.log(response);
-  // };
 
   render() {
-    return <div>{this.props.id}</div>;
+    return <Grid item>{this.props.id}</Grid>;
   }
 }
 

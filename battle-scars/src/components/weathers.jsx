@@ -8,35 +8,24 @@ import Weather from "./weather";
 
 class Weathers extends Component {
   state = {
-    weatherLocations: this.props.locations,
+    weatherLocations: this.props.weatherLocations,
     weathers: []
   };
 
-  //   weathers: [
-  //     { _id: 0, content: <Weather counter="1" />, show: true },
-  //     { _id: 2, content: <Weather counter="2" />, show: false },
-  //     { _id: 3, content: <Weather counter="3" />, show: false }
-  //   ]
-
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     this.setWeathers();
   }
-
-  componentDidMount = () => {
-    // this.setWeathers();
-  };
 
   setWeathers = () => {
     const weathers = [...this.state.weathers];
     for (let i = 0; i < this.state.weatherLocations.length; i++) {
-      const w = {};
-      w._id = i;
+      let w = {};
+      w._id = this.state.weatherLocations[i]._id;
       w.response = this.getWeather(
-        this.state.weatherLocations[i].country,
-        this.state.weatherLocations[i].city
+        this.state.weatherLocations[i].lat,
+        this.state.weatherLocations[i].lon
       );
-      w.content = <Weather id={i} />;
+      w.content = <Weather id={this.state.weatherLocations[i]._id} />;
       if (i === 0) {
         w.show = true;
       } else {
@@ -44,18 +33,14 @@ class Weathers extends Component {
       }
       weathers.push(w);
     }
-    console.log(weathers, "weathers to pass to slider");
-    this.state.weathers = weathers;
+    this.setState({ weathers });
   };
 
-  getWeather = async (country, city) => {
+  getWeather = async (lat, lon) => {
     const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
-    // const city = e.target.elements.city.value;
-    // const country = e.target.elements.country.value;
-    // const city = "Amsterdam";
-    // const country = "The Netherland";
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
+      //   `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
     );
     const response = await api_call.json();
     console.log(response, "response form weather api");
@@ -71,7 +56,11 @@ class Weathers extends Component {
         alignItems="flex-start"
         className="weather-container"
       >
-        <CustomSlider items={this.state.weathers} />
+        {this.state.weathers.length > 0 ? (
+          <CustomSlider items={this.state.weathers} />
+        ) : (
+          <h6> No weather information!</h6>
+        )}
       </Grid>
     );
   }
