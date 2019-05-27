@@ -20,15 +20,28 @@
  *    "Font Awesome by Dave Gandy - http://fontawesome.io"
  */
 @font-face {
-  font-family: 'weathericons';
-  src: url('../font/weathericons-regular-webfont.eot');
-  src: url('../font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../font/weathericons-regular-webfont.woff2') format('woff2'), url('../font/weathericons-regular-webfont.woff') format('woff'), url('../font/weathericons-regular-webfont.ttf') format('truetype'), url('../font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+  font-family: "weathericons";
+  src: url("../font/weathericons-regular-webfont.eot");
+  src: url("../font/weathericons-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../font/weathericons-regular-webfont.woff2") format("woff2"),
+    url("../font/weathericons-regular-webfont.woff") format("woff"),
+    url("../font/weathericons-regular-webfont.ttf") format("truetype"),
+    url("../font/weathericons-regular-webfont.svg#weather_iconsregular")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
+:root {
+  --skye-blue: #87cefa;
+  --sunny-yellow: #ffff00;
+  --grey: #808080;
+}
+
 .wi {
   display: inline-block;
-  font-family: 'weathericons';
+  font-family: "weathericons";
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -71,15 +84,19 @@
 }
 .wi-day-sunny:before {
   content: "\f00d";
+  color: var(--sunny-yellow);
 }
 .wi-day-cloudy:before {
   content: "\f002";
+  color: var(--skye-blue);
 }
 .wi-day-cloudy-gusts:before {
   content: "\f000";
+  color: var(--skye-blue);
 }
 .wi-day-cloudy-windy:before {
   content: "\f001";
+  color: var(--skye-blue);
 }
 .wi-day-fog:before {
   content: "\f003";
@@ -94,13 +111,16 @@
   content: "\f005";
 }
 .wi-day-rain:before {
+  color: var(--skye-blue);
   content: "\f008";
 }
 .wi-day-rain-mix:before {
   content: "\f006";
+  color: var(--skye-blue);
 }
 .wi-day-rain-wind:before {
   content: "\f007";
+  color: var(--skye-blue);
 }
 .wi-day-showers:before {
   content: "\f009";
@@ -128,6 +148,7 @@
 }
 .wi-day-sunny-overcast:before {
   content: "\f00c";
+  color: var(--sunny-yellow);
 }
 .wi-day-thunderstorm:before {
   content: "\f010";
@@ -143,6 +164,7 @@
 }
 .wi-day-cloudy-high:before {
   content: "\f07d";
+  color: var(--skye-blue);
 }
 .wi-day-light-wind:before {
   content: "\f0c4";
@@ -152,12 +174,15 @@
 }
 .wi-night-alt-cloudy:before {
   content: "\f086";
+  color: var(--skye-blue);
 }
 .wi-night-alt-cloudy-gusts:before {
   content: "\f022";
+  color: var(--skye-blue);
 }
 .wi-night-alt-cloudy-windy:before {
   content: "\f023";
+  color: var(--skye-blue);
 }
 .wi-night-alt-hail:before {
   content: "\f024";
@@ -167,12 +192,15 @@
 }
 .wi-night-alt-rain:before {
   content: "\f028";
+  color: var(--skye-blue);
 }
 .wi-night-alt-rain-mix:before {
   content: "\f026";
+  color: var(--skye-blue);
 }
 .wi-night-alt-rain-wind:before {
   content: "\f027";
+  color: var(--skye-blue);
 }
 .wi-night-alt-showers:before {
   content: "\f029";
@@ -203,12 +231,15 @@
 }
 .wi-night-cloudy:before {
   content: "\f031";
+  color: var(--skye-blue);
 }
 .wi-night-cloudy-gusts:before {
   content: "\f02f";
+  color: var(--skye-blue);
 }
 .wi-night-cloudy-windy:before {
   content: "\f030";
+  color: var(--skye-blue);
 }
 .wi-night-fog:before {
   content: "\f04a";
@@ -221,15 +252,19 @@
 }
 .wi-night-partly-cloudy:before {
   content: "\f083";
+  color: var(--skye-blue);
 }
 .wi-night-rain:before {
   content: "\f036";
+  color: var(--skye-blue);
 }
 .wi-night-rain-mix:before {
   content: "\f034";
+  color: var(--skye-blue);
 }
 .wi-night-rain-wind:before {
   content: "\f035";
+  color: var(--skye-blue);
 }
 .wi-night-showers:before {
   content: "\f037";
@@ -272,24 +307,31 @@
 }
 .wi-night-alt-cloudy-high:before {
   content: "\f07e";
+  color: var(--skye-blue);
 }
 .wi-night-cloudy-high:before {
   content: "\f080";
+  color: var(--skye-blue);
 }
 .wi-night-alt-partly-cloudy:before {
   content: "\f081";
+  color: var(--skye-blue);
 }
 .wi-cloud:before {
   content: "\f041";
+  color: var(--skye-blue);
 }
 .wi-cloudy:before {
   content: "\f013";
+  color: var(--skye-blue);
 }
 .wi-cloudy-gusts:before {
   content: "\f011";
+  color: var(--skye-blue);
 }
 .wi-cloudy-windy:before {
   content: "\f012";
+  color: var(--skye-blue);
 }
 .wi-fog:before {
   content: "\f014";
@@ -299,12 +341,15 @@
 }
 .wi-rain:before {
   content: "\f019";
+  color: var(--skye-blue);
 }
 .wi-rain-mix:before {
   content: "\f017";
+  color: var(--skye-blue);
 }
 .wi-rain-wind:before {
   content: "\f018";
+  color: var(--skye-blue);
 }
 .wi-showers:before {
   content: "\f01a";
@@ -341,9 +386,11 @@
 }
 .wi-raindrops:before {
   content: "\f04e";
+  color: var(--skye-blue);
 }
 .wi-raindrop:before {
   content: "\f078";
+  color: var(--skye-blue);
 }
 .wi-dust:before {
   content: "\f063";
@@ -422,12 +469,15 @@
 }
 .wi-cloud-down:before {
   content: "\f03d";
+  color: var(--skye-blue);
 }
 .wi-cloud-up:before {
   content: "\f040";
+  color: var(--skye-blue);
 }
 .wi-cloud-refresh:before {
   content: "\f03e";
+  color: var(--skye-blue);
 }
 .wi-horizon:before {
   content: "\f047";
@@ -437,9 +487,11 @@
 }
 .wi-sunrise:before {
   content: "\f051";
+  color: var(--sunny-yellow);
 }
 .wi-sunset:before {
   content: "\f052";
+  color: var(--skye-blue);
 }
 .wi-moonrise:before {
   content: "\f0c9";
@@ -974,6 +1026,7 @@
 }
 .wi-forecast-io-rain:before {
   content: "\f019";
+  color: var(--skye-blue);
 }
 .wi-forecast-io-snow:before {
   content: "\f01b";
@@ -989,12 +1042,15 @@
 }
 .wi-forecast-io-cloudy:before {
   content: "\f013";
+  color: var(--skye-blue);
 }
 .wi-forecast-io-partly-cloudy-day:before {
   content: "\f002";
+  color: var(--skye-blue);
 }
 .wi-forecast-io-partly-cloudy-night:before {
   content: "\f031";
+  color: var(--skye-blue);
 }
 .wi-forecast-io-hail:before {
   content: "\f015";
@@ -1784,6 +1840,7 @@
 }
 .wi-wu-chancerain:before {
   content: "\f019";
+  color: var(--skye-blue);
 }
 .wi-wu-chancesleat:before {
   content: "\f0b5";
@@ -1799,6 +1856,7 @@
 }
 .wi-wu-cloudy:before {
   content: "\f002";
+  color: var(--skye-blue);
 }
 .wi-wu-flurries:before {
   content: "\f064";
@@ -1808,18 +1866,23 @@
 }
 .wi-wu-mostlycloudy:before {
   content: "\f002";
+  color: var(--skye-blue);
 }
 .wi-wu-mostlysunny:before {
   content: "\f00d";
+  color: var(--sunny-yellow);
 }
 .wi-wu-partlycloudy:before {
   content: "\f002";
+  color: var(--skye-blue);
 }
 .wi-wu-partlysunny:before {
   content: "\f00d";
+  color: var(--sunny-yellow);
 }
 .wi-wu-rain:before {
   content: "\f01a";
+  color: var(--skye-blue);
 }
 .wi-wu-sleat:before {
   content: "\f0b5";
@@ -1829,6 +1892,7 @@
 }
 .wi-wu-sunny:before {
   content: "\f00d";
+  color: var(--sunny-yellow);
 }
 .wi-wu-tstorms:before {
   content: "\f01e";

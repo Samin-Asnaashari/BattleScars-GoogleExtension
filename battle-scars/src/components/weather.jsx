@@ -1,6 +1,6 @@
 import React from "react";
 import "./../styles/weather.scss";
-import "./../assets/weather-icons-master/sass/weather-icons.scss";
+import "./../assets/weather-icons-master/css/weather-icons.css";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";

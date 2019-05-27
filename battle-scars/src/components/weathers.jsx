@@ -52,6 +52,7 @@ class Weathers extends Component {
   };
 
   getWeather = async (lat, lon) => {
+    // TODO add to config
     const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
     const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
