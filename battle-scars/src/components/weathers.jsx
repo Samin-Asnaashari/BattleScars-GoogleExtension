@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import "./../styles/weather.scss";
 import axios from "axios";
-
 import Grid from "@material-ui/core/Grid";
-import CustomSlider from "./common/customSlider";
 
+import CustomSlider from "./common/customSlider";
 import Weather from "./weather";
 
 class Weathers extends Component {
   state = {
-    weatherLocations: this.props.weatherLocations,
     weathers: []
   };
 
@@ -20,27 +18,35 @@ class Weathers extends Component {
   setWeathers = async () => {
     // TODO batch
     const weathers = [...this.state.weathers];
-    for (let i = 0; i < this.state.weatherLocations.length; i++) {
+    for (let i = 0; i < this.props.weatherLocations.length; i++) {
       let w = {};
-      w._id = this.state.weatherLocations[i]._id;
+      w._id = this.props.weatherLocations[i]._id;
       if (i === 0) {
         w.show = true;
       } else {
         w.show = false;
       }
 
+      // TODO add to secret config file
       const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
       await axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?lat=${
-            this.state.weatherLocations[i].lat
+            this.props.weatherLocations[i].lat
           }&lon=${
-            this.state.weatherLocations[i].lon
+            this.props.weatherLocations[i].lon
           }&units=metric&appid=${Api_Key}`
         )
         .then(response => {
           console.log(response, "response form weather api");
-          w.content = <Weather weather={response.data} id={i} />;
+          w.content = (
+            <Weather
+              weather={response.data}
+              country={this.props.weatherLocations[i].country}
+              city={this.props.weatherLocations[i].city}
+              id={i}
+            />
+          );
         })
         .catch(error => {
           console.log(error);
@@ -52,11 +58,10 @@ class Weathers extends Component {
   };
 
   getWeather = async (lat, lon) => {
-    // TODO add to config
+    // TODO add to secret config file
     const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
     const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
-      //   `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
     );
     const response = await api_call.json();
     console.log(response, "response form weather api");

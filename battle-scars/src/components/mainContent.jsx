@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./../styles/mainContent.scss";
-
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
@@ -11,7 +11,8 @@ import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
   state = {
-    weatherLocations: []
+    weatherLocations: [],
+    clockLocations: []
   };
 
   componentDidMount() {
@@ -21,28 +22,41 @@ class MainContent extends Component {
   // TODO set global attributes
 
   getCurrentLocation = () => {
-    // http://ip-api.com/docs/api:json
-    if (navigator.geolocation) {
-      // http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true
-      navigator.geolocation.getCurrentPosition(position => {
-        console.log(position, "current location");
+    // http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true
+    // navigator.geolocation.getCurrentPosition(position => {
+    //   console.log(position, "current location");
+    //   const weatherLocations = [...this.state.weatherLocations];
+    //   const lat = position.coords.latitude;
+    //   const lon = position.coords.longitude;
+    //   // weatherLocations.splice(0, 0, { _id: 0, lat: lat, lon: lon });
+    //   weatherLocations.push({ _id: 0, lat: lat, lon: lon });
+    //   // TODO get other weather locations from storage
+    //   this.setState({ weatherLocations });
+    // });
+    axios
+      .get(`http://ip-api.com/json`)
+      .then(response => {
+        console.log(response, "current location");
         const weatherLocations = [...this.state.weatherLocations];
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        // weatherLocations.splice(0, 0, { _id: 0, lat: lat, lon: lon });
-        weatherLocations.push({ _id: 0, lat: lat, lon: lon });
-        // TODO get other weather locations from storage
+        weatherLocations.push({
+          _id: 0,
+          lat: response.data.lat,
+          lon: response.data.lon,
+          country: response.data.country,
+          city: response.data.city
+        });
         weatherLocations.push({
           _id: 1,
           lat: -0.13,
-          lon: 51.51
+          lon: 51.51,
+          country: "Netherlands",
+          city: "Utrecht"
         });
         this.setState({ weatherLocations });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    } else {
-      console.error("Geolocation is not supported by this browser!");
-      return false;
-    }
   };
 
   render() {

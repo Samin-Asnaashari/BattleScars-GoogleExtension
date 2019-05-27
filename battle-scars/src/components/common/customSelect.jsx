@@ -1,6 +1,5 @@
 import React from "react";
 import "./../../styles/customSelect.scss";
-
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 

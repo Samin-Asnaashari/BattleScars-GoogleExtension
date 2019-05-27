@@ -1,7 +1,6 @@
 import React from "react";
 import "./../styles/weather.scss";
 import "./../assets/weather-icons-master/css/weather-icons.css";
-
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
@@ -380,7 +379,6 @@ const Weather = props => {
   if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
     weatherIconClass = "day-" + weatherIconClass;
   }
-  // Finally tack on the prefix.
   weatherIconClass = "weather-icon " + prefix + weatherIconClass;
   console.log(weatherIconClass, "hebk");
 
@@ -388,7 +386,9 @@ const Weather = props => {
     <Grid item xs={12} sm container>
       <Grid item xs className="weather-header-container">
         {/* Location */}
-        <h4 className="location">Location, City, Country</h4>
+        <h4 className="location">
+          {props.city}, {props.country}
+        </h4>
         {/* Icon */}
         <i className={weatherIconClass} />
         {/* Temperature */}
