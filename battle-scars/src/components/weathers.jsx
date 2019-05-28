@@ -21,11 +21,7 @@ class Weathers extends Component {
     for (let i = 0; i < this.props.weatherLocations.length; i++) {
       let w = {};
       w._id = this.props.weatherLocations[i]._id;
-      if (i === 0) {
-        w.show = true;
-      } else {
-        w.show = false;
-      }
+      w.show = true ? i === 0 : false;
 
       // TODO add to secret config file
       const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
@@ -57,16 +53,14 @@ class Weathers extends Component {
     this.setState({ weathers });
   };
 
-  getWeather = async (lat, lon) => {
-    // TODO add to secret config file
-    const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
-    const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
-    );
-    const response = await api_call.json();
-    console.log(response, "response form weather api");
-    return response;
-  };
+  // getWeather = async (lat, lon) => {
+  //   const api_call = await fetch(
+  //     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
+  //   );
+  //   const response = await api_call.json();
+  //   console.log(response, "response form weather api");
+  //   return response;
+  // };
 
   render() {
     return (
@@ -80,7 +74,7 @@ class Weathers extends Component {
         {this.state.weathers.length > 0 ? (
           <CustomSlider items={this.state.weathers} />
         ) : (
-          <h6> No weather information!</h6>
+          <h6> No weathers information!</h6>
         )}
       </Grid>
     );

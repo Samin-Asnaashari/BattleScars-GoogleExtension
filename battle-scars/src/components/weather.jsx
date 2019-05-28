@@ -372,6 +372,7 @@ const Weather = props => {
     }
   };
 
+  // Override the icons
   const prefix = "wi wi-";
   const code = props.weather.weather[0].id;
   let weatherIconClass = weatherIcons[code].icon;
@@ -392,7 +393,7 @@ const Weather = props => {
         {/* Icon */}
         <i className={weatherIconClass} />
         {/* Temperature */}
-        {/* TODO giv option for C and F */}
+        {/* TODO giv option for `C and `F */}
         <span className="weather-temp">
           {props.weather.main.temp}
           {"\u00b0"}C

@@ -5,24 +5,29 @@ import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
 import Quote from "./quote";
-import Clock from "./clock";
+import Clocks from "./clocks";
 import Weathers from "./weathers";
 import StickyNote from "./stickyNote";
 
 class MainContent extends Component {
+  // TODO set global attributes
   state = {
+    currentLocation: undefined,
     weatherLocations: [],
-    clockLocations: []
+    clockLocations: [
+      // http://worldtimeapi.org/api/timezone
+      { _id: 1, timezone: "America/Chicago" }
+    ]
   };
 
   componentDidMount() {
     this.getCurrentLocation();
+    // this.setClockLocations();
+    // this.setWeatherLocations();
   }
 
-  // TODO set global attributes
-
   getCurrentLocation = () => {
-    // http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true
+    // http://maps.googleapis.com
     // navigator.geolocation.getCurrentPosition(position => {
     //   console.log(position, "current location");
     //   const weatherLocations = [...this.state.weatherLocations];
@@ -30,13 +35,14 @@ class MainContent extends Component {
     //   const lon = position.coords.longitude;
     //   // weatherLocations.splice(0, 0, { _id: 0, lat: lat, lon: lon });
     //   weatherLocations.push({ _id: 0, lat: lat, lon: lon });
-    //   // TODO get other weather locations from storage
     //   this.setState({ weatherLocations });
     // });
     axios
       .get(`http://ip-api.com/json`)
       .then(response => {
         console.log(response, "current location");
+        this.setState({ currentLocation: response.data });
+        console.log(this.state, "dfsdf");
         const weatherLocations = [...this.state.weatherLocations];
         weatherLocations.push({
           _id: 0,
@@ -45,6 +51,7 @@ class MainContent extends Component {
           country: response.data.country,
           city: response.data.city
         });
+        // TODO get other weather locations from storage
         weatherLocations.push({
           _id: 1,
           lat: -0.13,
@@ -58,6 +65,10 @@ class MainContent extends Component {
         console.log(error);
       });
   };
+
+  setWeatherLocations = () => {};
+
+  setClockLocations = () => {};
 
   render() {
     return (
@@ -73,13 +84,26 @@ class MainContent extends Component {
               : "main-content"
           }
         >
-          <Clock />
-          {/* Weathers */}
-          {/* TODO loader content */}
-          {this.state.weatherLocations.length > 0 ? (
-            <Weathers weatherLocations={this.state.weatherLocations} />
-          ) : null}
-
+          {/* Clock / Weather Container */}
+          <Grid
+            item
+            style={{ top: 0, left: 0, position: "fixed", margin: "10px" }}
+          >
+            {/* Clocks */}
+            {/* TODO loader content */}
+            {this.state.clockLocations.length > 0 &&
+            this.state.currentLocation ? (
+              <Clocks
+                clockLocations={this.state.clockLocations}
+                currentLocation={this.state.currentLocation}
+              />
+            ) : null}
+            {/* Weathers */}
+            {/* TODO loader content */}
+            {this.state.weatherLocations.length > 0 ? (
+              <Weathers weatherLocations={this.state.weatherLocations} />
+            ) : null}
+          </Grid>
           {/* Search */}
           <SearchBox />
           {/* Quote of the day */}

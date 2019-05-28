@@ -124,6 +124,7 @@
 }
 .wi-day-showers:before {
   content: "\f009";
+  color: var(--skye-blue);
 }
 .wi-day-sleet:before {
   content: "\f0b2";
@@ -145,6 +146,7 @@
 }
 .wi-day-storm-showers:before {
   content: "\f00e";
+  color: var(--skye-blue);
 }
 .wi-day-sunny-overcast:before {
   content: "\f00c";
@@ -204,6 +206,7 @@
 }
 .wi-night-alt-showers:before {
   content: "\f029";
+  color: var(--skye-blue);
 }
 .wi-night-alt-sleet:before {
   content: "\f0b4";
@@ -225,6 +228,7 @@
 }
 .wi-night-alt-storm-showers:before {
   content: "\f02c";
+  color: var(--skye-blue);
 }
 .wi-night-alt-thunderstorm:before {
   content: "\f02d";
@@ -268,6 +272,7 @@
 }
 .wi-night-showers:before {
   content: "\f037";
+  color: var(--skye-blue);
 }
 .wi-night-sleet:before {
   content: "\f0b3";
@@ -289,6 +294,7 @@
 }
 .wi-night-storm-showers:before {
   content: "\f03a";
+  color: var(--skye-blue);
 }
 .wi-night-thunderstorm:before {
   content: "\f03b";
@@ -301,6 +307,7 @@
 }
 .wi-storm-showers:before {
   content: "\f01d";
+  color: var(--skye-blue);
 }
 .wi-thunderstorm:before {
   content: "\f01e";
@@ -353,6 +360,7 @@
 }
 .wi-showers:before {
   content: "\f01a";
+  color: var(--skye-blue);
 }
 .wi-sleet:before {
   content: "\f0b5";
@@ -365,6 +373,7 @@
 }
 .wi-storm-showers:before {
   content: "\f01d";
+  color: var(--skye-blue);
 }
 .wi-thunderstorm:before {
   content: "\f01e";
