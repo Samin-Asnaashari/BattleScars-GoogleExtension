@@ -29,7 +29,6 @@ class MainContent extends Component {
   getCurrentLocation = () => {
     // http://maps.googleapis.com
     // navigator.geolocation.getCurrentPosition(position => {
-    //   console.log(position, "current location");
     //   const weatherLocations = [...this.state.weatherLocations];
     //   const lat = position.coords.latitude;
     //   const lon = position.coords.longitude;
@@ -40,9 +39,8 @@ class MainContent extends Component {
     axios
       .get(`http://ip-api.com/json`)
       .then(response => {
-        console.log(response, "current location");
+        console.log(response, "response from current location!");
         this.setState({ currentLocation: response.data });
-        console.log(this.state, "dfsdf");
         const weatherLocations = [...this.state.weatherLocations];
         weatherLocations.push({
           _id: 0,
@@ -62,7 +60,7 @@ class MainContent extends Component {
         this.setState({ weatherLocations });
       })
       .catch(error => {
-        console.log(error);
+        console.log(error, "Error getCurrentLocation!");
       });
   };
 

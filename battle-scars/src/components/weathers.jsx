@@ -27,14 +27,14 @@ class Weathers extends Component {
       const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
       await axios
         .get(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${
+          `https://api.openweathermap.org/data/2.5/weather?lat=${
             this.props.weatherLocations[i].lat
           }&lon=${
             this.props.weatherLocations[i].lon
           }&units=metric&appid=${Api_Key}`
         )
         .then(response => {
-          console.log(response, "response form weather api");
+          console.log(response, "response form weather api in setWeathers!");
           w.content = (
             <Weather
               weather={response.data}
@@ -45,20 +45,18 @@ class Weathers extends Component {
           );
         })
         .catch(error => {
-          console.log(error);
+          console.log(error, "Error setWeathers!");
         });
 
       weathers.push(w);
     }
     this.setState({ weathers });
   };
-
   // getWeather = async (lat, lon) => {
   //   const api_call = await fetch(
   //     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
   //   );
   //   const response = await api_call.json();
-  //   console.log(response, "response form weather api");
   //   return response;
   // };
 

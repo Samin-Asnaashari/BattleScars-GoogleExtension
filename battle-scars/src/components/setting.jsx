@@ -24,7 +24,7 @@ class Setting extends Component {
    * data are: Drawer color gradient picker, background image, enable/disable bookmark, manage bookmark, quote category, add more weather, add more time
    */
   handleSave = data => {
-    console.log("Save Setting");
+    console.log("Save Setting!");
   };
 
   render() {

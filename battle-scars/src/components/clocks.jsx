@@ -5,27 +5,16 @@ import moment from "moment/moment.js";
 import Grid from "@material-ui/core/Grid";
 
 import CustomSlider from "./common/customSlider";
+import Clock from "./clock";
 
 class Clocks extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      time: new Date(),
-      clocks: []
-    };
-  }
+  state = {
+    clocks: []
+  };
 
   componentDidMount() {
     this.setClocks();
-    setInterval(this.update, 1000);
   }
-
-  update = () => {
-    this.setState({
-      time: new Date()
-    });
-  };
 
   setClocks = async () => {
     // TODO batch
@@ -34,10 +23,11 @@ class Clocks extends Component {
       _id: 0,
       show: true,
       content: (
-        <h4>
-          {this.props.currentLocation.timezone} -{" "}
-          {moment(this.state.time).format("MMMM Do YYYY, h:mm:ss a")}
-        </h4>
+        <Clock
+          timeZone={this.props.currentLocation.timezone}
+          dateTime={new Date()}
+          isCurrent={true}
+        />
       )
     });
     for (let i = 0; i < this.props.clockLocations.length; i++) {
@@ -45,24 +35,26 @@ class Clocks extends Component {
       c._id = this.props.clockLocations[i]._id;
       c.show = false;
 
+      var key = "NWGYO055DP5P";
       await axios
+        // https://worldtimeapi.org/api/timezone/
         .get(
-          `http://worldtimeapi.org/api/timezone/${
+          `http://api.timezonedb.com/v2.1/get-time-zone?key=${key}&format=json&by=zone&zone=${
             this.props.clockLocations[i].timezone
           }`
         )
         .then(response => {
-          console.log(response, "response form clock api");
-          console.log(this.state.time, "responsdfsdfsdfapi ");
+          console.log(response, "response form clock api in setClocks!");
           c.content = (
-            <h4>
-              {response.data.timezone} -{" "}
-              {moment(response.data.datetime).format("MMMM Do YYYY, h:mm:ss a")}
-            </h4>
+            <Clock
+              timeZone={response.data.zoneName}
+              dateTime={response.data.formatted}
+              isCurrent={false}
+            />
           );
         })
         .catch(error => {
-          console.log(error);
+          console.log(error, "Error setClocks!");
         });
 
       clocks.push(c);
@@ -77,7 +69,7 @@ class Clocks extends Component {
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
-        className="clock-container"
+        className="clocks-container"
       >
         {this.state.clocks.length > 0 ? (
           <CustomSlider items={this.state.clocks} />

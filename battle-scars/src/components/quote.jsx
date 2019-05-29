@@ -48,10 +48,9 @@ class Quote extends Component {
             author: response.data.contents.quotes[0].author
           }
         });
-        // console.log(this.state, "Quote");
       })
       .catch(error => {
-        console.log(error);
+        console.log(error, "Error getQuote!");
       });
   };
 

@@ -381,7 +381,6 @@ const Weather = props => {
     weatherIconClass = "day-" + weatherIconClass;
   }
   weatherIconClass = "weather-icon " + prefix + weatherIconClass;
-  console.log(weatherIconClass, "hebk");
 
   return (
     <Grid item xs={12} sm container>
