@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./../styles/clock.scss";
 import moment from "moment/moment.js";
 import Grid from "@material-ui/core/Grid";
+import ScheduleIcon from "@material-ui/icons/Schedule";
 
 class Clock extends Component {
   state = {
@@ -31,10 +32,13 @@ class Clock extends Component {
   render() {
     return (
       <Grid item className="clock-container">
-        <h4>
-          {this.state.timeZone} -{" "}
-          {moment(this.state.dateTime).format("MMMM D, YYYY - h:mm:ss a")}
-        </h4>
+        <h4 className="timeZone">{this.state.timeZone}</h4>
+        <span className="dateTime-container">
+          <ScheduleIcon className="dateTime-icon" />:
+          <h4 className="dateTime">
+            {moment(this.state.dateTime).format("MMMM D, YYYY - h:mm:ss a")}
+          </h4>
+        </span>
       </Grid>
     );
   }
