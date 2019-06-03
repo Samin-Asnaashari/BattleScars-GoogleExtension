@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import CustomDialog from "./common/customDialog";
 import CustomTabs from "./common/customTabs";
+import ImageGridList from "./imageGridList";
 
 class Setting extends Component {
   state = {
@@ -14,7 +15,12 @@ class Setting extends Component {
       {
         _id: 1,
         label: "Background Image",
-        content: <h2>Background Image</h2>
+        content: (
+          <div>
+            <h2>Background Images</h2>
+            <ImageGridList />
+          </div>
+        )
       }
     ]
   };
