@@ -15,7 +15,7 @@ class CustomSlider extends Component {
   };
 
   handleChange = goNext => {
-    // endless loop navigation
+    // endless loop navigation system
     const items = [...this.state.items];
     // hide current item
     items[this.state.currentIndex].show = false;

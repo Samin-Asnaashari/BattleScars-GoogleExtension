@@ -22,18 +22,8 @@ class Setting extends Component {
           </div>
         )
       }
-    ],
-    selectedBackgroundImage: "",
-    drawerColor: "",
-    bookmarkEnabled: true,
-    bookmarks: [],
-    // quoteCategory: ""
-    weatherLocations: [],
-    clockLocations: []
+    ]
   };
-
-  // http://worldtimeapi.org/api/timezone
-
   render() {
     return (
       <CustomDialog

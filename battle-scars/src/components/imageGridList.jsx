@@ -51,6 +51,7 @@ class ImageGridList extends Component {
     return (
       <div className="image-grid-container">
         <GridList cols={3}>
+          {/* TODO add loader */}
           {this.state.images.map((img, i) => (
             <GridListTile key={i} cols={1} rows={1} className="image-box">
               <img
