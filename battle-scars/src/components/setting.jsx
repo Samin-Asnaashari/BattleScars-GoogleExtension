@@ -22,16 +22,17 @@ class Setting extends Component {
           </div>
         )
       }
-    ]
+    ],
+    selectedBackgroundImage: "",
+    drawerColor: "",
+    bookmarkEnabled: true,
+    bookmarks: [],
+    // quoteCategory: ""
+    weatherLocations: [],
+    clockLocations: []
   };
 
-  /**
-   * Save user changes
-   * data are: Drawer color gradient picker, background image, enable/disable bookmark, manage bookmark, quote category, add more weather, add more time
-   */
-  handleSave = data => {
-    console.log("Save Setting!");
-  };
+  // http://worldtimeapi.org/api/timezone
 
   render() {
     return (
@@ -40,7 +41,7 @@ class Setting extends Component {
         tabs={<CustomTabs tabs={this.state.tabs} />}
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
-        onDialogSave={this.handleSave}
+        onDialogSave={() => this.props.handleSettingSave()}
       />
     );
   }

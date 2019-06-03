@@ -46,18 +46,17 @@ class CustomSlider extends Component {
     return (
       <Paper elevation={1} className="slide-container ">
         <Grid container direction="row" justify="center" alignItems="center">
-          {/* TODO disable arrows if is only one item */}
-          {/* <Grid item> */}
-          <IconButton
-            onClick={() => this.handleChange(false)}
-            className="arrow"
-          >
-            <ChevronLeftIcon />
-          </IconButton>
-          {/* </Grid> */}
+          {this.state.items.length > 1 ? (
+            <IconButton
+              onClick={() => this.handleChange(false)}
+              className="arrow"
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+          ) : null}
 
-          {/* <Grid item> */}
           {/* TODO loader content */}
+          {/* Content */}
           {this.state.items.map(item => (
             <Fade
               in={item.show}
@@ -68,13 +67,15 @@ class CustomSlider extends Component {
             </Fade>
             // Dots
           ))}
-          {/* </Grid> */}
 
-          {/* <Grid item> */}
-          <IconButton onClick={() => this.handleChange(true)} className="arrow">
-            <ChevronRightIcon />
-          </IconButton>
-          {/* </Grid> */}
+          {this.state.items.length > 1 ? (
+            <IconButton
+              onClick={() => this.handleChange(true)}
+              className="arrow"
+            >
+              <ChevronRightIcon />
+            </IconButton>
+          ) : null}
         </Grid>
       </Paper>
     );

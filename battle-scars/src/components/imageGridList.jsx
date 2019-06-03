@@ -16,10 +16,10 @@ import GridListTile from "@material-ui/core/GridListTile";
 //     height: 450
 //   }
 // }));
+//   const classes = useStyles();
 
 // const ImageGridList = props => {
 // function ImageGridList() {
-//   const classes = useStyles();
 class ImageGridList extends Component {
   state = {
     images: []

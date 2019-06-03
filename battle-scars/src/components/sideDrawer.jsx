@@ -89,6 +89,7 @@ class SideDrawer extends Component {
             <Setting
               isOpen={this.isDialogOpen}
               onDialogClose={() => parnet.handleDilog(this, false)}
+              handleSettingSave={parnet.props.handleSettingSave}
             />
           );
         }
