@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import "./../styles/setting.scss";
 
 import CustomDialog from "./common/customDialog";
 import CustomTabs from "./common/customTabs";
 import ImageGridList from "./imageGridList";
+import GeneralPreference from "./generalPreference";
 
 class Setting extends Component {
   state = {
@@ -10,7 +12,12 @@ class Setting extends Component {
       {
         _id: 0,
         label: "General",
-        content: <h2>General</h2>
+        content: (
+          <div>
+            <h2>General</h2>
+            <GeneralPreference />
+          </div>
+        )
       },
       {
         _id: 1,

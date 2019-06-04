@@ -25,7 +25,8 @@ const styles = theme => ({
     whiteSpace: "nowrap"
   },
   paper: {
-    background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
+    // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)",
+    background: "linear-gradient(#DBDBDB, #ADA996)"
   },
   drawerOpen: {
     width: drawerWidth,
