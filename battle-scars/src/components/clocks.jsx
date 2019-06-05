@@ -1,40 +1,37 @@
 import React, { Component } from "react";
 import "./../styles/clock.scss";
 import axios from "axios";
-import moment from "moment/moment.js";
 import Grid from "@material-ui/core/Grid";
 
 import CustomSlider from "./common/customSlider";
 import Clock from "./clock";
 
 class Clocks extends Component {
-  state = {
-    clocks: []
-  };
+  clocks = [];
 
   componentDidMount() {
     this.setClocks();
   }
 
   setClocks = async () => {
-    // TODO batch
-    const clocks = [...this.state.clocks];
-    clocks.splice(0, 0, {
+    // TODO: batch
+    this.clocks.splice(0, 0, {
       _id: 0,
       show: true,
       content: (
         <Clock
-          timeZone={this.props.currentLocation.timezone}
-          dateTime={new Date()}
+          timeZone={this.props.clockLocations[0].timezone}
+          dateTime={this.props.clockLocations[0].time}
           isCurrent={true}
         />
       )
     });
-    for (let i = 0; i < this.props.clockLocations.length; i++) {
+    for (let i = 1; i < this.props.clockLocations.length; i++) {
       let c = {};
       c._id = this.props.clockLocations[i]._id;
       c.show = false;
 
+      // TODO: add to secret config file
       var key = "NWGYO055DP5P";
       await axios
         // https://worldtimeapi.org/api/timezone/
@@ -57,9 +54,8 @@ class Clocks extends Component {
           console.log(error, "Error setClocks!");
         });
 
-      clocks.push(c);
+      this.clocks.push(c);
     }
-    this.setState({ clocks });
   };
 
   render() {
@@ -71,9 +67,10 @@ class Clocks extends Component {
         alignItems="flex-start"
         className="clocks-container"
       >
-        {this.state.clocks.length > 0 ? (
-          <CustomSlider items={this.state.clocks} />
+        {this.clocks.length > 0 ? (
+          <CustomSlider items={this.clocks} />
         ) : (
+          // TODO: default no data component
           <h6> No clocks information!</h6>
         )}
       </Grid>

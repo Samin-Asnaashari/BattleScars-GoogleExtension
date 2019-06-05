@@ -39,6 +39,7 @@ class Setting extends Component {
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
         onDialogSave={() => this.props.handleSettingSave()}
+        fullScreen={false}
       />
     );
   }

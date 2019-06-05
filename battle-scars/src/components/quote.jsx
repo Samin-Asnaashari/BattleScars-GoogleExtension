@@ -6,10 +6,12 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 
+// TODO: url
 // Quote source url:
 // url: "https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?"
 // source: "https://quotes.rest/qod.json?category="
 
+// TODO: style
 class Quote extends Component {
   categories = [
     { _id: 0, name: "art", label: "Art" },

@@ -4,22 +4,6 @@ import "./../styles/imageGridList.scss";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexWrap: "wrap",
-//     justifyContent: "space-around",
-//     overflow: "hidden",
-//     backgroundColor: theme.palette.background.paper
-//   },
-//   gridList: {
-//     width: 500,
-//     height: 450
-//   }
-// }));
-//   const classes = useStyles();
-
-// const ImageGridList = props => {
-// function ImageGridList() {
 class ImageGridList extends Component {
   state = {
     images: []
@@ -51,7 +35,7 @@ class ImageGridList extends Component {
     return (
       <div className="image-grid-container">
         <GridList cols={3}>
-          {/* TODO add loader */}
+          {/* TODO: add loader */}
           {this.state.images.map((img, i) => (
             <GridListTile key={i} cols={1} rows={1} className="image-box">
               <img

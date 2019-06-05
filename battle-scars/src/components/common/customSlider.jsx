@@ -15,9 +15,9 @@ class CustomSlider extends Component {
   };
 
   handleChange = goNext => {
-    // endless loop navigation system
+    // Endless loop navigation system
     const items = [...this.state.items];
-    // hide current item
+    // Hide current item
     items[this.state.currentIndex].show = false;
     // Go Next, show next item
     if (goNext) {
@@ -55,7 +55,7 @@ class CustomSlider extends Component {
             </IconButton>
           ) : null}
 
-          {/* TODO loader content */}
+          {/* TODO: loader content */}
           {/* Content */}
           {this.state.items.map(item => (
             <Fade
@@ -65,8 +65,8 @@ class CustomSlider extends Component {
             >
               {item.show ? item.content : <h6>No content!</h6>}
             </Fade>
-            // Dots
           ))}
+          {/* TODO: dots */}
 
           {this.state.items.length > 1 ? (
             <IconButton

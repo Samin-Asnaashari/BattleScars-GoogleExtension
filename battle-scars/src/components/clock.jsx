@@ -4,8 +4,10 @@ import moment from "moment/moment.js";
 import Grid from "@material-ui/core/Grid";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 
+// TODO: style
 class Clock extends Component {
   state = {
+    // TODO: isCurrent is temp, update all clocks
     isCurrent: this.props.isCurrent,
     dateTime: this.props.dateTime,
     timeZone: this.props.timeZone

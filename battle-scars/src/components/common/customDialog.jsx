@@ -37,9 +37,9 @@ const CustomDialog = props => {
     >
       <DialogTitle id="custom-dialog">
         <div style={{ marginBottom: "15px" }}>{title}</div>
-        {tabs ? tabs : null}
       </DialogTitle>
-      <DialogContent>
+      <DialogContent dividers={true}>
+        {tabs ? tabs : null}
         {/* Content */}
         {children}
       </DialogContent>

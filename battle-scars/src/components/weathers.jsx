@@ -7,23 +7,20 @@ import CustomSlider from "./common/customSlider";
 import Weather from "./weather";
 
 class Weathers extends Component {
-  state = {
-    weathers: []
-  };
+  weathers = [];
 
   componentDidMount() {
     this.setWeathers();
   }
 
   setWeathers = async () => {
-    // TODO batch
-    const weathers = [...this.state.weathers];
+    // TODO: batch
     for (let i = 0; i < this.props.weatherLocations.length; i++) {
       let w = {};
       w._id = this.props.weatherLocations[i]._id;
       w.show = true ? i === 0 : false;
 
-      // TODO add to secret config file
+      // TODO: add to secret config file
       const Api_Key = "d17bdcf059165374cb2375a6a02bffda";
       await axios
         .get(
@@ -48,17 +45,11 @@ class Weathers extends Component {
           console.log(error, "Error setWeathers!");
         });
 
-      weathers.push(w);
+      this.weathers.push(w);
     }
-    this.setState({ weathers });
   };
-  // getWeather = async (lat, lon) => {
-  //   const api_call = await fetch(
-  //     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`
-  //   );
+  //   const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`);
   //   const response = await api_call.json();
-  //   return response;
-  // };
 
   render() {
     return (
@@ -69,9 +60,10 @@ class Weathers extends Component {
         alignItems="flex-start"
         className="weather-container"
       >
-        {this.state.weathers.length > 0 ? (
-          <CustomSlider items={this.state.weathers} />
+        {this.weathers.length > 0 ? (
+          <CustomSlider items={this.weathers} />
         ) : (
+          // TODO: default no data component
           <h6> No weathers information!</h6>
         )}
       </Grid>

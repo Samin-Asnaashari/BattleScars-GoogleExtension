@@ -80,14 +80,14 @@ class SearchBox extends Component {
     return (
       <Grid item>
         <Paper className="search-container" elevation={1}>
-          {/* choose search engine  */}
+          {/* Choose search engine  */}
           <CustomSelect
             options={this.searchEngineOptions}
             defaultSelection={this.state.selectedEngine}
             selectionChanged={this.handleSelectionChange}
           />
           <Divider className="divider" />
-          {/* search input */}
+          {/* Search input */}
           <InputBase
             className="search__input"
             placeholder="Search with your favourite engine :)"
@@ -99,7 +99,7 @@ class SearchBox extends Component {
             }}
           />
           <Divider className="divider" />
-          {/* search button  */}
+          {/* Search button  */}
           <IconButton
             className="search__btn"
             aria-label="Search"

@@ -2,8 +2,8 @@ import React from "react";
 import "./../styles/weather.scss";
 import "./../assets/weather-icons-master/css/weather-icons.css";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
+// TODO: style
 const Weather = props => {
   const weatherIcons = {
     "200": {
@@ -392,7 +392,7 @@ const Weather = props => {
         {/* Icon */}
         <i className={weatherIconClass} />
         {/* Temperature */}
-        {/* TODO giv option for `C and `F */}
+        {/* TODO: giv option for `C and `F */}
         <span className="weather-temp">
           {props.weather.main.temp}
           {"\u00b0"}C

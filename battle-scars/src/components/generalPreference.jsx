@@ -6,6 +6,10 @@ import { CirclePicker } from "react-color";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
 import FormatColorFillIcon from "@material-ui/icons/FormatColorFill";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+
+import CustomDropDown from "./common/customDropDown";
 
 // http://worldtimeapi.org/api/timezone
 
@@ -13,7 +17,15 @@ class GeneralPreference extends Component {
   state = {
     // linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)
     color1: "#ffffba",
-    color2: "#ffffba"
+    color2: "#ffffba",
+    gredientEnabled: true,
+    clocks: [],
+    weathers: [],
+    selectedClocks: [],
+    selectedWeathers: [],
+    bookmarksEnabled: true,
+    bookmarks=[],
+
   };
 
   colors1 = [
@@ -69,11 +81,19 @@ class GeneralPreference extends Component {
     "#325d8d"
   ];
 
-  handleChangeComplete = (color, number) => {
+  handleColorChangeComplete = (color, number) => {
     number === 1
       ? this.setState({ color1: color.hex })
       : this.setState({ color2: color.hex });
   };
+
+  handleGredientColorEnabled = event => {
+    this.setState({ gredient: event.target.checked });
+  };
+
+  handleBookmarksEnabled = event => {
+    this.setState({ bookmarks: event.target.checked });
+  }
 
   render() {
     return (
@@ -85,11 +105,28 @@ class GeneralPreference extends Component {
           justify="space-around"
           alignItems="center"
         >
+          <Grid item>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.gredient}
+                  onChange={this.handleGredientColor}
+                  value="gredient"
+                  inputProps={{
+                    "aria-label": "gredient"
+                  }}
+                />
+              }
+              label="Gredient Color"
+            />
+          </Grid>
           <Grid item className="color-container">
             <CirclePicker
               colors={this.colors1}
               color={this.state.color1}
-              onChangeComplete={color => this.handleChangeComplete(color, 1)}
+              onChangeComplete={color =>
+                this.handleColorChangeComplete(color, 1)
+              }
             />
             <Chip
               className="color-chip"
@@ -107,30 +144,61 @@ class GeneralPreference extends Component {
               }
             />
           </Grid>
-          <Grid item className="color-container">
-            <CirclePicker
-              colors={this.colors2}
-              color={this.state.color2}
-              onChangeComplete={color => this.handleChangeComplete(color, 2)}
-            />
-            <Chip
-              className="color-chip"
-              label={
-                <p>
-                  Color2: <strong>{this.state.color2}</strong>
-                </p>
-              }
-              variant="outlined"
-              size="small"
-              avatar={
-                <Avatar>
-                  <FormatColorFillIcon />
-                </Avatar>
-              }
-            />
-          </Grid>
+          {this.state.gredient ? (
+            <Grid item className="color-container">
+              <CirclePicker
+                colors={this.colors2}
+                color={this.state.color2}
+                onChangeComplete={color =>
+                  this.handleColorChangeComplete(color, 2)
+                }
+              />
+              <Chip
+                className="color-chip"
+                label={
+                  <p>
+                    Color2: <strong>{this.state.color2}</strong>
+                  </p>
+                }
+                variant="outlined"
+                size="small"
+                avatar={
+                  <Avatar>
+                    <FormatColorFillIcon />
+                  </Avatar>
+                }
+              />
+            </Grid>
+          ) : null}
         </Grid>
         {/* </Grid> */}
+        {/* Clocks */}
+        <Grid item>
+         {/* TODO: CheckBox */}
+          <CustomDropDown  options={} selectionChanged={this.handle} isDisabled={!this.state.bookmarks}/>
+        </Grid>
+        {/* Bookmarks */}
+        <Grid item>
+          {/* TODO: CheckBox */}
+          <CustomDropDown  options={} selectionChanged={} isDisabled={!this.state.bookmarks}/>
+        </Grid>
+         {/* Bookmarks */}
+         <Grid item>
+        <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.bookmarks}
+                  onChange={this.handleBookmarks}
+                  value="bookmarks"
+                  inputProps={{
+                    "aria-label": "bookmarks"
+                  }}
+                />
+              }
+              label="Bookmarks"
+            />
+          <CustomDropDown  options={} selectionChanged={} isDisabled={!this.state.bookmarks}/>
+        </Grid>
       </Grid>
     );
   }
