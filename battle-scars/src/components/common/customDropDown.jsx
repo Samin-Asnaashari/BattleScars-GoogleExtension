@@ -12,7 +12,8 @@ const CustomDropDown = ({
   defaultSelection,
   options,
   selectionChanged,
-  isDisabled
+  isDisabled,
+  placeholder
 }) => {
   return (
     <Select

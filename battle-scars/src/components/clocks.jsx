@@ -7,15 +7,18 @@ import CustomSlider from "./common/customSlider";
 import Clock from "./clock";
 
 class Clocks extends Component {
-  clocks = [];
+  state = {
+    clocks: []
+  };
 
   componentDidMount() {
     this.setClocks();
   }
 
   setClocks = async () => {
+    const clocks = [...this.state.clocks];
     // TODO: batch
-    this.clocks.splice(0, 0, {
+    clocks.splice(0, 0, {
       _id: 0,
       show: true,
       content: (
@@ -54,8 +57,9 @@ class Clocks extends Component {
           console.log(error, "Error setClocks!");
         });
 
-      this.clocks.push(c);
+      clocks.push(c);
     }
+    this.setState({ clocks });
   };
 
   render() {
@@ -67,8 +71,8 @@ class Clocks extends Component {
         alignItems="flex-start"
         className="clocks-container"
       >
-        {this.clocks.length > 0 ? (
-          <CustomSlider items={this.clocks} />
+        {this.state.clocks.length > 0 ? (
+          <CustomSlider items={this.state.clocks} />
         ) : (
           // TODO: default no data component
           <h6> No clocks information!</h6>

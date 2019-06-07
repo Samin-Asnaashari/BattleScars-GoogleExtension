@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../styles/mainContent.scss";
+// import "./../styles/mainContent.scss";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -26,8 +26,8 @@ class MainContent extends Component {
 
     const styles = {
       mainContent: {
-        background: `${backgrundImage} no-repeat center center fixed;`,
-        backgroundsize: "cover"
+        background: `url(${backgrundImage}) no-repeat center center fixed`,
+        backgroundSize: "cover"
       },
       clockWeatherContainer: {
         top: 0,
@@ -36,13 +36,6 @@ class MainContent extends Component {
         margin: "10px"
       }
     };
-    // .main-content {
-    //   background: url(../assets/background-images/anders-jilden-89745-unsplash.jpg) no-repeat center center fixed;
-    //   background-size: cover;
-    //   &--expanded {
-    //     // filter: blur(2px);
-    //   }
-    // }
 
     return (
       <React.Fragment>
@@ -52,17 +45,12 @@ class MainContent extends Component {
           justify="center"
           alignItems="center"
           style={styles.mainContent}
-          // className={
-          //   this.props.expanded
-          //     ? "main-content main-content--expanded"
-          //     : "main-content"
-          // }
         >
           {/* Clock / Weather Container */}
           <Grid item style={styles.clockWeatherContainer}>
             {/* Clocks */}
             {/* TODO: loader content */}
-            {clockLocations.length > 0 && currentLocation ? (
+            {clockLocations.length > 0 ? (
               <Clocks clockLocations={clockLocations} />
             ) : null}
             {/* Weathers */}
@@ -73,6 +61,8 @@ class MainContent extends Component {
           </Grid>
           {/* Search */}
           <SearchBox />
+          {/* Bookmarks */}
+          {/* TODO: */}
           {/* Quote of the day */}
           <Quote />
         </Grid>

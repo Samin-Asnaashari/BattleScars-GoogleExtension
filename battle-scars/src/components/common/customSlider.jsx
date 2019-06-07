@@ -46,36 +46,42 @@ class CustomSlider extends Component {
     return (
       <Paper elevation={1} className="slide-container ">
         <Grid container direction="row" justify="center" alignItems="center">
-          {this.state.items.length > 1 ? (
-            <IconButton
-              onClick={() => this.handleChange(false)}
-              className="arrow"
-            >
-              <ChevronLeftIcon />
-            </IconButton>
-          ) : null}
+          <Grid item>
+            {this.state.items.length > 1 ? (
+              <IconButton
+                onClick={() => this.handleChange(false)}
+                className="arrow"
+              >
+                <ChevronLeftIcon />
+              </IconButton>
+            ) : null}
+          </Grid>
 
-          {/* TODO: loader content */}
-          {/* Content */}
-          {this.state.items.map(item => (
-            <Fade
-              in={item.show}
-              className={item.show ? "slide-item--show" : "slide-item--hide"}
-              key={item._id}
-            >
-              {item.show ? item.content : <h6>No content!</h6>}
-            </Fade>
-          ))}
-          {/* TODO: dots */}
+          <Grid item>
+            {/* TODO: loader content */}
+            {/* Content */}
+            {this.state.items.map(item => (
+              <Fade
+                in={item.show}
+                className={item.show ? "slide-item--show" : "slide-item--hide"}
+                key={item._id}
+              >
+                {item.show ? item.content : <h6>No content!</h6>}
+              </Fade>
+            ))}
+            {/* TODO: dots */}
+          </Grid>
 
-          {this.state.items.length > 1 ? (
-            <IconButton
-              onClick={() => this.handleChange(true)}
-              className="arrow"
-            >
-              <ChevronRightIcon />
-            </IconButton>
-          ) : null}
+          <Grid item>
+            {this.state.items.length > 1 ? (
+              <IconButton
+                onClick={() => this.handleChange(true)}
+                className="arrow"
+              >
+                <ChevronRightIcon />
+              </IconButton>
+            ) : null}
+          </Grid>
         </Grid>
       </Paper>
     );

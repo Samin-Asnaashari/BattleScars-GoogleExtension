@@ -18,14 +18,13 @@ class GeneralPreference extends Component {
     // linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)
     color1: "#ffffba",
     color2: "#ffffba",
-    gredientEnabled: true,
+    gredientColorEnabled: true,
     clocks: [],
     weathers: [],
     selectedClocks: [],
     selectedWeathers: [],
     bookmarksEnabled: true,
-    bookmarks=[],
-
+    bookmarks: []
   };
 
   colors1 = [
@@ -88,12 +87,12 @@ class GeneralPreference extends Component {
   };
 
   handleGredientColorEnabled = event => {
-    this.setState({ gredient: event.target.checked });
+    this.setState({ gredientColorEnabled: event.target.checked });
   };
 
   handleBookmarksEnabled = event => {
-    this.setState({ bookmarks: event.target.checked });
-  }
+    this.setState({ bookmarksEnabled: event.target.checked });
+  };
 
   render() {
     return (
@@ -109,11 +108,11 @@ class GeneralPreference extends Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.gredient}
-                  onChange={this.handleGredientColor}
+                  checked={this.state.gredientColorEnabled}
+                  onChange={this.handleGredientColorEnabled}
                   value="gredient"
                   inputProps={{
-                    "aria-label": "gredient"
+                    "aria-label": "gredient color"
                   }}
                 />
               }
@@ -144,7 +143,7 @@ class GeneralPreference extends Component {
               }
             />
           </Grid>
-          {this.state.gredient ? (
+          {this.state.gredientColorEnabled ? (
             <Grid item className="color-container">
               <CirclePicker
                 colors={this.colors2}
@@ -174,30 +173,30 @@ class GeneralPreference extends Component {
         {/* </Grid> */}
         {/* Clocks */}
         <Grid item>
-         {/* TODO: CheckBox */}
-          <CustomDropDown  options={} selectionChanged={this.handle} isDisabled={!this.state.bookmarks}/>
+          {/* TODO: CheckBox */}
+          {/* <CustomDropDown  options={[]} selectionChanged={this.handle} isDisabled={!this.state.}/> */}
         </Grid>
         {/* Bookmarks */}
         <Grid item>
           {/* TODO: CheckBox */}
-          <CustomDropDown  options={} selectionChanged={} isDisabled={!this.state.bookmarks}/>
+          {/* <CustomDropDown  options={[]} selectionChanged={} isDisabled={!this.state.}/> */}
         </Grid>
-         {/* Bookmarks */}
-         <Grid item>
-        <FormControlLabel
-              control={
-                <Checkbox
-                  checked={this.state.bookmarks}
-                  onChange={this.handleBookmarks}
-                  value="bookmarks"
-                  inputProps={{
-                    "aria-label": "bookmarks"
-                  }}
-                />
-              }
-              label="Bookmarks"
-            />
-          <CustomDropDown  options={} selectionChanged={} isDisabled={!this.state.bookmarks}/>
+        {/* Bookmarks */}
+        <Grid item>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.bookmarksEnabled}
+                onChange={this.handleBookmarksEnabled}
+                value="bookmarks"
+                inputProps={{
+                  "aria-label": "bookmarks"
+                }}
+              />
+            }
+            label="Bookmarks"
+          />
+          {/* <CustomDropDown  options={[]} selectionChanged={} isDisabled={!this.state.bookmarks}/> */}
         </Grid>
       </Grid>
     );

@@ -11,9 +11,10 @@ class App extends Component {
   // TODO: set global attributes
   defalutData = {
     backgrundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg",
-    drawerColor1: "#ffffba",
-    drawerColor2: "#ffffba",
-    gredientEnabled: true,
+    drawerColor1: "#ff9e99",
+    drawerColor2: "#8ea6b4",
+    drawerIconTheme: "dark", // TODO: ADD me
+    gredientColorEnabled: true,
     clocksEnabled: true,
     weathersEnabbled: true,
     bookmarksEnabled: true
@@ -26,7 +27,8 @@ class App extends Component {
       backgrundImage: this.defalutData.backgrundImage,
       drawerColor1: this.defalutData.drawerColor1,
       drawerColor2: this.defalutData.drawerColor2,
-      gredientEnabled: this.defalutData.gredientEnabled,
+      drawerIconTheme: this.defalutData.drawerIconTheme,
+      gredientColorEnabled: this.defalutData.gredientColorEnabled,
       clocksEnabled: this.defalutData.clocksEnabled,
       clockLocations: [],
       weathersEnabbled: this.defalutData.weathersEnabbled,
@@ -38,8 +40,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getCurrentLocation();
-    this.setClockLocations();
-    this.setWeatherLocations();
   }
 
   getCurrentLocation = () => {
@@ -50,14 +50,31 @@ class App extends Component {
       .then(response => {
         console.log(response, "response from current location!");
         this.setState({ currentLocation: response.data });
+        this.setClockLocations();
+        this.setWeatherLocations();
       })
       .catch(error => {
         console.log(error, "Error getCurrentLocation!");
       });
   };
 
+  setClockLocations = () => {
+    const data = { ...this.state.data };
+    data.clockLocations.push({
+      _id: 0,
+      timezone: this.state.currentLocation.timezone,
+      time: new Date()
+    });
+    // TODO: get other weather locations from storage
+    data.clockLocations.push({
+      _id: 1,
+      timezone: "America/Chicago"
+    });
+    this.setState({ data });
+  };
+
   setWeatherLocations = () => {
-    const data = [...this.state.data];
+    const data = { ...this.state.data };
     data.weatherLocations.push({
       _id: 0,
       lat: this.state.currentLocation.lat,
@@ -76,21 +93,6 @@ class App extends Component {
     this.setState({ data });
   };
 
-  setClockLocations = () => {
-    const data = [...this.state.data];
-    data.clockLocations.push({
-      _id: 0,
-      timezone: this.state.currentLocation.timezone,
-      time: new Date()
-    });
-    // TODO: get other weather locations from storage
-    data.clockLocations.push({
-      _id: 1,
-      timezone: "America/Chicago"
-    });
-    this.setState({ data });
-  };
-
   /**
    * Save user changes
    * data are: Background image, General: drawer color picker (gradient, single), add more clocks, add more weathers, enable/disable bookmarks, manage bookmarks, quote category, enable/disable clocks, enable/disable weathers
@@ -104,11 +106,13 @@ class App extends Component {
     return (
       <React.Fragment>
         <main>
-          <MainContent date={this.state.data} />
+          <MainContent data={this.state.data} />
           {/* Search */}
         </main>
         <SideDrawer
-          menuItems={this.menuItems}
+          gredientColorEnabled={this.state.data.gredientColorEnabled}
+          drawerColor1={this.state.data.drawerColor1}
+          drawerColor2={this.state.data.drawerColor2}
           handleSettingSave={this.handleSettingSave}
         />
       </React.Fragment>

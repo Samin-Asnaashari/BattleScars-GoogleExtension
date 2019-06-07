@@ -24,8 +24,9 @@ const styles = theme => ({
     whiteSpace: "nowrap"
   },
   paper: {
-    background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
-    // background: "linear-gradient(#DBDBDB, #ADA996)"
+    // TODO:
+    // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
+    background: "linear-gradient( #8ea6b4, #ff9e99)"
   },
   drawerOpen: {
     width: drawerWidth,
@@ -60,27 +61,54 @@ class SideDrawer extends Component {
     open: false,
     menuItems: [
       {
+        // TODO: My TODOS, My Profile (My Details, Musics - Movies - Travels - Books)
+        // TODO: How is your day? Happy Level, Sad Level, Medium. Overal my week, month, year smiles, family/friend/work people and life goals.
         _id: 0,
         title: "My Smiles",
-        iconClass: this.iconClass + "-gratipay"
+        iconClass: this.iconClass + "-gratipay",
+        isDialogOpen: false
+        // component: function(parnet) { : TODO:
+        // return (
+        // <MySmiles
+        // isOpen={this.isDialogOpen}
+        // onDialogClose={() => parnet.handleDilog(this, false)}
+        // handleSmilesSave={parnet.props.handleSmilesSave}
+        // />
+        // );
+        // }
       },
       {
         _id: 1,
         title: "News",
-        iconClass: this.iconClass + "-newspaper-o"
+        iconClass: this.iconClass + "-newspaper-o",
+        isDialogOpen: false
+        // component: function(parnet) { : TODO:
+        // return (
+        // <News
+        // isOpen={this.isDialogOpen}
+        // onDialogClose={() => parnet.handleDilog(this, false)}
+        // handleNewsSave={parnet.props.handleNewsSave}
+        // />
+        // );
+        // }
       },
       {
         _id: 2,
         title: "Stocks",
-        iconClass: this.iconClass + "-money"
+        iconClass: this.iconClass + "-money",
+        isDialogOpen: false
+        // component: function(parnet) { : TODO:
+        // return (
+        // <Stocks
+        // isOpen={this.isDialogOpen}
+        // onDialogClose={() => parnet.handleDilog(this, false)}
+        // handleStocksSave={parnet.props.handleStocksSave}
+        // />
+        // );
+        // }
       },
       {
         _id: 3,
-        title: "Feedback",
-        iconClass: this.iconClass + "-comments-o"
-      },
-      {
-        _id: 4,
         title: "Settings",
         iconClass: this.iconClass + "-cog",
         isDialogOpen: false,
@@ -94,6 +122,21 @@ class SideDrawer extends Component {
           );
         }
       }
+      // {
+      //   _id: -,
+      //   title: "Feedback",
+      //   iconClass: this.iconClass + "-comments-o",
+      //   isDialogOpen: false
+      //   // component: function(parnet) { : TODO:
+      //   // return (
+      //   // <Feedback
+      //   // isOpen={this.isDialogOpen}
+      //   // onDialogClose={() => parnet.handleDilog(this, false)}
+      //   // handleFeedbackSave={parnet.props.handleFeedbackSave}
+      //   // />
+      //   // );
+      //   // }
+      // },
     ]
   };
 
@@ -111,32 +154,51 @@ class SideDrawer extends Component {
     const menuItems = [...this.state.menuItems];
     const index = menuItems.indexOf(menuItem);
     menuItems[index] = { ...menuItem };
-    // menuItems[index].isDialogOpen = !menuItems[index].isDialogOpen;
     // true: open, false: close
     menuItems[index].isDialogOpen = isOpen;
     this.setState({ menuItems });
   };
 
   render() {
-    const { classes, theme, children, ...other } = this.props;
+    const {
+      classes,
+      theme,
+      children,
+      gredientColorEnabled,
+      drawerColor1,
+      drawerColor2,
+      ...other
+    } = this.props;
     const { open, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
+    // FIXME:
+    const drawerDynamicStyle = {
+      background: gredientColorEnabled
+        ? `linear-gradient(${drawerColor1}, ${drawerColor2})`
+        : drawerColor1
+    };
 
     return (
       <Drawer
         variant="permanent"
         anchor="right"
-        className={classNames(classes.root, classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
+        className={classNames(
+          classes.root,
+          classes.drawer,
+          drawerDynamicStyle,
+          {
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open
+          }
+        )}
         classes={{
           root: classes.root,
-          paper: classNames(classes.paper, {
+          paper: classNames(classes.paper, drawerDynamicStyle, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open
           })
         }}
+        style={drawerDynamicStyle}
         open={open}
       >
         {/* Toggle drawer */}
@@ -150,11 +212,13 @@ class SideDrawer extends Component {
           </IconButton>
         </div>
         <Divider />
-        {/* My Profile (My Details, Musics - Movies - Travels - Books - Bookmarks)*/}
+        {/* My Profile */}
+        {/* TODO: on click open profile */}
         <ListItem button key="profile" className={classes.toolbar}>
           <Avatar alt="profile" src={avatar} />
           <ListItemText primary="My Profile" />
         </ListItem>
+        {/* TODO: <MyProfile /> */}
         <Divider />
         {/* Menu itmes */}
         <List>
@@ -166,6 +230,7 @@ class SideDrawer extends Component {
                 </ListItemIcon>
                 <ListItemText primary={item.title} />
               </ListItem>
+              {/* FIXME: is only needed to check if component exist for now */}
               {item.component ? item.component(this) : null}
             </div>
           ))}

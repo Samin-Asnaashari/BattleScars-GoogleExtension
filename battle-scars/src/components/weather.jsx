@@ -383,8 +383,8 @@ const Weather = props => {
   weatherIconClass = "weather-icon " + prefix + weatherIconClass;
 
   return (
-    <Grid container xs={12} sm>
-      <Grid item xs className="weather-header-container">
+    <Grid container>
+      <Grid item className="weather-header-container">
         {/* Location */}
         <h4 className="location">
           {props.city}, {props.country}

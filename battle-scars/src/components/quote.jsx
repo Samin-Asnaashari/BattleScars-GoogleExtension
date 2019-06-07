@@ -41,6 +41,7 @@ class Quote extends Component {
    * Get Quote
    */
   getQuote = category => {
+    // TODO: async await?
     axios
       .get(this.state.source + category)
       .then(response => {

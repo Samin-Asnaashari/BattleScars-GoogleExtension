@@ -7,13 +7,16 @@ import CustomSlider from "./common/customSlider";
 import Weather from "./weather";
 
 class Weathers extends Component {
-  weathers = [];
+  state = {
+    weathers: []
+  };
 
   componentDidMount() {
     this.setWeathers();
   }
 
   setWeathers = async () => {
+    const weathers = [...this.state.weathers];
     // TODO: batch
     for (let i = 0; i < this.props.weatherLocations.length; i++) {
       let w = {};
@@ -45,8 +48,9 @@ class Weathers extends Component {
           console.log(error, "Error setWeathers!");
         });
 
-      this.weathers.push(w);
+      weathers.push(w);
     }
+    this.setState({ weathers });
   };
   //   const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`);
   //   const response = await api_call.json();
@@ -60,8 +64,8 @@ class Weathers extends Component {
         alignItems="flex-start"
         className="weather-container"
       >
-        {this.weathers.length > 0 ? (
-          <CustomSlider items={this.weathers} />
+        {this.state.weathers.length > 0 ? (
+          <CustomSlider items={this.state.weathers} />
         ) : (
           // TODO: default no data component
           <h6> No weathers information!</h6>
