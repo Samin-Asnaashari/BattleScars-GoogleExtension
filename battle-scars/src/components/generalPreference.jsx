@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./../styles/setting.scss";
 import Joi from "joi-browser";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import { CirclePicker } from "react-color";
 import Avatar from "@material-ui/core/Avatar";
@@ -10,8 +11,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import CustomDropDown from "./common/customDropDown";
-
-// http://worldtimeapi.org/api/timezone
 
 class GeneralPreference extends Component {
   state = {
@@ -24,7 +23,8 @@ class GeneralPreference extends Component {
     selectedClocks: [],
     selectedWeathers: [],
     bookmarksEnabled: true,
-    bookmarks: []
+    bookmarks: [],
+    timezones: []
   };
 
   colors1 = [
@@ -80,6 +80,10 @@ class GeneralPreference extends Component {
     "#325d8d"
   ];
 
+  componentDidMount() {
+    this.getTimezoneList();
+  }
+
   handleColorChangeComplete = (color, number) => {
     number === 1
       ? this.setState({ color1: color.hex })
@@ -92,6 +96,26 @@ class GeneralPreference extends Component {
 
   handleBookmarksEnabled = event => {
     this.setState({ bookmarksEnabled: event.target.checked });
+  };
+
+  getTimezoneList = async () => {
+    const timezones = [...this.state.timezones];
+    return await axios
+      .get("http://worldtimeapi.org/api/timezone")
+      .then(response => {
+        console.log(response, "timezones");
+        response.data.map(item => {
+          timezones.push({ value: item, label: item });
+        });
+        this.setState({ timezones });
+      })
+      .catch(error => {
+        console.log(error, "Error get all timezones!");
+      });
+  };
+
+  handleDropDownSelection = event => {
+    console.log(event, "event");
   };
 
   render() {
@@ -174,7 +198,10 @@ class GeneralPreference extends Component {
         {/* Clocks */}
         <Grid item>
           {/* TODO: CheckBox */}
-          {/* <CustomDropDown  options={[]} selectionChanged={this.handle} isDisabled={!this.state.}/> */}
+          <CustomDropDown
+            options={this.state.timezones}
+            selectionChanged={this.handleDropDownSelection}
+          />
         </Grid>
         {/* Bookmarks */}
         <Grid item>
