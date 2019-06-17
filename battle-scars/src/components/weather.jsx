@@ -372,7 +372,9 @@ const Weather = props => {
     }
   };
 
-  // Override the icons
+  /**
+   * Override the icons
+   */
   const prefix = "wi wi-";
   const code = props.weather.weather[0].id;
   let weatherIconClass = weatherIcons[code].icon;

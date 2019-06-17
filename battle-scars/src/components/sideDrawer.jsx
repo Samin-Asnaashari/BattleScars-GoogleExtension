@@ -24,7 +24,7 @@ const styles = theme => ({
     whiteSpace: "nowrap"
   },
   paper: {
-    // TODO:
+    // TODO: Remove
     // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
     background: "linear-gradient( #8ea6b4, #ff9e99)"
   },
@@ -61,8 +61,6 @@ class SideDrawer extends Component {
     open: false,
     menuItems: [
       {
-        // TODO: My TODOS, My Profile (My Details, Musics - Movies - Travels - Books)
-        // TODO: How is your day? Happy Level, Sad Level, Medium. Overal my week, month, year smiles, family/friend/work people and life goals.
         _id: 0,
         title: "My Smiles",
         iconClass: this.iconClass + "-gratipay",

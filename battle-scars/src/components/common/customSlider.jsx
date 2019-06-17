@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./../../styles/customSlider.scss";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Slide from "@material-ui/core/Slide";
 import Fade from "@material-ui/core/Fade";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";

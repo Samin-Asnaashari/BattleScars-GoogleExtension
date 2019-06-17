@@ -100,7 +100,7 @@ class GeneralPreference extends Component {
   getTimezoneList = async () => {
     const timezones = [...this.state.timezones];
     return await axios
-      .get("http://worldtimeapi.org/api/timezone")
+      .get("https://worldtimeapi.org/api/timezone")
       .then(response => {
         console.log(response, "timezones");
         response.data.map(item => {
@@ -143,6 +143,9 @@ class GeneralPreference extends Component {
         justify="flex-start"
         alignItems="flex-start"
       >
+        {/* Reset to default */}
+        <h4>Reset:</h4>
+        <Grid item />
         {/* Drawer */}
         <h4>Drawer Color:</h4>
         <Grid

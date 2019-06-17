@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-// import "./../styles/mainContent.scss";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
 import Quote from "./quote";
 import Clocks from "./clocks";
 import Weathers from "./weathers";
-import StickyNote from "./stickyNote";
+import StickyNote from "./stickyNote"; // -> TODO: possibly move this to My Profile / My Smiles
 
+/**
+ * Possible styling approach:
+ */
+// import "./../styles/mainContent.scss";
 // const styles = theme => ({
 // const useStyles = makeStyles(theme => ({
 
@@ -18,15 +21,15 @@ class MainContent extends Component {
   render() {
     const { classes, theme, children, ...other } = this.props;
     const {
-      backgrundImage,
-      clockLocations,
+      backgroundImage,
+      clockTimezones,
       weatherLocations,
       currentLocation
     } = this.props.data;
 
     const styles = {
       mainContent: {
-        background: `url(${backgrundImage}) no-repeat center center fixed`,
+        background: `url(${backgroundImage}) no-repeat center center fixed`,
         backgroundSize: "cover"
       },
       clockWeatherContainer: {
@@ -50,8 +53,8 @@ class MainContent extends Component {
           <Grid item style={styles.clockWeatherContainer}>
             {/* Clocks */}
             {/* TODO: loader content */}
-            {clockLocations.length > 0 ? (
-              <Clocks clockLocations={clockLocations} />
+            {clockTimezones.length > 0 ? (
+              <Clocks clockTimezones={clockTimezones} />
             ) : null}
             {/* Weathers */}
             {/* TODO: loader content */}
@@ -62,11 +65,11 @@ class MainContent extends Component {
           {/* Search */}
           <SearchBox />
           {/* Bookmarks */}
-          {/* TODO: */}
+          {/* TODO: create container for list of Bookmarks / slider*/}
           {/* Quote of the day */}
           <Quote />
         </Grid>
-        {/* My note */}
+        {/* FIXME: My note */}
         {/* <StickyNote /> */}
       </React.Fragment>
     );

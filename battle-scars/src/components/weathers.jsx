@@ -52,8 +52,10 @@ class Weathers extends Component {
     }
     this.setState({ weathers });
   };
-  //   const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_Key}`);
-  //   const response = await api_call.json();
+  /**
+   * Example of other option:
+   */
+  //   const api_call = await fetch(``); const response = await api_call.json();
 
   render() {
     return (

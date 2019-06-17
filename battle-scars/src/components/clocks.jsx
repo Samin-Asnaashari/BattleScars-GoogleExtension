@@ -23,24 +23,23 @@ class Clocks extends Component {
       show: true,
       content: (
         <Clock
-          timeZone={this.props.clockLocations[0].timezone}
-          dateTime={this.props.clockLocations[0].time}
+          timeZone={this.props.clockTimezones[0].timezone}
+          dateTime={this.props.clockTimezones[0].dateTime}
           isCurrent={true}
         />
       )
     });
-    for (let i = 1; i < this.props.clockLocations.length; i++) {
+    for (let i = 1; i < this.props.clockTimezones.length; i++) {
       let c = {};
-      c._id = this.props.clockLocations[i]._id;
+      c._id = this.props.clockTimezones[i]._id;
       c.show = false;
 
       // TODO: add to secret config file
       var key = "NWGYO055DP5P";
       await axios
-        // https://worldtimeapi.org/api/timezone/
         .get(
           `http://api.timezonedb.com/v2.1/get-time-zone?key=${key}&format=json&by=zone&zone=${
-            this.props.clockLocations[i].timezone
+            this.props.clockTimezones[i].timezone
           }`
         )
         .then(response => {

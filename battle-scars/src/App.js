@@ -8,30 +8,33 @@ import SideDrawer from "./components/sideDrawer";
 import MainContent from "./components/mainContent";
 
 class App extends Component {
-  // TODO: set global attributes
   defalutData = {
-    backgrundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg",
+    backgroundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg",
     drawerColor1: "#ff9e99",
     drawerColor2: "#8ea6b4",
-    drawerIconTheme: "dark", // TODO: ADD me
+    drawerIconTheme: "dark", // TODO: add me
     gredientColorEnabled: true,
     clocksEnabled: true,
-    weathersEnabbled: true,
+    weathersEnabled: true,
     bookmarksEnabled: true
     // quoteCategory: "",
     // My Profile (My Details, Musics - Movies - Travels - Books - Bookmarks)
+    // My Sticky Notes
+    // My Smiles / Happiness
+    // TODO: My TODOS, My Profile (My Details, Musics - Movies - Travels - Books)
+    // TODO: How is your day? Happy Level, Sad Level, Medium. Overal my week, month, year smiles, family/friend/work people and life goals.
   };
   state = {
     currentLocation: undefined,
     data: {
-      backgrundImage: this.defalutData.backgrundImage,
+      backgroundImage: this.defalutData.backgroundImage,
       drawerColor1: this.defalutData.drawerColor1,
       drawerColor2: this.defalutData.drawerColor2,
       drawerIconTheme: this.defalutData.drawerIconTheme,
       gredientColorEnabled: this.defalutData.gredientColorEnabled,
       clocksEnabled: this.defalutData.clocksEnabled,
-      clockLocations: [],
-      weathersEnabbled: this.defalutData.weathersEnabbled,
+      clockTimezones: [],
+      weathersEnabled: this.defalutData.weathersEnabled,
       weatherLocations: [],
       bookmarksEnabled: this.defalutData.bookmarksEnabled,
       bookmarks: []
@@ -39,19 +42,20 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // this.getStorageData(); TODO: implement
     this.getCurrentLocation();
   }
 
   getCurrentLocation = () => {
-    // TODO: async await?
+    // TODO: async await? Permission?
     axios
       // http://maps.googleapis.com: navigator.geolocation.getCurrentPosition(position => { position.coords.latitude/longitude } )
       .get(`http://ip-api.com/json`)
       .then(response => {
         console.log(response, "response from current location!");
         this.setState({ currentLocation: response.data });
-        this.setClockLocations();
-        this.setWeatherLocations();
+        if (this.state.data.clocksEnabled) this.setClockLocations();
+        if (this.state.data.weathersEnabled) this.setWeatherLocations();
       })
       .catch(error => {
         console.log(error, "Error getCurrentLocation!");
@@ -59,14 +63,14 @@ class App extends Component {
   };
 
   setClockLocations = () => {
+    // TODO: get from storage
     const data = { ...this.state.data };
-    data.clockLocations.push({
+    data.clockTimezones.push({
       _id: 0,
       timezone: this.state.currentLocation.timezone,
-      time: new Date()
+      dateTime: new Date()
     });
-    // TODO: get other weather locations from storage
-    data.clockLocations.push({
+    data.clockTimezones.push({
       _id: 1,
       timezone: "America/Chicago"
     });
@@ -74,6 +78,7 @@ class App extends Component {
   };
 
   setWeatherLocations = () => {
+    // TODO: get from storage
     const data = { ...this.state.data };
     data.weatherLocations.push({
       _id: 0,
@@ -82,7 +87,6 @@ class App extends Component {
       country: this.state.currentLocation.country,
       city: this.state.currentLocation.city
     });
-    // TODO: get other weather locations from storage
     data.weatherLocations.push({
       _id: 1,
       lat: -0.13,
@@ -95,7 +99,7 @@ class App extends Component {
 
   /**
    * Save user changes
-   * data are: Background image, General: drawer color picker (gradient, single), add more clocks, add more weathers, enable/disable bookmarks, manage bookmarks, quote category, enable/disable clocks, enable/disable weathers
+   * data are: Background image, General: drawer color picker (gradient, single), add more clock timezones, add more weather locations, enable/disable bookmarks, manage bookmarks, quote category, enable/disable clocks, enable/disable weathers
    * Set to defaut or update data and save it to localstorage
    */
   handleSettingSave = data => {
