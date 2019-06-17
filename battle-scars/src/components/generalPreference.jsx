@@ -14,17 +14,15 @@ import CustomDropDown from "./common/customDropDown";
 
 class GeneralPreference extends Component {
   state = {
-    // linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)
     color1: "#ffffba",
     color2: "#ffffba",
     gredientColorEnabled: true,
-    clocks: [],
-    weathers: [],
-    selectedClocks: [],
-    selectedWeathers: [],
+    timezones: [],
+    countriesOrCities: [],
+    selectedClocks: this.props.selectedClocks,
+    selectedWeathers: this.props.selectedWeathers,
     bookmarksEnabled: true,
-    bookmarks: [],
-    timezones: []
+    bookmarks: [] // TODO: desgin
   };
 
   colors1 = [
@@ -82,6 +80,7 @@ class GeneralPreference extends Component {
 
   componentDidMount() {
     this.getTimezoneList();
+    this.getCountriesOrCitiesList();
   }
 
   handleColorChangeComplete = (color, number) => {
@@ -114,14 +113,38 @@ class GeneralPreference extends Component {
       });
   };
 
+  getCountriesOrCitiesList = async term => {
+    const countriesOrCities = [...this.state.countriesOrCities];
+    return await axios
+      .get(
+        "http://autocomplete.travelpayouts.com/places2?term=Test&locale=en&types[]=country,city"
+      )
+      .then(response => {
+        console.log(response, "Country and Cities");
+        response.data.map(item => {
+          countriesOrCities.push({ value: item.name, label: item.name });
+        });
+        this.setState({ countriesOrCities });
+      })
+      .catch(error => {
+        console.log(error, "Error get all Country / City list!");
+      });
+  };
+
   handleDropDownSelection = event => {
     console.log(event, "event");
   };
 
   render() {
     return (
-      <Grid container direction="column" justify="center" alignItems="center">
-        {/* <Grid item> */}
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
+        {/* Drawer */}
+        <h4>Drawer Color:</h4>
         <Grid
           container
           direction="row"
@@ -194,21 +217,28 @@ class GeneralPreference extends Component {
             </Grid>
           ) : null}
         </Grid>
-        {/* </Grid> */}
         {/* Clocks */}
-        <Grid item>
+        <h4>Clocks:</h4>
+        <Grid item className="custom-dropDown-container">
           {/* TODO: CheckBox */}
           <CustomDropDown
             options={this.state.timezones}
             selectionChanged={this.handleDropDownSelection}
           />
         </Grid>
-        {/* Bookmarks */}
-        <Grid item>
+        {/* Weathers */}
+        <h4>Weathers:</h4>
+        <Grid item className="custom-dropDown-container">
           {/* TODO: CheckBox */}
+          {/* TODO: term search key */}
+          <CustomDropDown
+            options={this.state.countriesOrCities}
+            selectionChanged={this.handleDropDownSelection}
+          />
           {/* <CustomDropDown  options={[]} selectionChanged={} isDisabled={!this.state.}/> */}
         </Grid>
         {/* Bookmarks */}
+        <h4>Bookmarks:</h4>
         <Grid item>
           <FormControlLabel
             control={

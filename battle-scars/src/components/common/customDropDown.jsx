@@ -2,10 +2,18 @@ import React from "react";
 import Select from "react-select";
 
 /**
+ * TODO: Multi/Single Select Drop Down
  * Multiple Select DropDown Component
  */
+const indicatorSeparatorStyle = {
+  alignSelf: "stretch",
+  backgroundColor: "red",
+  marginBottom: 8,
+  marginTop: 8,
+  width: 1
+};
 const IndicatorSeparator = ({ innerProps }) => {
-  return <span {...innerProps} />;
+  return <span style={indicatorSeparatorStyle} {...innerProps} />;
 };
 
 const CustomDropDown = ({
@@ -13,7 +21,8 @@ const CustomDropDown = ({
   options,
   selectionChanged,
   isDisabled,
-  placeholder
+  placeholder,
+  multiSelction
 }) => {
   return (
     <Select
