@@ -2,8 +2,7 @@ import React from "react";
 import Select from "react-select";
 
 /**
- * TODO: Multi/Single Select Drop Down
- * Multiple Select DropDown Component
+ * Multiple Select / Single Select DropDown Component
  */
 const indicatorSeparatorStyle = {
   alignSelf: "stretch",
@@ -26,7 +25,7 @@ const CustomDropDown = ({
 }) => {
   return (
     <Select
-      isMulti
+      isMulti={multiSelction}
       closeMenuOnSelect={false}
       components={{ IndicatorSeparator }}
       isDisabled={isDisabled}

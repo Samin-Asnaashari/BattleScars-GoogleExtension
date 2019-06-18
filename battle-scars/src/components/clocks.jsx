@@ -73,7 +73,6 @@ class Clocks extends Component {
         {this.state.clocks.length > 0 ? (
           <CustomSlider items={this.state.clocks} />
         ) : (
-          // TODO: default no data component
           <h6> No clocks information!</h6>
         )}
       </Grid>

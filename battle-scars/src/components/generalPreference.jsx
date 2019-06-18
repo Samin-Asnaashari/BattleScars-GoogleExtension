@@ -225,6 +225,7 @@ class GeneralPreference extends Component {
         <Grid item className="custom-dropDown-container">
           {/* TODO: CheckBox */}
           <CustomDropDown
+            multiSelction={true}
             options={this.state.timezones}
             selectionChanged={this.handleDropDownSelection}
           />
@@ -235,10 +236,10 @@ class GeneralPreference extends Component {
           {/* TODO: CheckBox */}
           {/* TODO: term search key */}
           <CustomDropDown
+            multiSelction={true}
             options={this.state.countriesOrCities}
             selectionChanged={this.handleDropDownSelection}
           />
-          {/* <CustomDropDown  options={[]} selectionChanged={} isDisabled={!this.state.}/> */}
         </Grid>
         {/* Bookmarks */}
         <h4>Bookmarks:</h4>
@@ -256,7 +257,7 @@ class GeneralPreference extends Component {
             }
             label="Bookmarks"
           />
-          {/* <CustomDropDown  options={[]} selectionChanged={} isDisabled={!this.state.bookmarks}/> */}
+          {/* TODO: <CustomDropDown /> */}
         </Grid>
       </Grid>
     );

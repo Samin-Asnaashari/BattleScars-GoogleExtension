@@ -6,6 +6,9 @@ import CustomTabs from "./common/customTabs";
 import ImageGridList from "./imageGridList";
 import GeneralPreference from "./generalPreference";
 
+/**
+ * Setting: General Preference / Background Images
+ */
 class Setting extends Component {
   state = {
     tabs: [

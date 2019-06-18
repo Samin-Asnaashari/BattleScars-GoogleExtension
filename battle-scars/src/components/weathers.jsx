@@ -69,7 +69,6 @@ class Weathers extends Component {
         {this.state.weathers.length > 0 ? (
           <CustomSlider items={this.state.weathers} />
         ) : (
-          // TODO: default no data component
           <h6> No weathers information!</h6>
         )}
       </Grid>

@@ -13,6 +13,9 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
+/**
+ * Custom Dialog with dynamic content
+ */
 const CustomDialog = props => {
   const {
     title,
@@ -34,9 +37,10 @@ const CustomDialog = props => {
       fullWidth={true}
       maxWidth="md"
       disableBackdropClick
+      className="dialog"
     >
       <DialogTitle id="custom-dialog">
-        <div style={{ marginBottom: "15px" }}>{title}</div>
+        <div>{title}</div>
       </DialogTitle>
       <DialogContent dividers="true">
         {tabs ? tabs : null}

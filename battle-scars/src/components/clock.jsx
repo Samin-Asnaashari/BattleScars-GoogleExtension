@@ -4,6 +4,9 @@ import moment from "moment/moment.js";
 import Grid from "@material-ui/core/Grid";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 
+/**
+ * Clock component
+ */
 class Clock extends Component {
   state = {
     // TODO: update all clocks instead of just isCurrent

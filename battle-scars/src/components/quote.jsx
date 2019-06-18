@@ -11,7 +11,9 @@ import AutorenewIcon from "@material-ui/icons/Autorenew";
 // url: "https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?"
 // source: "https://quotes.rest/qod.json?category="
 
-// TODO: style
+/**
+ * Quote of the day
+ */
 class Quote extends Component {
   categories = [
     { _id: 0, name: "art", label: "Art" },

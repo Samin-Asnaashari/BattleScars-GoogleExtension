@@ -43,7 +43,7 @@ class CustomSlider extends Component {
 
   render() {
     return (
-      <Paper elevation={1} className="slide-container ">
+      <Paper className="slide-container ">
         <Grid container direction="row" justify="center" alignItems="center">
           <Grid item>
             {this.state.items.length > 1 ? (

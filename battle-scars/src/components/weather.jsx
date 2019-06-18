@@ -3,7 +3,9 @@ import "./../styles/weather.scss";
 import "./../assets/weather-icons-master/css/weather-icons.css";
 import Grid from "@material-ui/core/Grid";
 
-// TODO: style
+/**
+ * Weather component
+ */
 const Weather = props => {
   const weatherIcons = {
     "200": {

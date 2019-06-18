@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 import SearchBox from "./searchBox";
@@ -10,24 +7,16 @@ import Clocks from "./clocks";
 import Weathers from "./weathers";
 import StickyNote from "./stickyNote"; // -> TODO: possibly move this to My Profile / My Smiles
 
-/**
- * Possible styling approach:
- */
-// import "./../styles/mainContent.scss";
-// const styles = theme => ({
-// const useStyles = makeStyles(theme => ({
-
 class MainContent extends Component {
   render() {
-    const { classes, theme, children, ...other } = this.props;
     const {
       backgroundImage,
       clockTimezones,
       weatherLocations,
       currentLocation
-    } = this.props.data;
+    } = this.props;
 
-    const styles = {
+    const dynamicStyles = {
       mainContent: {
         background: `url(${backgroundImage}) no-repeat center center fixed`,
         backgroundSize: "cover"
@@ -47,10 +36,10 @@ class MainContent extends Component {
           direction="column"
           justify="center"
           alignItems="center"
-          style={styles.mainContent}
+          style={dynamicStyles.mainContent}
         >
           {/* Clock / Weather Container */}
-          <Grid item style={styles.clockWeatherContainer}>
+          <Grid item style={dynamicStyles.clockWeatherContainer}>
             {/* Clocks */}
             {/* TODO: loader content */}
             {clockTimezones.length > 0 ? (
@@ -77,4 +66,3 @@ class MainContent extends Component {
 }
 
 export default MainContent;
-// export default withStyles(styles, { withTheme: true })(MainContent);

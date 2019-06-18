@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
@@ -22,11 +25,6 @@ const styles = theme => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap"
-  },
-  paper: {
-    // TODO: Remove
-    // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
-    background: "linear-gradient( #8ea6b4, #ff9e99)"
   },
   drawerOpen: {
     width: drawerWidth,
@@ -65,12 +63,12 @@ class SideDrawer extends Component {
         title: "My Smiles",
         iconClass: this.iconClass + "-gratipay",
         isDialogOpen: false
-        // component: function(parnet) { : TODO:
+        // component: function(parent) { : TODO:
         // return (
         // <MySmiles
         // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parnet.handleDilog(this, false)}
-        // handleSmilesSave={parnet.props.handleSmilesSave}
+        // onDialogClose={() => parent.handleDilog(this, false)}
+        // handleSmilesSave={parent.props.handleSmilesSave}
         // />
         // );
         // }
@@ -80,12 +78,12 @@ class SideDrawer extends Component {
         title: "News",
         iconClass: this.iconClass + "-newspaper-o",
         isDialogOpen: false
-        // component: function(parnet) { : TODO:
+        // component: function(parent) { : TODO:
         // return (
         // <News
         // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parnet.handleDilog(this, false)}
-        // handleNewsSave={parnet.props.handleNewsSave}
+        // onDialogClose={() => parent.handleDilog(this, false)}
+        // handleNewsSave={parent.props.handleNewsSave}
         // />
         // );
         // }
@@ -95,12 +93,12 @@ class SideDrawer extends Component {
         title: "Stocks",
         iconClass: this.iconClass + "-money",
         isDialogOpen: false
-        // component: function(parnet) { : TODO:
+        // component: function(parent) { : TODO:
         // return (
         // <Stocks
         // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parnet.handleDilog(this, false)}
-        // handleStocksSave={parnet.props.handleStocksSave}
+        // onDialogClose={() => parent.handleDilog(this, false)}
+        // handleStocksSave={parent.props.handleStocksSave}
         // />
         // );
         // }
@@ -110,12 +108,18 @@ class SideDrawer extends Component {
         title: "Settings",
         iconClass: this.iconClass + "-cog",
         isDialogOpen: false,
-        component: function(parnet) {
+        component: function(parent) {
           return (
             <Setting
               isOpen={this.isDialogOpen}
-              onDialogClose={() => parnet.handleDilog(this, false)}
-              handleSettingSave={parnet.props.handleSettingSave}
+              onDialogClose={() => parent.handleDilog(this, false)}
+              handleSettingSave={parent.props.handleSettingSave}
+              currentLocation={parent.props.currentLocation}
+              backgroundImage={parent.props.backgroundImage}
+              gredientColorEnabled={parent.props.gredientColorEnabled}
+              drawerColor1={parent.props.drawerColor1}
+              drawerColor2={parent.props.drawerColor2}
+              theme={parent.props.theme}
             />
           );
         }
@@ -125,12 +129,12 @@ class SideDrawer extends Component {
       //   title: "Feedback",
       //   iconClass: this.iconClass + "-comments-o",
       //   isDialogOpen: false
-      //   // component: function(parnet) { : TODO:
+      //   // component: function(parent) { : TODO:
       //   // return (
       //   // <Feedback
       //   // isOpen={this.isDialogOpen}
-      //   // onDialogClose={() => parnet.handleDilog(this, false)}
-      //   // handleFeedbackSave={parnet.props.handleFeedbackSave}
+      //   // onDialogClose={() => parent.handleDilog(this, false)}
+      //   // handleFeedbackSave={parent.props.handleFeedbackSave}
       //   // />
       //   // );
       //   // }
@@ -167,73 +171,79 @@ class SideDrawer extends Component {
       drawerColor2,
       ...other
     } = this.props;
+    console.log(this.props, "sdf");
     const { open, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
-    // FIXME:
-    const drawerDynamicStyle = {
-      background: gredientColorEnabled
-        ? `linear-gradient(${drawerColor1}, ${drawerColor2})`
-        : drawerColor1
-    };
+
+    const dynamicStyles = createMuiTheme({
+      overrides: {
+        MuiDrawer: {
+          paper: {
+            // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
+            // background: "linear-gradient( #8ea6b4, #ff9e99)"
+            background: gredientColorEnabled
+              ? `linear-gradient(${drawerColor1}, ${drawerColor2})`
+              : drawerColor1
+          }
+        }
+      }
+    });
 
     return (
-      <Drawer
-        variant="permanent"
-        anchor="right"
-        className={classNames(
-          classes.root,
-          classes.drawer,
-          drawerDynamicStyle,
-          {
+      <MuiThemeProvider theme={dynamicStyles}>
+        <Drawer
+          classes={{ paper: "paper-2" }}
+          variant="permanent"
+          anchor="right"
+          className={classNames(classes.root, classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open
-          }
-        )}
-        classes={{
-          root: classes.root,
-          paper: classNames(classes.paper, drawerDynamicStyle, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
-        }}
-        style={drawerDynamicStyle}
-        open={open}
-      >
-        {/* Toggle drawer */}
-        <div className={classes.toolbar}>
-          <IconButton onClick={this.handleDrawer}>
-            {theme.direction === "rtl" || open === true ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        {/* My Profile */}
-        {/* TODO: on click open profile */}
-        <ListItem button key="profile" className={classes.toolbar}>
-          <Avatar alt="profile" src={avatar} />
-          <ListItemText primary="My Profile" />
-        </ListItem>
-        {/* TODO: <MyProfile /> */}
-        <Divider />
-        {/* Menu itmes */}
-        <List>
-          {menuItems.map(item => (
-            <div key={item._id}>
-              <ListItem button onClick={() => this.handleDilog(item, true)}>
-                <ListItemIcon>
-                  <i className={item.iconClass} />
-                </ListItemIcon>
-                <ListItemText primary={item.title} />
-              </ListItem>
-              {/* FIXME: is only needed to check if component exist for now */}
-              {item.component ? item.component(this) : null}
-            </div>
-          ))}
-        </List>
-      </Drawer>
+          })}
+          classes={{
+            root: classes.root,
+            paper: classNames(classes.paper, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open
+            })
+          }}
+          open={open}
+        >
+          {/* Toggle drawer */}
+          <div className={classes.toolbar}>
+            <IconButton onClick={this.handleDrawer}>
+              {theme.direction === "rtl" || open === true ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </div>
+          <Divider />
+          {/* My Profile */}
+          {/* TODO: on click open profile */}
+          <ListItem button key="profile" className={classes.toolbar}>
+            <Avatar alt="profile" src={avatar} />
+            <ListItemText primary="My Profile" />
+          </ListItem>
+          {/* TODO: <MyProfile /> */}
+          <Divider />
+          {/* Menu itmes */}
+          <List>
+            {menuItems.map(item => (
+              <div key={item._id}>
+                <ListItem button onClick={() => this.handleDilog(item, true)}>
+                  <ListItemIcon>
+                    <i className={item.iconClass} />
+                  </ListItemIcon>
+                  <ListItemText primary={item.title} />
+                </ListItem>
+                {/* FIXME: is only needed to check if component exist for now */}
+                {item.component ? item.component(this) : null}
+              </div>
+            ))}
+          </List>
+        </Drawer>
+      </MuiThemeProvider>
     );
   }
 }

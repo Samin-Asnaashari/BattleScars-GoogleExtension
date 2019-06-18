@@ -9,6 +9,9 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import CustomSelect from "./common/customSelect";
 
+/**
+ * Search Engine
+ */
 class SearchBox extends Component {
   searchEngineOptions = [
     {
