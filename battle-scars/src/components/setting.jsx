@@ -18,7 +18,13 @@ class Setting extends Component {
         content: (
           <div>
             <h2>General</h2>
-            <GeneralPreference />
+            <GeneralPreference
+              currentLocation={this.props.currentLocation}
+              gredientColorEnabled={this.props.gredientColorEnabled}
+              drawerColor1={this.props.drawerColor1}
+              drawerColor2={this.props.drawerColor2}
+              theme={this.props.theme}
+            />
           </div>
         )
       },
@@ -28,7 +34,7 @@ class Setting extends Component {
         content: (
           <div>
             <h2>Background Images</h2>
-            <ImageGridList />
+            <ImageGridList backgroundImage={this.props.backgroundImage} />
           </div>
         )
       }

@@ -37,7 +37,6 @@ const CustomDialog = props => {
       fullWidth={true}
       maxWidth="md"
       disableBackdropClick
-      className="dialog"
     >
       <DialogTitle id="custom-dialog">
         <div>{title}</div>

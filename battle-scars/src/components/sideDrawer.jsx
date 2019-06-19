@@ -192,7 +192,6 @@ class SideDrawer extends Component {
     return (
       <MuiThemeProvider theme={dynamicStyles}>
         <Drawer
-          classes={{ paper: "paper-2" }}
           variant="permanent"
           anchor="right"
           className={classNames(classes.root, classes.drawer, {

@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import "./../../styles/customTabs.scss";
 
 /**
  * Custom Tabs with dynamic data and content
@@ -21,7 +22,7 @@ class CustomTabs extends Component {
     const { value } = this.state;
 
     return (
-      <Paper square>
+      <Paper square classes={{ root: "tabs-container" }}>
         <Tabs
           value={value}
           indicatorColor="primary"
