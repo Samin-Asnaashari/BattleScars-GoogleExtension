@@ -32,6 +32,7 @@ class App extends Component {
       weatherLocations: [],
       bookmarksEnabled: this.defaultData.bookmarksEnabled,
       bookmarks: []
+      // TODO: Style refactor
       // quoteCategory: "",
       // My Sticky Notes
       // My Smiles / Happiness
@@ -110,28 +111,10 @@ class App extends Component {
       <React.Fragment>
         <main>
           {/* TODO: just pass all json data */}
-          <MainContent
-            currentLocation={currentLocation}
-            backgroundImage={data.backgroundImage}
-            theme={data.theme}
-            clockTimezones={data.clockTimezones}
-            weatherLocations={data.weatherLocations}
-            clocksEnabled={data.clocksEnabled}
-            weathersEnabled={data.weathersEnabled}
-            bookmarksEnabled={data.bookmarksEnabled}
-            bookmarks={data.bookmarks}
-          />
+          <MainContent data={data} currentLocation={currentLocation} />
           {/* Search */}
         </main>
-        <SideDrawer
-          currentLocation={currentLocation}
-          backgroundImage={data.backgroundImage}
-          gredientColorEnabled={data.gredientColorEnabled}
-          drawerColor1={data.drawerColor1}
-          drawerColor2={data.drawerColor2}
-          theme={data.theme}
-          handleSettingSave={this.handleSettingSave}
-        />
+        <SideDrawer data={data} currentLocation={currentLocation} />
       </React.Fragment>
     );
   }

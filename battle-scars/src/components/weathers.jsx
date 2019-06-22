@@ -55,7 +55,7 @@ class Weathers extends Component {
   /**
    * Example of other option:
    */
-  //   const api_call = await fetch(``); const response = await api_call.json();
+  // const api_call = await fetch(``); const response = await api_call.json();
 
   render() {
     return (

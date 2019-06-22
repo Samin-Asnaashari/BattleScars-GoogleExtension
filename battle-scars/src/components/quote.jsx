@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./../styles/quote.scss";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 
@@ -76,10 +75,7 @@ class Quote extends Component {
             <AutorenewIcon />
           </IconButton>
           <i className="fa fa-quote-left quote__icon" />
-          <Typography variant="h6" className="quote__text">
-            {" "}
-            {this.state.quote.text}{" "}
-          </Typography>
+          <h6 className="quote__text"> {this.state.quote.text} </h6>
           <i className="fa fa-quote-right quote__icon" />
         </Grid>
         <Grid
@@ -89,10 +85,7 @@ class Quote extends Component {
           alignItems="center"
           className="quote-author-container"
         >
-          <Typography variant="subtitle2" className="quote-author">
-            {" "}
-            {this.state.quote.author}{" "}
-          </Typography>
+          <p className="quote-author"> {this.state.quote.author} </p>
         </Grid>
       </div>
     );

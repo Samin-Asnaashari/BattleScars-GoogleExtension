@@ -1,4 +1,5 @@
 import React from "react";
+import "./../../styles/customDialog.scss";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -24,7 +25,8 @@ const CustomDialog = props => {
     onDialogClose,
     onDialogSave,
     children,
-    fullScreen
+    fullScreen,
+    disableBackdropClick
   } = props;
 
   return (
@@ -32,7 +34,7 @@ const CustomDialog = props => {
       fullScreen={fullScreen}
       open={isOpen}
       onClose={onDialogClose}
-      TransitionComponent={Transition}
+      // TransitionComponent={Transition}
       aria-labelledby="custom-dialog"
       fullWidth={true}
       maxWidth="md"
@@ -41,7 +43,10 @@ const CustomDialog = props => {
       <DialogTitle id="custom-dialog">
         <div>{title}</div>
       </DialogTitle>
-      <DialogContent dividers="true">
+      <DialogContent
+        dividers="true"
+        classes={{ root: "dialog-content-container" }}
+      >
         {tabs ? tabs : null}
         {/* Content */}
         {children}

@@ -9,12 +9,12 @@ import StickyNote from "./stickyNote"; // -> TODO: possibly move this to My Prof
 
 class MainContent extends Component {
   render() {
+    const { currentLocation } = this.props;
     const {
       backgroundImage,
       clockTimezones,
-      weatherLocations,
-      currentLocation
-    } = this.props;
+      weatherLocations
+    } = this.props.data;
 
     const dynamicStyles = {
       mainContent: {

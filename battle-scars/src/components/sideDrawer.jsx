@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
@@ -115,11 +114,7 @@ class SideDrawer extends Component {
               onDialogClose={() => parent.handleDilog(this, false)}
               handleSettingSave={parent.props.handleSettingSave}
               currentLocation={parent.props.currentLocation}
-              backgroundImage={parent.props.backgroundImage}
-              gredientColorEnabled={parent.props.gredientColorEnabled}
-              drawerColor1={parent.props.drawerColor1}
-              drawerColor2={parent.props.drawerColor2}
-              theme={parent.props.theme}
+              data={parent.props.data}
             />
           );
         }
@@ -162,16 +157,12 @@ class SideDrawer extends Component {
   };
 
   render() {
+    const { classes, theme, children, ...other } = this.props;
     const {
-      classes,
-      theme,
-      children,
       gredientColorEnabled,
       drawerColor1,
-      drawerColor2,
-      ...other
-    } = this.props;
-    console.log(this.props, "sdf");
+      drawerColor2
+    } = this.props.data;
     const { open, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
 
@@ -179,8 +170,7 @@ class SideDrawer extends Component {
       overrides: {
         MuiDrawer: {
           paper: {
-            // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)"
-            // background: "linear-gradient( #8ea6b4, #ff9e99)"
+            // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)" #8ea6b4, #ff9e99
             background: gredientColorEnabled
               ? `linear-gradient(${drawerColor1}, ${drawerColor2})`
               : drawerColor1

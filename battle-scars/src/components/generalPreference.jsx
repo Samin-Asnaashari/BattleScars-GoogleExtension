@@ -11,18 +11,23 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import CustomDropDown from "./common/customDropDown";
+import * as countriesCitiesApi from "../services/countriesCitiesService";
 
 class GeneralPreference extends Component {
   state = {
-    color1: "#ffffba",
-    color2: "#ffffba",
-    gredientColorEnabled: true,
+    color1: this.props.data.drawerColor1,
+    color2: this.props.data.drawerColor2,
+    gredientColorEnabled: this.props.data.gredientColorEnabled,
     timezones: [],
     countriesOrCities: [],
-    selectedClocks: this.props.selectedClocks,
-    selectedWeathers: this.props.selectedWeathers,
-    bookmarksEnabled: true,
-    bookmarks: [] // TODO: desgin
+    bookmarks: [],
+    bookmarksEnabled: this.props.data.bookmarksEnabled,
+    selectedClocks: this.props.data.clockTimezones,
+    selectedWeathers: this.props.data.weatherLocations,
+    selectedBookmarks: this.props.data.bookmarks,
+    theme: this.props.data.theme,
+    clocksEnabled: this.props.data.clocksEnabled,
+    weathersEnabled: this.props.data.weathersEnabled
   };
 
   colors1 = [
@@ -80,7 +85,7 @@ class GeneralPreference extends Component {
 
   componentDidMount() {
     this.getTimezoneList();
-    this.getCountriesOrCitiesList();
+    this.getCountriesCitiesList();
   }
 
   handleColorChangeComplete = (color, number) => {
@@ -89,12 +94,8 @@ class GeneralPreference extends Component {
       : this.setState({ color2: color.hex });
   };
 
-  handleGredientColorEnabled = event => {
-    this.setState({ gredientColorEnabled: event.target.checked });
-  };
-
-  handleBookmarksEnabled = event => {
-    this.setState({ bookmarksEnabled: event.target.checked });
+  handleCheckbox = event => {
+    this.setState({ [event.target.name]: event.target.checked });
   };
 
   getTimezoneList = async () => {
@@ -113,22 +114,19 @@ class GeneralPreference extends Component {
       });
   };
 
-  getCountriesOrCitiesList = async term => {
+  getCountriesCitiesList = () => {
     const countriesOrCities = [...this.state.countriesOrCities];
-    return await axios
-      .get(
-        "http://autocomplete.travelpayouts.com/places2?term=Test&locale=en&types[]=country,city"
-      )
-      .then(response => {
-        console.log(response, "Country and Cities");
-        response.data.map(item => {
-          countriesOrCities.push({ value: item.name, label: item.name });
-        });
-        this.setState({ countriesOrCities });
-      })
-      .catch(error => {
-        console.log(error, "Error get all Country / City list!");
+    countriesCitiesApi.getAllCities().map(city => {
+      countriesOrCities.push({
+        value: `city.name (${
+          countriesCitiesApi.getCountryDetailsByCode(city.countryCode).name
+        })`,
+        label: `city.name (${
+          countriesCitiesApi.getCountryDetailsByCode(city.countryCode).name
+        })`
       });
+    });
+    this.setState({ countriesOrCities });
   };
 
   handleDropDownSelection = event => {
@@ -136,6 +134,8 @@ class GeneralPreference extends Component {
   };
 
   render() {
+    const { currentLocation } = this.props;
+
     return (
       <Grid
         container
@@ -143,7 +143,7 @@ class GeneralPreference extends Component {
         justify="flex-start"
         alignItems="flex-start"
       >
-        {/* Reset to default */}
+        {/* Reset to default TODO:*/}
         <h4>Reset:</h4>
         <Grid item />
         {/* Drawer */}
@@ -159,7 +159,8 @@ class GeneralPreference extends Component {
               control={
                 <Checkbox
                   checked={this.state.gredientColorEnabled}
-                  onChange={this.handleGredientColorEnabled}
+                  onChange={this.handleCheckbox}
+                  name="gredientColorEnabled"
                   value="gredient"
                   inputProps={{
                     "aria-label": "gredient color"
@@ -228,6 +229,9 @@ class GeneralPreference extends Component {
             multiSelction={true}
             options={this.state.timezones}
             selectionChanged={this.handleDropDownSelection}
+            defaultValue={[]}
+            isDisabled={false}
+            // placeholder
           />
         </Grid>
         {/* Weathers */}
@@ -239,6 +243,9 @@ class GeneralPreference extends Component {
             multiSelction={true}
             options={this.state.countriesOrCities}
             selectionChanged={this.handleDropDownSelection}
+            defaultValue={[]}
+            isDisabled={false}
+            // placeholder
           />
         </Grid>
         {/* Bookmarks */}
@@ -248,7 +255,8 @@ class GeneralPreference extends Component {
             control={
               <Checkbox
                 checked={this.state.bookmarksEnabled}
-                onChange={this.handleBookmarksEnabled}
+                onChange={this.handleCheckbox}
+                name="bookmarksEnabled"
                 value="bookmarks"
                 inputProps={{
                   "aria-label": "bookmarks"

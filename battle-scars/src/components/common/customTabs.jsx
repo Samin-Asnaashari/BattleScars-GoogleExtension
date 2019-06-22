@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Typography from "@material-ui/core/Typography";
+import "./../../styles/customTabs.scss";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import "./../../styles/customTabs.scss";
 
 /**
  * Custom Tabs with dynamic data and content
@@ -40,11 +39,7 @@ class CustomTabs extends Component {
 }
 
 function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
+  return <div style={{ padding: 8 * 3 }}>{props.children}</div>;
 }
 
 export default CustomTabs;
