@@ -114,22 +114,12 @@ class GeneralPreference extends Component {
       });
   };
 
-  getCountriesCitiesList = () => {
-    const countriesOrCities = [...this.state.countriesOrCities];
-    countriesCitiesApi.getAllCities().map(city => {
-      countriesOrCities.push({
-        value: `city.name (${
-          countriesCitiesApi.getCountryDetailsByCode(city.countryCode).name
-        })`,
-        label: `city.name (${
-          countriesCitiesApi.getCountryDetailsByCode(city.countryCode).name
-        })`
-      });
-    });
-    this.setState({ countriesOrCities });
+  getCountriesCitiesList = async () => {
+    this.state.countriesOrCities = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
   };
 
   handleDropDownSelection = event => {
+    // TODO: Good it gaves me the entire object
     console.log(event, "event");
   };
 
