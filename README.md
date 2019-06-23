@@ -16,7 +16,7 @@ Let us start our days by having positive motives. This extension can bring the s
 
 - JavaScript
 - Html and CSS
-- ReactJS + PWA + CircleCI + Jenkins + NodeJS + Express + Local Storage + MaterialUI, ....
+- ReactJS + MaterialUI + Local Storage + Progressive Web App (PWA) + NodeJS + Express + CircleCI + Jenkins + CSSGrid + NextJS ,....
 
 Furthermore, many thanks to creators of below components that make this extension possible:
 [react-select](https://github.com/JedWatson/react-select), [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate), [react-color](https://github.com/casesandberg/react-color), [store.js](https://github.com/marcuswestin/store.js)
