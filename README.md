@@ -2,7 +2,7 @@
 
 Link to install the extension: <b>Coming Soon</b>
 
-#### `Always remember: The first impression lasts. Doing good work is not the whole job. The smallest thing might matter even if you think they don’t. When I start anything in life I dominate, they think I worked 100 hours. Now nobody questions my ability to get the job done.`
+####`Always remember: The first impression lasts. Doing good work is not the whole job. The smallest thing might matter even if you think they don’t. When I start anything in life I dominate, they think I worked 100 hours. Now nobody questions my ability to get the job done.`
 
 ### Getting Started
 

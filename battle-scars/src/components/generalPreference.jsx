@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { CirclePicker } from "react-color";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
+import Button from "@material-ui/core/Button";
 import FormatColorFillIcon from "@material-ui/icons/FormatColorFill";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -14,13 +15,13 @@ import CustomDropDown from "./common/customDropDown";
 import * as countriesCitiesApi from "../services/countriesCitiesService";
 
 class GeneralPreference extends Component {
+  timezones = [];
+  countriesOrCities = [];
+  bookmarks = [];
   state = {
     color1: this.props.data.drawerColor1,
     color2: this.props.data.drawerColor2,
     gredientColorEnabled: this.props.data.gredientColorEnabled,
-    timezones: [],
-    countriesOrCities: [],
-    bookmarks: [],
     bookmarksEnabled: this.props.data.bookmarksEnabled,
     selectedClocks: this.props.data.clockTimezones,
     selectedWeathers: this.props.data.weatherLocations,
@@ -99,15 +100,14 @@ class GeneralPreference extends Component {
   };
 
   getTimezoneList = async () => {
-    const timezones = [...this.state.timezones];
+    // TODO: move to json file
     return await axios
       .get("https://worldtimeapi.org/api/timezone")
       .then(response => {
         console.log(response, "timezones");
         response.data.map(item => {
-          timezones.push({ value: item, label: item });
+          this.timezones.push({ value: item, label: item });
         });
-        this.setState({ timezones });
       })
       .catch(error => {
         console.log(error, "Error get all timezones!");
@@ -115,7 +115,7 @@ class GeneralPreference extends Component {
   };
 
   getCountriesCitiesList = async () => {
-    this.state.countriesOrCities = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
+    this.countriesOrCities = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
   };
 
   handleDropDownSelection = event => {
@@ -133,9 +133,6 @@ class GeneralPreference extends Component {
         justify="flex-start"
         alignItems="flex-start"
       >
-        {/* Reset to default TODO:*/}
-        <h4>Reset:</h4>
-        <Grid item />
         {/* Drawer */}
         <h4>Drawer Color:</h4>
         <Grid
@@ -217,7 +214,7 @@ class GeneralPreference extends Component {
           {/* TODO: CheckBox */}
           <CustomDropDown
             multiSelction={true}
-            options={this.state.timezones}
+            options={this.timezones}
             selectionChanged={this.handleDropDownSelection}
             defaultValue={[]}
             isDisabled={false}
@@ -231,7 +228,7 @@ class GeneralPreference extends Component {
           {/* TODO: term search key */}
           <CustomDropDown
             multiSelction={true}
-            options={this.state.countriesOrCities}
+            options={this.countriesOrCities}
             selectionChanged={this.handleDropDownSelection}
             defaultValue={[]}
             isDisabled={false}
@@ -257,6 +254,12 @@ class GeneralPreference extends Component {
           />
           {/* TODO: <CustomDropDown /> */}
         </Grid>
+        {/* Reset to default*/}
+        {/* <Grid item>
+          <Button onClick={this.onReset} variant="outlined">
+            Reset to default
+          </Button>
+        </Grid> */}
       </Grid>
     );
   }
