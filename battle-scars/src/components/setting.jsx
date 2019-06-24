@@ -35,12 +35,12 @@ class Setting extends Component {
         content: (
           <div>
             <h2>Background Images</h2>
-            <ImageGridList backgroundImage={this.props.data.backgroundImage} />
-            handleChange=
-            {(property, value) => {
-              console.log(property, "property");
-              console.log(value, "value");
-            }}
+            <ImageGridList
+              backgroundImage={this.props.data.backgroundImage}
+              handleChange={(property, value) => {
+                this.data[property] = value;
+              }}
+            />
           </div>
         )
       }
