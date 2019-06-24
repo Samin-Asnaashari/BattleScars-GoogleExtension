@@ -102,7 +102,18 @@ class App extends Component {
    * Set to defaut or update data and save it to localstorage
    */
   handleSettingSave = data => {
-    console.log("Save Setting!");
+    console.log(data, "Save Setting!");
+    // TODO: Save to Storage
+    Object.keys(data).map(key => {
+      if (this.state.data.hasOwnProperty(key)) {
+        this.setState(prevState => ({
+          data: {
+            ...prevState.data,
+            [key]: data[key]
+          }
+        }));
+      }
+    });
   };
 
   render() {
@@ -114,7 +125,11 @@ class App extends Component {
           <MainContent data={data} currentLocation={currentLocation} />
           {/* Search */}
         </main>
-        <SideDrawer data={data} currentLocation={currentLocation} />
+        <SideDrawer
+          data={data}
+          currentLocation={currentLocation}
+          onSettingSave={this.handleSettingSave}
+        />
       </React.Fragment>
     );
   }

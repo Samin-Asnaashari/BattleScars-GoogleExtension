@@ -93,10 +93,12 @@ class GeneralPreference extends Component {
     number === 1
       ? this.setState({ color1: color.hex })
       : this.setState({ color2: color.hex });
+    this.props.handleChange(number === 1 ? "color1" : "color2", color.hex);
   };
 
   handleCheckbox = event => {
     this.setState({ [event.target.name]: event.target.checked });
+    this.props.handleChange(`${event.target.name}`, event.target.checked);
   };
 
   getTimezoneList = async () => {
@@ -118,9 +120,9 @@ class GeneralPreference extends Component {
     this.countriesOrCities = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
   };
 
-  handleDropDownSelection = event => {
-    // TODO: Good it gaves me the entire object
+  handleDropDownSelection = (event, name) => {
     console.log(event, "event");
+    this.props.handleChange(name, event);
   };
 
   render() {
@@ -216,6 +218,9 @@ class GeneralPreference extends Component {
             multiSelction={true}
             options={this.timezones}
             selectionChanged={this.handleDropDownSelection}
+            selectionChanged={event =>
+              this.handleDropDownSelection(event, "timezones")
+            }
             defaultValue={[]}
             isDisabled={false}
             // placeholder
@@ -229,7 +234,9 @@ class GeneralPreference extends Component {
           <CustomDropDown
             multiSelction={true}
             options={this.countriesOrCities}
-            selectionChanged={this.handleDropDownSelection}
+            selectionChanged={event =>
+              this.handleDropDownSelection(event, "countriesOrCities")
+            }
             defaultValue={[]}
             isDisabled={false}
             // placeholder

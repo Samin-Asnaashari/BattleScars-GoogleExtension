@@ -41,12 +41,10 @@ class MainContent extends Component {
           {/* Clock / Weather Container */}
           <Grid item style={dynamicStyles.clockWeatherContainer}>
             {/* Clocks */}
-            {/* TODO: loader content */}
             {clockTimezones.length > 0 ? (
               <Clocks clockTimezones={clockTimezones} />
             ) : null}
             {/* Weathers */}
-            {/* TODO: loader content */}
             {weatherLocations.length > 0 ? (
               <Weathers weatherLocations={weatherLocations} />
             ) : null}

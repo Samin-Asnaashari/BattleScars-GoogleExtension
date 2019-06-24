@@ -10,6 +10,7 @@ import GeneralPreference from "./generalPreference";
  * Setting: General Preference / Background Images
  */
 class Setting extends Component {
+  data = {};
   state = {
     tabs: [
       {
@@ -19,6 +20,9 @@ class Setting extends Component {
           <div>
             <h2>General</h2>
             <GeneralPreference
+              handleChange={(property, value) => {
+                this.data[property] = value;
+              }}
               currentLocation={this.props.currentLocation}
               data={this.props.data}
             />
@@ -32,11 +36,17 @@ class Setting extends Component {
           <div>
             <h2>Background Images</h2>
             <ImageGridList backgroundImage={this.props.data.backgroundImage} />
+            handleChange=
+            {(property, value) => {
+              console.log(property, "property");
+              console.log(value, "value");
+            }}
           </div>
         )
       }
     ]
   };
+
   render() {
     return (
       <CustomDialog
@@ -44,7 +54,7 @@ class Setting extends Component {
         tabs={<CustomTabs tabs={this.state.tabs} />}
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
-        onDialogSave={() => this.props.handleSettingSave()}
+        onDialogSave={() => this.props.onSettingSave(this.data)}
         fullScreen={false}
       />
     );

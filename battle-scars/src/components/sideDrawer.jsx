@@ -112,7 +112,10 @@ class SideDrawer extends Component {
             <Setting
               isOpen={this.isDialogOpen}
               onDialogClose={() => parent.handleDilog(this, false)}
-              handleSettingSave={parent.props.handleSettingSave}
+              onSettingSave={data => {
+                parent.props.onSettingSave(data);
+                parent.handleDilog(this, false);
+              }}
               currentLocation={parent.props.currentLocation}
               data={parent.props.data}
             />
