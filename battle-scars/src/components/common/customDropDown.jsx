@@ -64,8 +64,7 @@ const CustomDropDown = ({
       components={{ IndicatorSeparator }}
       isDisabled={isDisabled}
       closeMenuOnSelect={false}
-      value={defaultSelection}
-      //   defaultValue={defaultSelection}
+      defaultValue={defaultSelection}
       //   filterOption={createFilter({
       //     ignoreAccents: false,
       //     matchFromStart: true

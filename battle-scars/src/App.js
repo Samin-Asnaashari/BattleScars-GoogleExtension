@@ -68,11 +68,15 @@ class App extends Component {
     data.clockTimezones.push({
       _id: 0,
       timezone: this.state.currentLocation.timezone,
-      dateTime: new Date()
+      dateTime: new Date(),
+      value: this.state.currentLocation.timezone,
+      label: this.state.currentLocation.timezone
     });
     data.clockTimezones.push({
       _id: 1,
-      timezone: "America/Chicago"
+      timezone: "America/Chicago",
+      value: "America/Chicago",
+      label: "America/Chicago"
     });
     this.setState({ data });
   };
@@ -85,14 +89,22 @@ class App extends Component {
       lat: this.state.currentLocation.lat,
       lon: this.state.currentLocation.lon,
       country: this.state.currentLocation.country,
-      city: this.state.currentLocation.city
+      city: this.state.currentLocation.city,
+      value: `${this.state.currentLocation.city} ${
+        this.state.currentLocation.country
+      }`,
+      label: `${this.state.currentLocation.city} ${
+        this.state.currentLocation.country
+      }`
     });
     data.weatherLocations.push({
       _id: 1,
       lat: -0.13,
       lon: 51.51,
       country: "Netherlands",
-      city: "Utrecht"
+      city: "Utrecht",
+      value: "Utrecht (Netherlands)",
+      label: "Utrecht (Netherlands)"
     });
     this.setState({ data });
   };
@@ -102,6 +114,7 @@ class App extends Component {
    * Set to defaut or update data and save it to localstorage
    */
   handleSettingSave = data => {
+    // TODO: check data, FIXME:
     console.log(data, "Save Setting!");
     // TODO: Save to Storage
     Object.keys(data).map(key => {
@@ -112,6 +125,7 @@ class App extends Component {
             [key]: data[key]
           }
         }));
+        console.log(this.state, "After change!");
       }
     });
   };

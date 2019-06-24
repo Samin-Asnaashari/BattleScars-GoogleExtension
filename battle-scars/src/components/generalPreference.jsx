@@ -15,8 +15,8 @@ import CustomDropDown from "./common/customDropDown";
 import * as countriesCitiesApi from "../services/countriesCitiesService";
 
 class GeneralPreference extends Component {
-  timezones = [];
-  countriesOrCities = [];
+  clockTimezones = [];
+  weatherLocations = [];
   bookmarks = [];
   state = {
     drawerColor1: this.props.data.drawerColor1,
@@ -26,9 +26,7 @@ class GeneralPreference extends Component {
     selectedClocks: this.props.data.clockTimezones,
     selectedWeathers: this.props.data.weatherLocations,
     selectedBookmarks: this.props.data.bookmarks,
-    theme: this.props.data.theme,
-    clocksEnabled: this.props.data.clocksEnabled,
-    weathersEnabled: this.props.data.weathersEnabled
+    theme: this.props.data.theme
   };
 
   colors1 = [
@@ -111,7 +109,7 @@ class GeneralPreference extends Component {
       .then(response => {
         console.log(response, "timezones");
         response.data.map(item => {
-          this.timezones.push({ value: item, label: item });
+          this.clockTimezones.push({ value: item, label: item });
         });
       })
       .catch(error => {
@@ -120,7 +118,7 @@ class GeneralPreference extends Component {
   };
 
   getCountriesCitiesList = async () => {
-    this.countriesOrCities = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
+    this.weatherLocations = countriesCitiesApi.getAllCountriesCitiesDB(); // 12959 items
   };
 
   handleDropDownSelection = (event, name) => {
@@ -216,15 +214,14 @@ class GeneralPreference extends Component {
         {/* Clocks */}
         <h4>Clocks:</h4>
         <Grid item className="custom-dropDown-container">
-          {/* TODO: CheckBox */}
           <CustomDropDown
             multiSelction={true}
-            options={this.timezones}
+            options={this.clockTimezones}
             selectionChanged={this.handleDropDownSelection}
             selectionChanged={event =>
-              this.handleDropDownSelection(event, "timezones")
+              this.handleDropDownSelection(event, "clockTimezones")
             }
-            defaultValue={[]}
+            defaultSelection={this.state.selectedClocks}
             isDisabled={false}
             // placeholder
           />
@@ -232,15 +229,13 @@ class GeneralPreference extends Component {
         {/* Weathers */}
         <h4>Weathers:</h4>
         <Grid item className="custom-dropDown-container">
-          {/* TODO: CheckBox */}
-          {/* TODO: term search key */}
           <CustomDropDown
             multiSelction={true}
-            options={this.countriesOrCities}
+            options={this.weatherLocations}
             selectionChanged={event =>
-              this.handleDropDownSelection(event, "countriesOrCities")
+              this.handleDropDownSelection(event, "weatherLocations")
             }
-            defaultValue={[]}
+            defaultSelection={this.state.selectedWeathers}
             isDisabled={false}
             // placeholder
           />
