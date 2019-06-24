@@ -19,8 +19,8 @@ class GeneralPreference extends Component {
   countriesOrCities = [];
   bookmarks = [];
   state = {
-    color1: this.props.data.drawerColor1,
-    color2: this.props.data.drawerColor2,
+    drawerColor1: this.props.data.drawerColor1,
+    drawerColor2: this.props.data.drawerColor2,
     gredientColorEnabled: this.props.data.gredientColorEnabled,
     bookmarksEnabled: this.props.data.bookmarksEnabled,
     selectedClocks: this.props.data.clockTimezones,
@@ -91,9 +91,12 @@ class GeneralPreference extends Component {
 
   handleColorChangeComplete = (color, number) => {
     number === 1
-      ? this.setState({ color1: color.hex })
-      : this.setState({ color2: color.hex });
-    this.props.handleChange(number === 1 ? "color1" : "color2", color.hex);
+      ? this.setState({ drawerColor1: color.hex })
+      : this.setState({ drawerColor2: color.hex });
+    this.props.handleChange(
+      number === 1 ? "drawerColor1" : "drawerColor2",
+      color.hex
+    );
   };
 
   handleCheckbox = event => {
@@ -162,7 +165,7 @@ class GeneralPreference extends Component {
           <Grid item className="color-container">
             <CirclePicker
               colors={this.colors1}
-              color={this.state.color1}
+              color={this.state.drawerColor1}
               onChangeComplete={color =>
                 this.handleColorChangeComplete(color, 1)
               }
@@ -171,7 +174,7 @@ class GeneralPreference extends Component {
               className="color-chip"
               label={
                 <p>
-                  Color1: <strong>{this.state.color1}</strong>
+                  Color1: <strong>{this.state.drawerColor1}</strong>
                 </p>
               }
               variant="outlined"
@@ -187,7 +190,7 @@ class GeneralPreference extends Component {
             <Grid item className="color-container">
               <CirclePicker
                 colors={this.colors2}
-                color={this.state.color2}
+                color={this.state.drawerColor2}
                 onChangeComplete={color =>
                   this.handleColorChangeComplete(color, 2)
                 }
@@ -196,7 +199,7 @@ class GeneralPreference extends Component {
                 className="color-chip"
                 label={
                   <p>
-                    Color2: <strong>{this.state.color2}</strong>
+                    Color2: <strong>{this.state.drawerColor2}</strong>
                   </p>
                 }
                 variant="outlined"
