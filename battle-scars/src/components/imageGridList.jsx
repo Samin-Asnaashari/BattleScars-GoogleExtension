@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./../styles/imageGridList.scss";
-
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
@@ -32,12 +31,19 @@ class ImageGridList extends Component {
     this.setState({ images });
   };
 
+  onImageLoaded() {
+    this.setState({
+      loaded: true
+    });
+  }
+
   handleImageSelected = img => {
     this.setState({ backgroundImage: img });
     this.props.handleChange("backgroundImage", img);
   };
 
   render() {
+    const defaultImage = require("./../assets/default.png");
     return (
       <div className="image-grid-container">
         <GridList cols={3}>
@@ -58,7 +64,6 @@ class ImageGridList extends Component {
                 className="image"
                 src={`${window.location.href}${img.name}`}
                 alt={img.name}
-              />
               />
             </GridListTile>
           ))}

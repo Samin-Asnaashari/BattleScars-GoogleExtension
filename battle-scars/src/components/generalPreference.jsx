@@ -241,7 +241,7 @@ class GeneralPreference extends Component {
           />
         </Grid>
         {/* Bookmarks */}
-        <h4>Bookmarks:</h4>
+        {/* <h4>Bookmarks:</h4>
         <Grid item>
           <FormControlLabel
             control={
@@ -257,8 +257,8 @@ class GeneralPreference extends Component {
             }
             label="Bookmarks"
           />
-          {/* TODO: <CustomDropDown /> */}
-        </Grid>
+          TODO: <CustomDropDown />
+        </Grid> */}
         {/* Reset to default*/}
         {/* <Grid item>
           <Button onClick={this.onReset} variant="outlined">

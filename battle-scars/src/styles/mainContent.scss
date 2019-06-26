@@ -1,0 +1,21 @@
+.main-content {
+  //   background: url() no-repeat center center fixed cover;
+  &--expanded {
+    // filter: blur(2px);
+  }
+}
+
+.main-content-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.clock-weather-container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  margin: 20px !important;
+}

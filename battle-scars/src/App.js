@@ -3,20 +3,23 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.scss";
 import axios from "axios";
+// import store from "redux/store.js";
 
 import SideDrawer from "./components/sideDrawer";
 import MainContent from "./components/mainContent";
 
 class App extends Component {
   defaultData = {
-    backgroundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg",
+    backgroundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg", // anna-yenina-1342958-unsplash.jpg
     drawerColor1: "#ff9e99",
     drawerColor2: "#8ea6b4",
     theme: "dark", // TODO: add me
     gredientColorEnabled: true,
     clocksEnabled: true, // TODO: do you really want it?
     weathersEnabled: true, // TODO: do you really want it?
-    bookmarksEnabled: true
+    bookmarksEnabled: true,
+    quoteEnabled: true,
+    greetingsEnabled: true
   };
   state = {
     currentLocation: undefined,
@@ -31,7 +34,9 @@ class App extends Component {
       weathersEnabled: this.defaultData.weathersEnabled,
       weatherLocations: [],
       bookmarksEnabled: this.defaultData.bookmarksEnabled,
-      bookmarks: []
+      bookmarks: [],
+      quoteEnabled: this.defaultData.quoteEnabled,
+      greetingsEnabled: this.defaultData.greetingsEnabled
       // TODO: Style refactor
       // quoteCategory: "",
       // My Sticky Notes
@@ -135,9 +140,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <main>
-          {/* TODO: just pass all json data */}
           <MainContent data={data} currentLocation={currentLocation} />
-          {/* Search */}
         </main>
         <SideDrawer
           data={data}
