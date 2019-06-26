@@ -15,8 +15,9 @@ class Setting extends Component {
   };
 
   handleChanges = (property, value) => {
-    // TODO: SetState
-    this.state.data[property] = value;
+    const data = { ...this.state.data };
+    data[property] = value;
+    this.setState({ data });
   };
 
   render() {
