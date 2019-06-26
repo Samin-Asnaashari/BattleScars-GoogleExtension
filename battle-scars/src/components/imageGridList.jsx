@@ -9,6 +9,7 @@ class ImageGridList extends Component {
     images: []
   };
 
+  // TODO: or constructor???
   componentDidMount() {
     this.importImages(
       require.context(
@@ -31,15 +32,9 @@ class ImageGridList extends Component {
     this.setState({ images });
   };
 
-  onImageLoaded() {
-    this.setState({
-      loaded: true
-    });
-  }
-
   handleImageSelected = img => {
     this.setState({ backgroundImage: img });
-    this.props.handleChange("backgroundImage", img);
+    this.props.handleChanges("backgroundImage", img);
   };
 
   render() {

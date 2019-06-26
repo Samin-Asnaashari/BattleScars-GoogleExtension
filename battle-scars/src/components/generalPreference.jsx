@@ -91,7 +91,7 @@ class GeneralPreference extends Component {
     number === 1
       ? this.setState({ drawerColor1: color.hex })
       : this.setState({ drawerColor2: color.hex });
-    this.props.handleChange(
+    this.props.handleChanges(
       number === 1 ? "drawerColor1" : "drawerColor2",
       color.hex
     );
@@ -99,7 +99,7 @@ class GeneralPreference extends Component {
 
   handleCheckbox = event => {
     this.setState({ [event.target.name]: event.target.checked });
-    this.props.handleChange(`${event.target.name}`, event.target.checked);
+    this.props.handleChanges(`${event.target.name}`, event.target.checked);
   };
 
   getTimezoneList = async () => {
@@ -123,7 +123,7 @@ class GeneralPreference extends Component {
 
   handleDropDownSelection = (event, name) => {
     console.log(event, "event");
-    this.props.handleChange(name, event);
+    this.props.handleChanges(name, event);
   };
 
   render() {

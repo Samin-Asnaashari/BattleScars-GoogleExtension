@@ -10,9 +10,17 @@ import GeneralPreference from "./generalPreference";
  * Setting: General Preference / Background Images
  */
 class Setting extends Component {
-  data = {};
   state = {
-    tabs: [
+    data: this.props.data
+  };
+
+  handleChanges = (property, value) => {
+    // TODO: SetState
+    this.state.data[property] = value;
+  };
+
+  render() {
+    const tabs = [
       {
         _id: 0,
         label: "General",
@@ -20,11 +28,9 @@ class Setting extends Component {
           <div>
             <h2>General</h2>
             <GeneralPreference
-              handleChange={(property, value) => {
-                this.data[property] = value;
-              }}
+              handleChanges={this.handleChanges}
               currentLocation={this.props.currentLocation}
-              data={this.props.data}
+              data={this.state.data}
             />
           </div>
         )
@@ -36,25 +42,21 @@ class Setting extends Component {
           <div>
             <h2>Background Images</h2>
             <ImageGridList
-              backgroundImage={this.props.data.backgroundImage}
-              handleChange={(property, value) => {
-                this.data[property] = value;
-              }}
+              backgroundImage={this.state.data.backgroundImage}
+              handleChanges={this.handleChanges}
             />
           </div>
         )
       }
-    ]
-  };
+    ];
 
-  render() {
     return (
       <CustomDialog
         title="Setting"
-        tabs={<CustomTabs tabs={this.state.tabs} />}
+        tabs={<CustomTabs tabs={tabs} />}
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
-        onDialogSave={() => this.props.onSettingSave(this.data)}
+        onDialogSave={() => this.props.onSettingSave(this.state.data)}
         fullScreen={false}
       />
     );
