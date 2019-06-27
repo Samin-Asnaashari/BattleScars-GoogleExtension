@@ -38,7 +38,7 @@ class ImageGridList extends Component {
   };
 
   render() {
-    const defaultImage = require("./../assets/default.png");
+    const defaultImage = require("./../assets/placeholder/default.png");
     return (
       <div className="image-grid-container">
         <GridList cols={3}>
