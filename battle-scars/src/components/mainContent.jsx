@@ -19,7 +19,7 @@ class MainContent extends Component {
 
     return (
       <React.Fragment>
-        <img className="main-content-bg" src={backgroundImage} />
+        <img className="main-content__bg" src={backgroundImage} />
         <Grid
           container
           direction="column"

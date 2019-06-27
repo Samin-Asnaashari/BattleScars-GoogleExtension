@@ -3,14 +3,14 @@
   &--expanded {
     // filter: blur(2px);
   }
-}
 
-.main-content-bg {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
+  &__bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
 }
 
 .clock-weather-container {
