@@ -64,7 +64,7 @@ class Weathers extends Component {
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
-        className="weather-container"
+        className="weathers-container"
       >
         {this.state.weathers.length > 0 ? (
           <CustomSlider items={this.state.weathers} />

@@ -1,12 +1,27 @@
 .slide-container {
   min-width: max-content;
-  background-color: rgba(0, 0, 0, 0.7) !important;
-  color: white;
+  // TODO: remove
+  background-color: rgba(255, 255, 255, 0.9) !important;
+
+  &--dark {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+  &--light {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
 }
 
 .arrow {
   margin: 0 10px 0 10px !important;
-  color: white !important;
+  // TODO: remove
+  color: #222629 !important;
+
+  &--dark {
+    color: white !important;
+  }
+  &--light {
+    color: #222629 !important;
+  }
 }
 
 .slide-item--show {

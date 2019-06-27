@@ -1,43 +1,51 @@
-.weather-container {
+.weathers-container {
   min-width: max-content;
-  color: white;
+  display: block;
+
+  // TODO: remove
+  color: #222629;
+
+  &--dark {
+    color: white !important;
+  }
+  &--light {
+    color: #222629 !important;
+  }
 }
 
 .weather-header-container {
   min-width: max-content;
-  color: white;
-}
-
-.weather-icon {
-  vertical-align: middle;
-  font-size: 30px;
-  margin: 10px;
 }
 
 .location {
   text-transform: capitalize;
-  margin: 0;
-  margin-top: 10px;
+  margin: 10px 0 0 0;
 }
 
-.weather-description {
-  text-transform: capitalize;
-  font-weight: bold;
-  margin: 0;
-  margin-bottom: 10px;
+.weather-icon {
+  vertical-align: middle;
+  font-size: 33px;
+  margin: 10px;
 }
 
 .weather-temp {
+  font-size: 22px;
   font-weight: bolder;
-  font-size: 20px;
+}
+
+.weather-description {
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 0 0 10px 0;
 }
 
 .weather-details-container {
-  margin-left: 30px !important;
-  margin-top: 10px !important;
+  margin: 15px 0 0 30px !important;
 }
 
 .weather-details {
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: bold;
   margin: 5px;
 }

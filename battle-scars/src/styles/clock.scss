@@ -1,18 +1,23 @@
 .clocks-container {
+  display: block !important;
   min-width: max-content;
   margin-bottom: 10px;
-  color: white;
-}
 
-.clock-container {
-  min-width: max-content;
-  color: white;
+  // TODO: remove
+  color: #222629;
+
+  &--dark {
+    color: white !important;
+  }
+  &--light {
+    color: #222629 !important;
+  }
 }
 
 .dateTime-container {
   display: flex;
   align-items: center;
-  margin: 10px 0 10px 0;
+  margin: 5px 0 10px 0;
 }
 
 .timeZone {
@@ -20,10 +25,10 @@
 }
 
 .dateTime-icon {
-  margin-right: 5px;
+  font-size: 30px;
+  font-size: bold !important;
 }
 
 .dateTime {
-  margin: 0;
-  margin-left: 10px;
+  margin: 0 0 0 10px;
 }

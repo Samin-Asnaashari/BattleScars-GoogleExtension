@@ -35,8 +35,8 @@ class Clock extends Component {
 
   render() {
     return (
-      <Grid item className="clock-container">
-        <h4 className="timeZone">{this.state.timeZone}</h4>
+      <Grid item>
+        <h5 className="timeZone">{this.state.timeZone}</h5>
         <span className="dateTime-container">
           <ScheduleIcon className="dateTime-icon" />:
           <h4 className="dateTime">

@@ -4,11 +4,27 @@
   align-items: center;
   width: 600px;
   border-radius: 13px !important;
+
+  &--dark {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: white;
+  }
+  &--light {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #222629 !important;
+  }
 }
 
 .search__input {
   margin-left: 8px;
   flex: 1;
+
+  &--dark {
+    color: white !important;
+  }
+  &--light {
+    color: #222629 !important;
+  }
 }
 
 .search__btn {

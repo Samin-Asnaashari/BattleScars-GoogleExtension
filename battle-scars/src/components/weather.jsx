@@ -390,9 +390,9 @@ const Weather = props => {
     <Grid container>
       <Grid item className="weather-header-container">
         {/* Location */}
-        <h4 className="location">
+        <h5 className="location">
           {props.city}, {props.country}
-        </h4>
+        </h5>
         {/* Icon */}
         <i className={weatherIconClass} />
         {/* Temperature */}

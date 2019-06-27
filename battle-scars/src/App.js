@@ -13,7 +13,7 @@ class App extends Component {
     backgroundImage: "/static/media/anders-jilden-89745-unsplash.046a9b55.jpg", // anna-yenina-1342958-unsplash.jpg
     drawerColor1: "#ff9e99",
     drawerColor2: "#8ea6b4",
-    theme: "dark", // TODO: add me
+    theme: "dark", // dark | light :TODO: implement
     gredientColorEnabled: true,
     clocksEnabled: true, // TODO: do you really want it?
     weathersEnabled: true, // TODO: do you really want it?

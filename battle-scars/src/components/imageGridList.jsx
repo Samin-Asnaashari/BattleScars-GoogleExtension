@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./../styles/imageGridList.scss";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
+import Grow from "@material-ui/core/Grow";
 
 class ImageGridList extends Component {
   state = {
