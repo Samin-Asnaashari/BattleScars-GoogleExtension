@@ -6,10 +6,10 @@
   color: #222629;
 
   &--dark {
-    color: white !important;
+    color: white;
   }
   &--light {
-    color: #222629 !important;
+    color: #222629;
   }
 }
 
@@ -29,12 +29,12 @@
 }
 
 .weather-temp {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bolder;
 }
 
 .weather-description {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   text-transform: capitalize;
   margin: 0 0 10px 0;

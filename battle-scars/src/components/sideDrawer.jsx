@@ -162,7 +162,7 @@ class SideDrawer extends Component {
   render() {
     const { classes, theme, children, ...other } = this.props;
     const {
-      gredientColorEnabled,
+      gradientColorEnabled,
       drawerColor1,
       drawerColor2
     } = this.props.data;
@@ -174,7 +174,7 @@ class SideDrawer extends Component {
         MuiDrawer: {
           paper: {
             // background: "linear-gradient(45deg, #BFE6BA 30%, #D3959B 70%)" #8ea6b4, #ff9e99
-            background: gredientColorEnabled
+            background: gradientColorEnabled
               ? `linear-gradient(${drawerColor1}, ${drawerColor2})`
               : drawerColor1
           }

@@ -1,26 +1,27 @@
 .slide-container {
   min-width: max-content;
+
   // TODO: remove
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
 
   &--dark {
-    background-color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
   }
   &--light {
-    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
   }
 }
 
 .arrow {
-  margin: 0 10px 0 10px !important;
+  margin: 0 5px 0 5px !important;
   // TODO: remove
-  color: #222629 !important;
+  color: #222629;
 
   &--dark {
-    color: white !important;
+    color: white;
   }
   &--light {
-    color: #222629 !important;
+    color: #222629;
   }
 }
 

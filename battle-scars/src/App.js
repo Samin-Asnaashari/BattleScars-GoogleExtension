@@ -14,7 +14,7 @@ class App extends Component {
     drawerColor1: "#ff9e99",
     drawerColor2: "#8ea6b4",
     theme: "dark", // dark | light :TODO: implement
-    gredientColorEnabled: true,
+    gradientColorEnabled: true,
     clocksEnabled: true, // TODO: do you really want it?
     weathersEnabled: true, // TODO: do you really want it?
     bookmarksEnabled: true,
@@ -28,7 +28,7 @@ class App extends Component {
       drawerColor1: this.defaultData.drawerColor1,
       drawerColor2: this.defaultData.drawerColor2,
       theme: this.defaultData.theme,
-      gredientColorEnabled: this.defaultData.gredientColorEnabled,
+      gradientColorEnabled: this.defaultData.gradientColorEnabled,
       clocksEnabled: this.defaultData.clocksEnabled,
       clockTimezones: [],
       weathersEnabled: this.defaultData.weathersEnabled,

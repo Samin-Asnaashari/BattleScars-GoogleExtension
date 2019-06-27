@@ -21,7 +21,7 @@ class GeneralPreference extends Component {
   state = {
     drawerColor1: this.props.data.drawerColor1,
     drawerColor2: this.props.data.drawerColor2,
-    gredientColorEnabled: this.props.data.gredientColorEnabled,
+    gradientColorEnabled: this.props.data.gradientColorEnabled,
     bookmarksEnabled: this.props.data.bookmarksEnabled,
     selectedClocks: this.props.data.clockTimezones,
     selectedWeathers: this.props.data.weatherLocations,
@@ -148,16 +148,16 @@ class GeneralPreference extends Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.gredientColorEnabled}
+                  checked={this.state.gradientColorEnabled}
                   onChange={this.handleCheckbox}
-                  name="gredientColorEnabled"
-                  value="gredient"
+                  name="gradientColorEnabled"
+                  value="gradient"
                   inputProps={{
-                    "aria-label": "gredient color"
+                    "aria-label": "gradient color"
                   }}
                 />
               }
-              label="Gredient Color"
+              label="gradient Color"
             />
           </Grid>
           <Grid item className="color-container">
@@ -184,7 +184,7 @@ class GeneralPreference extends Component {
               }
             />
           </Grid>
-          {this.state.gredientColorEnabled ? (
+          {this.state.gradientColorEnabled ? (
             <Grid item className="color-container">
               <CirclePicker
                 colors={this.colors2}

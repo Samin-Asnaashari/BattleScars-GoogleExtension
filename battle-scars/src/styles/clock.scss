@@ -7,10 +7,10 @@
   color: #222629;
 
   &--dark {
-    color: white !important;
+    color: white;
   }
   &--light {
-    color: #222629 !important;
+    color: #222629;
   }
 }
 
@@ -25,8 +25,7 @@
 }
 
 .dateTime-icon {
-  font-size: 30px;
-  font-size: bold !important;
+  font-size: 26px !important;
 }
 
 .dateTime {
