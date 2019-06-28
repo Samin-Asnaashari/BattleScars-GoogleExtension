@@ -7,9 +7,9 @@ import ImageGridList from "./imageGridList";
 import GeneralPreference from "./generalPreference";
 
 /**
- * Setting: General Preference / Background Images
+ * Settings: General Preference / Background Images
  */
-class Setting extends Component {
+class Settings extends Component {
   state = {
     data: this.props.data
   };
@@ -53,7 +53,7 @@ class Setting extends Component {
 
     return (
       <CustomDialog
-        title="Setting"
+        title="Settings"
         tabs={<CustomTabs tabs={tabs} />}
         isOpen={this.props.isOpen}
         onDialogClose={this.props.onDialogClose}
@@ -64,4 +64,4 @@ class Setting extends Component {
   }
 }
 
-export default Setting;
+export default Settings;

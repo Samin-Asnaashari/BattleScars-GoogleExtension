@@ -15,7 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
-import Setting from "./setting";
+import Settings from "./settings";
 
 const drawerWidth = 170;
 
@@ -112,7 +112,7 @@ class SideDrawer extends Component {
         isDialogOpen: false,
         component: function(parent) {
           return (
-            <Setting
+            <Settings
               isOpen={this.isDialogOpen}
               onDialogClose={() => parent.handleDilog(this, false)}
               onSettingSave={data => {
