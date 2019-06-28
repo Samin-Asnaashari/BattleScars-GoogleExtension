@@ -1,8 +1,10 @@
 .quote {
-  text-shadow: #ffffff 2px 0 20px;
+  // text-shadow: #ffffff 2px 0 20px;
   position: fixed;
   bottom: 10px;
-  color: #222629;
+
+  // TODO: remove
+  color: white;
 
   &--dark {
     color: #222629;
@@ -21,12 +23,14 @@
   }
 
   &--right {
+    //
   }
 }
 
 .quote__text {
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bolder;
   margin: 0;
 }
 
@@ -34,5 +38,6 @@
 }
 
 .quote-author {
+  font-size: 20px;
   margin: 0 0 20px 0;
 }

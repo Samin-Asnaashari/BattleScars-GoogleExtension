@@ -81,7 +81,7 @@ class Quote extends Component {
             <FormatQuoteIcon className="quote__icon quote__icon--left" />
           </Grid>
           <Grid item>
-            <h4 className="quote__text"> {this.state.quote.text} </h4>
+            <p className="quote__text"> {this.state.quote.text} </p>
           </Grid>
           <Grid item>
             <FormatQuoteIcon className="quote__icon quote__icon--right" />
@@ -94,7 +94,7 @@ class Quote extends Component {
           alignItems="center"
           className="quote-author-container"
         >
-          <h5 className="quote-author"> (({this.state.quote.author}))</h5>
+          <p className="quote-author"> (({this.state.quote.author}))</p>
         </Grid>
       </div>
     );

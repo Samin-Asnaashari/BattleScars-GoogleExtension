@@ -27,6 +27,7 @@ class CustomTabs extends Component {
           indicatorColor="primary"
           textColor="primary"
           onChange={this.handleChange}
+          classes={{ indicator: "custom-indicator" }}
         >
           {tabs.map(item => (
             <Tab label={item.label} key={item._id} />

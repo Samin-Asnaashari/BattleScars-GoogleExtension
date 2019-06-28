@@ -49,11 +49,14 @@ const styles = theme => ({
     justifyContent: "flex-start",
     padding: "0 8px",
     ...theme.mixins.toolbar
+  },
+  manuIcon: {
+    color: "#555555"
   }
 });
 
 class SideDrawer extends Component {
-  iconClass = "menu__icon fa fa-2x fa";
+  iconClass = `${this.props.classes.manuIcon} fa fa-2x fa`;
   state = {
     open: false,
     menuItems: [

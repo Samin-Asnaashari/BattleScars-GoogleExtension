@@ -34,11 +34,11 @@ const CustomDialog = props => {
       fullScreen={fullScreen}
       open={isOpen}
       onClose={onDialogClose}
-      // TransitionComponent={Transition}
       aria-labelledby="custom-dialog"
       fullWidth={true}
       maxWidth="md"
       disableBackdropClick
+      // TransitionComponent={Transition}
     >
       <DialogTitle id="custom-dialog">
         <div>{title}</div>
@@ -52,11 +52,16 @@ const CustomDialog = props => {
         {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onDialogClose} color="primary">
+        <Button onClick={onDialogClose} color="primary" className="cancel__btn">
           <CancelIcon />
           Cancel
         </Button>
-        <Button variant="contained" onClick={onDialogSave} color="primary">
+        <Button
+          variant="contained"
+          onClick={onDialogSave}
+          color="primary"
+          className="save__btn"
+        >
           <SaveIcon />
           Save
         </Button>
