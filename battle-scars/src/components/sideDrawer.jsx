@@ -62,8 +62,8 @@ const styles = theme => ({
 class SideDrawer extends Component {
   iconClass = `${this.props.classes.manuIcon} fa fa-2x fa`;
   state = {
-    open: false,
-    profileOpen: false,
+    isDrawerOpen: false,
+    isProfileOpen: false,
     menuItems: [
       {
         _id: 0,
@@ -152,14 +152,14 @@ class SideDrawer extends Component {
    * Handle drawer close/open
    */
   handleDrawer = () => {
-    this.setState({ open: !this.state.open });
+    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
   };
 
   /**
    * Handle Profile close/open
    */
   handleProfileDilog = isOpen => {
-    this.setState({ profileOpen: isOpen });
+    this.setState({ isProfileOpen: isOpen });
   };
 
   /**
@@ -181,7 +181,7 @@ class SideDrawer extends Component {
       drawerColor1,
       drawerColor2
     } = this.props.data;
-    const { profileOpen, open, menuItems } = this.state;
+    const { isProfileOpen, isDrawerOpen, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
 
     const dynamicStyles = createMuiTheme({
@@ -203,22 +203,22 @@ class SideDrawer extends Component {
           variant="permanent"
           anchor="right"
           className={classNames(classes.root, classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
+            [classes.drawerOpen]: isDrawerOpen,
+            [classes.drawerClose]: !isDrawerOpen
           })}
           classes={{
             root: classes.root,
             paper: classNames(classes.paper, {
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open
+              [classes.drawerOpen]: isDrawerOpen,
+              [classes.drawerClose]: !isDrawerOpen
             })
           }}
-          open={open}
+          open={isDrawerOpen}
         >
           {/* Toggle drawer */}
           <div className={classes.toolbar}>
             <IconButton onClick={this.handleDrawer}>
-              {theme.direction === "rtl" || open === true ? (
+              {theme.direction === "rtl" || isDrawerOpen === true ? (
                 <ChevronRightIcon />
               ) : (
                 <ChevronLeftIcon />
@@ -237,7 +237,7 @@ class SideDrawer extends Component {
             <ListItemText primary="My Profile" />
           </ListItem>
           <MyProfile
-            isOpen={profileOpen}
+            isOpen={isProfileOpen}
             onDialogClose={() => this.handleProfileDilog(false)}
             // onProfileSave={() => }
           />

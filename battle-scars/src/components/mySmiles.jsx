@@ -23,7 +23,7 @@ class MySmiles extends Component {
         content: <div />
       },
       {
-        _id: 1,
+        _id: 2,
         label: "My Hapiness and Smiles",
         content: <div />
       }
