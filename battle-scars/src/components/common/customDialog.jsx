@@ -37,7 +37,7 @@ const CustomDialog = props => {
       aria-labelledby="custom-dialog"
       fullWidth={true}
       maxWidth="md"
-      disableBackdropClick
+      // disableBackdropClick
       // TransitionComponent={Transition}
     >
       <DialogTitle id="custom-dialog">

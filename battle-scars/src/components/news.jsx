@@ -16,12 +16,7 @@ class News extends Component {
     const tabs = [
       {
         _id: 0,
-        label: "---",
-        content: <div />
-      },
-      {
-        _id: 1,
-        label: "---",
+        label: "Latest News",
         content: <div />
       }
     ];

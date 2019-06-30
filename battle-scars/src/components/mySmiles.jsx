@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../styles/mySmiles.scss";
+// import "./../styles/mySmiles.scss";
 
 import CustomDialog from "./common/customDialog";
 import CustomTabs from "./common/customTabs";
@@ -14,12 +14,17 @@ class MySmiles extends Component {
     const tabs = [
       {
         _id: 0,
-        label: "---",
+        label: "Note",
         content: <div />
       },
       {
         _id: 1,
-        label: "---",
+        label: "My Diary",
+        content: <div />
+      },
+      {
+        _id: 1,
+        label: "My Hapiness and Smiles",
         content: <div />
       }
     ];

@@ -7,7 +7,7 @@ import CustomTabs from "./common/customTabs";
 /**
  * Latest Stocks
  */
-class Settings extends Component {
+class Stocks extends Component {
   state = {};
 
   //   TODO: Customize
@@ -16,12 +16,7 @@ class Settings extends Component {
     const tabs = [
       {
         _id: 0,
-        label: "---",
-        content: <div />
-      },
-      {
-        _id: 1,
-        label: "---",
+        label: "Stocks",
         content: <div />
       }
     ];
@@ -39,4 +34,4 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+export default Stocks;

@@ -152,7 +152,7 @@ class GeneralPreference extends Component {
                   onChange={this.handleCheckbox}
                   name="gradientColorEnabled"
                   value="gradient"
-                  color="#555555"
+                  color="default"
                   inputProps={{
                     "aria-label": "gradient color"
                   }}

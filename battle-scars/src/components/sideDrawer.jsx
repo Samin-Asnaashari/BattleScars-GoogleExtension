@@ -16,6 +16,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import Settings from "./settings";
+import MySmiles from "./mySmiles";
+import News from "./news";
+import Stocks from "./stocks";
+import MyProfile from "./myProfile";
 
 const drawerWidth = 170;
 
@@ -59,51 +63,52 @@ class SideDrawer extends Component {
   iconClass = `${this.props.classes.manuIcon} fa fa-2x fa`;
   state = {
     open: false,
+    profileOpen: false,
     menuItems: [
       {
         _id: 0,
         title: "My Smiles",
         iconClass: this.iconClass + "-gratipay",
-        isDialogOpen: false
-        // component: function(parent) { : TODO:
-        // return (
-        // <MySmiles
-        // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parent.handleDilog(this, false)}
-        // handleSmilesSave={parent.props.handleSmilesSave}
-        // />
-        // );
-        // }
+        isDialogOpen: false,
+        component: function(parent) {
+          return (
+            <MySmiles
+              isOpen={this.isDialogOpen}
+              onDialogClose={() => parent.handleDilog(this, false)}
+              // onSmilesSave={parent.props.handleSmilesSave}
+            />
+          );
+        }
       },
       {
         _id: 1,
         title: "News",
         iconClass: this.iconClass + "-newspaper-o",
-        isDialogOpen: false
-        // component: function(parent) { : TODO:
-        // return (
-        // <News
-        // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parent.handleDilog(this, false)}
-        // handleNewsSave={parent.props.handleNewsSave}
-        // />
-        // );
-        // }
+        isDialogOpen: false,
+        component: function(parent) {
+          return (
+            <News
+              isOpen={this.isDialogOpen}
+              onDialogClose={() => parent.handleDilog(this, false)}
+              // onNewsSave={parent.props.handleNewsSave}
+            />
+          );
+        }
       },
       {
         _id: 2,
         title: "Stocks",
         iconClass: this.iconClass + "-money",
-        isDialogOpen: false
-        // component: function(parent) { : TODO:
-        // return (
-        // <Stocks
-        // isOpen={this.isDialogOpen}
-        // onDialogClose={() => parent.handleDilog(this, false)}
-        // handleStocksSave={parent.props.handleStocksSave}
-        // />
-        // );
-        // }
+        isDialogOpen: false,
+        component: function(parent) {
+          return (
+            <Stocks
+              isOpen={this.isDialogOpen}
+              onDialogClose={() => parent.handleDilog(this, false)}
+              // onStocksSave={parent.props.handleStocksSave}
+            />
+          );
+        }
       },
       {
         _id: 3,
@@ -151,6 +156,13 @@ class SideDrawer extends Component {
   };
 
   /**
+   * Handle Profile close/open
+   */
+  handleProfileDilog = isOpen => {
+    this.setState({ profileOpen: isOpen });
+  };
+
+  /**
    * Handle dialog close/open
    */
   handleDilog = (menuItem, isOpen) => {
@@ -169,7 +181,7 @@ class SideDrawer extends Component {
       drawerColor1,
       drawerColor2
     } = this.props.data;
-    const { open, menuItems } = this.state;
+    const { profileOpen, open, menuItems } = this.state;
     const avatar = require("./../assets/background-images/nathan-glynn-1462155-unsplash.jpg");
 
     const dynamicStyles = createMuiTheme({
@@ -215,12 +227,20 @@ class SideDrawer extends Component {
           </div>
           <Divider />
           {/* My Profile */}
-          {/* TODO: on click open profile */}
-          <ListItem button key="profile" className={classes.toolbar}>
+          <ListItem
+            button
+            key="profile"
+            className={classes.toolbar}
+            onClick={() => this.handleProfileDilog(true)}
+          >
             <Avatar alt="profile" src={avatar} />
             <ListItemText primary="My Profile" />
           </ListItem>
-          {/* TODO: <MyProfile /> */}
+          <MyProfile
+            isOpen={profileOpen}
+            onDialogClose={() => this.handleProfileDilog(false)}
+            // onProfileSave={() => }
+          />
           <Divider />
           {/* Menu itmes */}
           <List>

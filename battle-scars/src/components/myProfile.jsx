@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../styles/myProfile.scss";
+// import "./../styles/myProfile.scss";
 
 import CustomDialog from "./common/customDialog";
 import CustomTabs from "./common/customTabs";
@@ -14,12 +14,32 @@ class MyProfile extends Component {
     const tabs = [
       {
         _id: 0,
-        label: "---",
+        label: "Personal Details",
         content: <div />
       },
       {
         _id: 1,
-        label: "---",
+        label: "Arts",
+        content: <div />
+      },
+      {
+        _id: 2,
+        label: "Musics",
+        content: <div />
+      },
+      {
+        _id: 3,
+        label: "Movies",
+        content: <div />
+      },
+      {
+        _id: 4,
+        label: "Books",
+        content: <div />
+      },
+      {
+        _id: 5,
+        label: "World Visits",
         content: <div />
       }
     ];
