@@ -5,7 +5,7 @@ import CustomDialog from "./common/customDialog";
 import CustomTabs from "./common/customTabs";
 
 /**
- * Stocks
+ * Latest Stocks
  */
 class Settings extends Component {
   state = {};
