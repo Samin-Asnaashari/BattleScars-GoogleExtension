@@ -32,6 +32,7 @@
   font-size: 22px;
   font-weight: bolder;
   margin: 0;
+  max-width: 700px;
 }
 
 .quote-author-container {
@@ -40,4 +41,16 @@
 .quote-author {
   font-size: 20px;
   margin: 0 0 20px 0;
+}
+
+.quote-refresh {
+  // TODO: remove
+  color: white;
+
+  &--dark {
+    color: #222629;
+  }
+  &--light {
+    color: white;
+  }
 }

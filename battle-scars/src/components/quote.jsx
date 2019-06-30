@@ -74,7 +74,7 @@ class Quote extends Component {
               aria-label="Refresh Quote"
               onClick={() => this.getQuote(this.state.selectedCategory.name)}
             >
-              <AutorenewIcon />
+              <AutorenewIcon className="quote-refresh" />
             </IconButton>
           </Grid>
           <Grid item>

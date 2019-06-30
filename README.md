@@ -29,7 +29,7 @@ Let us start our days by having positive motives. This extension can bring the s
 - My Diary
 - Bookmarks (export, import)
 - My Arts, My Movies, My Musics, My Books, My Travels (World Visits), My Games
-- My Hapiness/Smiles Level
+- My Happiness/Smiles Level
 - My Family/Friends/Colleagues Contact Quality Overview
 - Money
 

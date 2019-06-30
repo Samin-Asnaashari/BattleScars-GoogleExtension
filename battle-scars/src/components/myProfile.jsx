@@ -34,11 +34,16 @@ class MyProfile extends Component {
       },
       {
         _id: 4,
-        label: "Books",
+        label: "Games",
         content: <div />
       },
       {
         _id: 5,
+        label: "Books",
+        content: <div />
+      },
+      {
+        _id: 6,
         label: "World Visits",
         content: <div />
       }

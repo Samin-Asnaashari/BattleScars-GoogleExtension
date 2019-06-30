@@ -19,11 +19,16 @@ class MySmiles extends Component {
       },
       {
         _id: 1,
-        label: "My Diary",
+        label: "My Goals",
         content: <div />
       },
       {
         _id: 2,
+        label: "My Diary",
+        content: <div />
+      },
+      {
+        _id: 3,
         label: "My Hapiness and Smiles",
         content: <div />
       }
