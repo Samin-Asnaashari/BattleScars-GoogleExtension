@@ -28,6 +28,8 @@ class CustomTabs extends Component {
           textColor="primary"
           onChange={this.handleChange}
           classes={{ indicator: "custom-indicator" }}
+          scrollButtons="auto"
+          variant="scrollable"
         >
           {tabs.map(item => (
             <Tab label={item.label} key={item._id} />
