@@ -34,13 +34,13 @@ class MainContent extends Component {
           {/* Clock / Weather Container */}
           <Grid item className="clock-weather-container">
             {/* Clocks */}
-            {clockTimezones.length > 0 ? (
+            {/* {clockTimezones.length > 0 ? (
               <Clocks clockTimezones={clockTimezones} />
-            ) : null}
+            ) : null} */}
             {/* Weathers */}
-            {weatherLocations.length > 0 ? (
+            {/* {weatherLocations.length > 0 ? (
               <Weathers weatherLocations={weatherLocations} />
-            ) : null}
+            ) : null} */}
           </Grid>
           {/* Search */}
           <SearchBox />

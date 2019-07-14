@@ -168,7 +168,7 @@ class SideDrawer extends Component {
   handleDilog = (menuItem, isOpen) => {
     const menuItems = [...this.state.menuItems];
     const index = menuItems.indexOf(menuItem);
-    menuItems[index] = { ...menuItem };
+    // menuItems[index] = { ...menuItem };
     // true: open, false: close
     menuItems[index].isDialogOpen = isOpen;
     this.setState({ menuItems });

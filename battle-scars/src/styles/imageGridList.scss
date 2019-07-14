@@ -7,9 +7,15 @@
 .image-box:hover,
 .image-box:active {
   cursor: pointer;
-  border: 1px solid red;
+  border: 3px double #555555;
 }
 
 .image-selected {
-  border: 2px solid green;
+  border: 6px double #b0ceaf;
+}
+
+.image-action {
+  &__icon {
+    color: white !important;
+  }
 }
