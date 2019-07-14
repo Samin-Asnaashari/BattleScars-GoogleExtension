@@ -88,14 +88,15 @@ class ImageGridList extends Component {
               <GridListTileBar
                 title={img.title}
                 actionIcon={
-                  <IconButton
-                    className="image-action__icon"
-                    onMouseEnter={event => this.handlePopover(event, img, true)}
-                    onMouseLeave={event =>
-                      this.handlePopover(event, img, false)
-                    }
-                  >
-                    <InfoIcon />
+                  <IconButton className="image-action__icon">
+                    <InfoIcon
+                      onMouseEnter={event =>
+                        this.handlePopover(event, img, true)
+                      }
+                      onMouseLeave={event =>
+                        this.handlePopover(event, img, false)
+                      }
+                    />
                     {img.popOver(this)}
                   </IconButton>
                 }

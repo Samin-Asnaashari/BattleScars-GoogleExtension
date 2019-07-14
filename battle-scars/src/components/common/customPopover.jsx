@@ -20,11 +20,11 @@ const CustomPopover = ({ open, content, anchorEl, classes }) => {
       className={classes.popover}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left"
+        horizontal: "center"
       }}
       transformOrigin={{
         vertical: "top",
-        horizontal: "left"
+        horizontal: "center"
       }}
       disableRestoreFocus
     >
