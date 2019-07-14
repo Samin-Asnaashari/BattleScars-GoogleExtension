@@ -68,10 +68,6 @@ const CustomDropDown = ({
       isDisabled={isDisabled}
       closeMenuOnSelect={false}
       defaultValue={defaultSelection}
-      //   filterOption={createFilter({
-      //     ignoreAccents: false,
-      //     matchFromStart: true
-      //   })}
       theme={theme => ({
         ...theme,
         borderRadius: 0,

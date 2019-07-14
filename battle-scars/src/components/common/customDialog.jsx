@@ -51,8 +51,8 @@ const CustomDialog = props => {
         {/* Content */}
         {children}
       </DialogContent>
-      {onDialogClose && onDialogSave ? (
-        <DialogActions>
+      <DialogActions>
+        {onDialogClose ? (
           <Button
             onClick={onDialogClose}
             color="primary"
@@ -61,6 +61,8 @@ const CustomDialog = props => {
             <CancelIcon />
             Cancel
           </Button>
+        ) : null}
+        {onDialogSave ? (
           <Button
             variant="contained"
             onClick={onDialogSave}
@@ -70,8 +72,8 @@ const CustomDialog = props => {
             <SaveIcon />
             Save
           </Button>
-        </DialogActions>
-      ) : null}
+        ) : null}
+      </DialogActions>
     </Dialog>
   );
 };
