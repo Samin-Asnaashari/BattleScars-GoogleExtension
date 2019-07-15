@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import { CirclePicker } from "react-color";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
 import FormatColorFillIcon from "@material-ui/icons/FormatColorFill";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";

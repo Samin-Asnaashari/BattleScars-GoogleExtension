@@ -6,6 +6,8 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import Grow from "@material-ui/core/Grow";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
+import Avatar from "@material-ui/core/Avatar";
+import FormatColorFillIcon from "@material-ui/icons/FormatColorFill";
 
 import CustomPopover from "./common/customPopover";
 
@@ -31,15 +33,47 @@ class ImageGridList extends Component {
     r.keys().forEach(key => {
       const img = {
         name: r(key),
-        title: "Title",
+        title: "Title", // TODO:
         popoverIsOpen: false,
-        popoverContent: <h2>Color</h2>,
+        color1: "#f3e367", // TODO:
+        color2: "#f3e367", // TODO:
+        theme: "Light",
+        popoverContent: function() {
+          return (
+            <span className="color-suggestion">
+              <p className="color-suggestion__title">Color Suggestion:</p>
+              <span>
+                <FormatColorFillIcon
+                  className="color-suggestion__icon"
+                  style={{ color: this.color1 }}
+                />
+                <strong className="color-suggestion__code">
+                  {this.color1}
+                </strong>
+              </span>
+              {this.color2 ? (
+                <span>
+                  <FormatColorFillIcon
+                    className="color-suggestion__icon"
+                    style={{ color: this.color2 }}
+                  />
+                  <strong className="color-suggestion__code">
+                    {this.color2}
+                  </strong>
+                </span>
+              ) : null}
+              <p className="color-suggestion__theme">
+                Theme: <strong>{this.theme}</strong>
+              </p>
+            </span>
+          );
+        },
         anchorEl: null,
-        popOver: function(parent) {
+        popOver: function() {
           return (
             <CustomPopover
               open={this.popoverIsOpen}
-              content={this.popoverContent}
+              content={this.popoverContent()}
               anchorEl={this.anchorEl}
             />
           );
@@ -101,7 +135,7 @@ class ImageGridList extends Component {
                         }
                       />
                     </IconButton>
-                    {img.popOver(this)}
+                    {img.popOver()}
                   </div>
                 }
               />

@@ -5,6 +5,10 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = theme => ({
   popover: {
     pointerEvents: "none"
+  },
+  paper: {
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    padding: "10px"
   }
 });
 
@@ -19,12 +23,15 @@ const CustomPopover = ({ open, content, anchorEl, classes }) => {
       anchorEl={anchorEl}
       anchorReference="anchorEl"
       className={classes.popover}
+      classes={{
+        paper: classes.paper
+      }}
       anchorOrigin={{
-        vertical: "top",
+        vertical: "center",
         horizontal: "left"
       }}
       transformOrigin={{
-        vertical: "bottom",
+        vertical: "center",
         horizontal: "right"
       }}
     >

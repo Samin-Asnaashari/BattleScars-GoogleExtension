@@ -19,3 +19,24 @@
     color: white !important;
   }
 }
+
+.color-suggestion {
+  font-size: 13px;
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &__code {
+    margin-right: 20px;
+    color: #222629;
+  }
+
+  &__theme {
+    margin-bottom: 0;
+  }
+}
