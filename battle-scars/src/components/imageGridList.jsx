@@ -34,12 +34,13 @@ class ImageGridList extends Component {
         title: "Title",
         popoverIsOpen: false,
         popoverContent: <h2>Color</h2>,
+        anchorEl: null,
         popOver: function(parent) {
           return (
             <CustomPopover
               open={this.popoverIsOpen}
               content={this.popoverContent}
-              anchorEl={null}
+              anchorEl={this.anchorEl}
             />
           );
         }
@@ -50,6 +51,7 @@ class ImageGridList extends Component {
   };
 
   handleImageSelected = img => {
+    // FIXME: only update when they changed
     this.setState({ backgroundImage: img });
     this.props.handleChanges("backgroundImage", img);
   };
@@ -88,17 +90,19 @@ class ImageGridList extends Component {
               <GridListTileBar
                 title={img.title}
                 actionIcon={
-                  <IconButton className="image-action__icon">
-                    <InfoIcon
-                      onMouseEnter={event =>
-                        this.handlePopover(event, img, true)
-                      }
-                      onMouseLeave={event =>
-                        this.handlePopover(event, img, false)
-                      }
-                    />
+                  <div>
+                    <IconButton className="image-action__icon">
+                      <InfoIcon
+                        onMouseEnter={event =>
+                          this.handlePopover(event, img, true)
+                        }
+                        onMouseLeave={event =>
+                          this.handlePopover(event, img, false)
+                        }
+                      />
+                    </IconButton>
                     {img.popOver(this)}
-                  </IconButton>
+                  </div>
                 }
               />
             </GridListTile>

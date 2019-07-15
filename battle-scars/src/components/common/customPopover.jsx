@@ -17,16 +17,16 @@ const CustomPopover = ({ open, content, anchorEl, classes }) => {
     <Popover
       open={open}
       anchorEl={anchorEl}
+      anchorReference="anchorEl"
       className={classes.popover}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center"
+        vertical: "top",
+        horizontal: "left"
       }}
       transformOrigin={{
-        vertical: "top",
-        horizontal: "center"
+        vertical: "bottom",
+        horizontal: "right"
       }}
-      disableRestoreFocus
     >
       {content}
     </Popover>
