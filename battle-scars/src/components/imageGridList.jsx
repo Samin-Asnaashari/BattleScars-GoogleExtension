@@ -147,4 +147,5 @@ class ImageGridList extends Component {
   }
 }
 
+// export default trackWindowScroll(ImageGridList);
 export default ImageGridList;
