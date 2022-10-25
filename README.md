@@ -9,8 +9,6 @@ Link to install the extension: <b>Coming Soon</b>
 <img src="./battle-scars/src/assets/screenshots/2.png" width="700px" alt="Preview"/>
 <img src="./battle-scars/src/assets/screenshots/3.png" width="700px" alt="Preview"/>
 
-####`Always remember: The first impression lasts. Doing good work is not the whole job. The smallest thing might matter even if you think they don’t. When I start anything in life I dominate, they think I worked 100 hours. Now nobody questions my ability to get the job done.`
-
 ### Getting Started
 
 Let us start our days by having positive motives. This extension can bring the smile and love you need to start your day.
